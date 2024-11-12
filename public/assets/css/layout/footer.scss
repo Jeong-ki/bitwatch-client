@@ -1,0 +1,16 @@
+.doc-footer {
+  flex: none;
+  height: 72px;
+  margin-top: auto;
+  margin-right: 20px;
+}
+.inner_foot {
+  overflow: hidden;
+  small {
+    float: right;
+    padding-top: 26px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6a6e73;
+  }
+}

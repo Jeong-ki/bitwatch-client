@@ -1,0 +1,163 @@
+.item_form {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+
+.inner_tf {
+  position: relative;
+  width: 100%;
+}
+
+.box_tf {
+  position: relative;
+  display: flex;
+}
+
+.tf_comm {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 15px;
+  border: 1px solid var(--Gray-10);
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--Gray-90);
+  background-color: var(--White);
+  text-align: left;
+  vertical-align: top;
+  box-sizing: border-box;
+  outline: none;
+  resize: none;
+}
+
+.tf_comm:hover,
+.tf_comm:focus {
+  border-color: var(--Gray-100);
+}
+
+.tf_comm:disabled {
+  border-color: var(--Gray-10);
+  color: var(--Gray-30);
+  background-color: var(--Gray-2);
+  cursor: not-allowed;
+}
+
+.tf_comm[readonly] {
+  border-color: var(--Gray-10);
+  background: var(--Gray-2);
+}
+
+input.tf_comm[readonly] {
+  background-color: var(--Gray-2);
+}
+
+.tf_comm.error {
+  border-color: var(--Error);
+}
+
+.tf_comm::-webkit-input-placeholder {
+  color: var(--Gray-60);
+  opacity: 1;
+}
+
+.tf_comm::-moz-placeholder {
+  color: var(--Gray-60);
+  opacity: 1;
+}
+
+.tf_comm:-ms-input-placeholder {
+  color: var(--Gray-60);
+  opacity: 1;
+}
+
+.tf_comm:-moz-placeholder {
+  color: var(--Gray-60);
+  opacity: 1;
+}
+
+.tf_comm::-webkit-input-placeholder[readonly] {
+  color: var(--Gray-60);
+  opacity: 1;
+}
+
+.tf_comm::-moz-placeholder[readonly] {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:-ms-input-placeholder[readonly] {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:-moz-placeholder[readonly] {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:disabled::-webkit-input-placeholder {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:disabled::-moz-placeholder {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:disabled:-ms-input-placeholder {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.tf_comm:disabled:-moz-placeholder {
+  color: var(--Gray-30);
+  opacity: 1;
+}
+
+.form_small {
+  width: 90px;
+}
+
+.form_medium {
+  width: 150px;
+}
+
+.form_large {
+  width: 200px;
+}
+
+.txt_error {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--Error);
+}
+
+.txt_success {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--Success-Input);
+}
+
+.box_tf .search_icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--Gray-60);
+  height: 20px;
+  width: 20px;
+}
+
+.box_tf .del_icon {
+  position: absolute;
+  right: 27px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px;
+  color: var(--Gray-60);
+  height: 16px;
+  width: 16px;
+}

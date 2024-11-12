@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "Freesentation-8ExtraBold";
+  src: url("../../fonts/Freesentation-8ExtraBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.content-landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .inner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .badge {
+      font-family: "Freesentation-8ExtraBold", sans-serif;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      padding: 1rem 1.2rem;
+      background-color: #fef3c7;
+      color: #b45309;
+      border-radius: 9999px;
+      text-transform: uppercase;
+
+      .medal {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    h1 {
+      font-family: "Freesentation-8ExtraBold", sans-serif;
+      font-size: 1.875rem;
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+
+      @media (min-width: 768px) {
+        font-size: 3.75rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .gradient-text {
+      font-family: "Freesentation-8ExtraBold", sans-serif;
+      font-size: 1.875rem;
+      background: linear-gradient(to right, #c026d3, #db2777);
+      color: #fff;
+      padding: 0 1rem;
+      border-radius: 0.375rem;
+      width: fit-content;
+      margin-bottom: 1.5rem;
+
+      @media (min-width: 768px) {
+        font-size: 3.75rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+
+  .description {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 1rem;
+    max-width: 20rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.2rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+      max-width: 42rem;
+      margin-bottom: 1.75rem;
+    }
+  }
+
+  .landing-btn {
+    line-height: 45px;
+    font-size: 1rem;
+    background-color: var(--Black);
+    color: var(--White);
+    padding: 1.2rem 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+      padding: 1.4rem 2rem;
+    }
+  }
+}
