@@ -87,6 +87,20 @@
     "@typescript-eslint/lines-between-class-members": [
       "error",
       "always"
+    ],
+    "import/no-anonymous-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "** /*.test.ts",
+          "**/*.test.tsx",
+          "** /*.spec.ts",
+          "**/*.spec.tsx",
+          "src/lib/jest/*.ts",
+          "src/lib/jest/*.tsx"
+        ]
+      }
     ]
   }
 }
