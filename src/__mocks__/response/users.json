@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "email": "jeong@hotmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Aniya",
+    "last_name": "Rosenbaum",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 2,
+    "email": "chyna_larson@hotmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Virgie",
+    "last_name": "Graham",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 3,
+    "email": "lauryn.schimmel1@yahoo.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Napoleon",
+    "last_name": "McDermott",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 4,
+    "email": "russ_hoeger40@hotmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Guadalupe",
+    "last_name": "Mraz",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 5,
+    "email": "damian.mayer@yahoo.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Allan",
+    "last_name": "Grady",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 6,
+    "email": "orland_bayer@yahoo.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Dolly",
+    "last_name": "White",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 7,
+    "email": "ezequiel.koepp8@gmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Rebekah",
+    "last_name": "Koelpin",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 8,
+    "email": "marlon_pfannerstill@gmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Pierre",
+    "last_name": "Rippin-Schultz",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 9,
+    "email": "justen.koelpin@gmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Kacey",
+    "last_name": "Rosenbaum",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  },
+  {
+    "id": 10,
+    "email": "juvenal.barrows@hotmail.com",
+    "password": "$2b$10$8s6JjiY/HJljobrPHl1tPOjQ9dcji0RcDwSmJBExxMF6nvONaAIUO",
+    "role": "user",
+    "first_name": "Rozella",
+    "last_name": "Ferry",
+    "created_at": "2024-10-28T10:26:24.173Z",
+    "updated_at": "2024-10-28T10:26:24.173Z"
+  }
+]

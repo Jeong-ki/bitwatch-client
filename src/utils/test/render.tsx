@@ -14,6 +14,7 @@ export default async (component: ReactElement, options?: CustomRenderOptions) =>
     defaultOptions: {
       queries: {
         retry: false, // Disable retries for tests
+        staleTime: 0, // 항상 네트워크 요청을 강제
       },
     },
   });

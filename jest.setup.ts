@@ -1,24 +1,28 @@
-// import { setupServer } from 'msw/node';
-// import { handlers } from '@/__mocks__/handlers';
-
 import '@testing-library/jest-dom';
+import 'whatwg-fetch';
+import dotenv from 'dotenv';
+
+import { setupServer } from 'msw/node';
+import { handlers } from '@/__mocks__/handlers';
 import { NextRouter } from 'next/router';
 
+dotenv.config({ path: '.env.test' });
+
 /* msw */
-// export const server = setupServer(...handlers);
+export const server = setupServer(...handlers);
 
 beforeAll(() => {
-  // server.listen();
+  server.listen({ onUnhandledRequest: 'warn' });
 });
 
 afterEach(() => {
-  // server.resetHandlers();
+  server.resetHandlers();
   jest.clearAllMocks();
 });
 
 afterAll(() => {
   jest.resetAllMocks();
-  // server.close();
+  server.close();
 });
 
 jest.mock('zustand');
