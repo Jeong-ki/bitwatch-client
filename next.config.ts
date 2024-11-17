@@ -2,6 +2,16 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    turbo: {
+      rules: {
+        '*.scss': {
+          loaders: ['sass-loader'],
+          as: '*.css',
+        },
+      },
+    },
+  },
   async redirects() {
     return [
       {
@@ -11,7 +21,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
 };
 
 export default nextConfig;

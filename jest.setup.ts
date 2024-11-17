@@ -25,8 +25,6 @@ afterAll(() => {
   server.close();
 });
 
-jest.mock('zustand');
-
 const defaultRouter: Partial<NextRouter> = {
   pathname: '/', // 기본 경로 설정
   route: '/',

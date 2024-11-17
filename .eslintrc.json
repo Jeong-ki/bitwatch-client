@@ -88,15 +88,16 @@
       "error",
       {
         "devDependencies": [
-          "** /*.test.ts",
+          "**/*.test.ts",
           "**/*.test.tsx",
-          "** /*.spec.ts",
+          "**/*.spec.ts",
           "**/*.spec.tsx",
           "src/lib/jest/*.ts",
           "src/lib/jest/*.tsx",
           "src/utils/test/render.tsx",
           "src/__mocks__/*",
-          "__mocks__/*"
+          "__mocks__/*",
+          "jest.*.ts"
         ]
       }
     ],
