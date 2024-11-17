@@ -41,6 +41,6 @@ describe('useMockStore Test', () => {
   it('updates input on button click', async () => {
     const { user } = await render(<HomePage />);
     user.click(await screen.findByText('입력값: mocked input'));
-    expect(await screen.findByText('입력값: mocked input')).toBeInTheDocument();
+    expect(await screen.findByText('입력값: mocked input fail')).toBeInTheDocument();
   });
 });
