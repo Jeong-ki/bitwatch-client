@@ -92,9 +92,7 @@
           "**/*.test.tsx",
           "**/*.spec.ts",
           "**/*.spec.tsx",
-          "src/lib/jest/*.ts",
-          "src/lib/jest/*.tsx",
-          "src/utils/test/render.tsx",
+          "src/utils/test/*",
           "src/__mocks__/*",
           "__mocks__/*",
           "jest.*.ts"
