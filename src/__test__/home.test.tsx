@@ -4,21 +4,8 @@ import { screen } from '@testing-library/react';
 import render from '@/utils/test/render'; // 커스텀 렌더 함수 경로에 맞춰 수정
 import '@testing-library/jest-dom';
 import HomePage from '@/app/home/page';
-import useTestStore from '@/store/input';
 import userEvent from '@testing-library/user-event';
-
-const resetTestStore = () => {
-  const store = useTestStore.getState();
-  store.setTestInput('');
-};
-
-beforeEach(() => {
-  resetTestStore(); // 상태 초기화
-});
-
-afterEach(() => {
-  resetTestStore(); // 테스트 후 상태 초기화
-});
+import { mockUseInputStore } from '@/utils/test/mockZustandStore';
 
 test('zustand store test', async () => {
   render(<HomePage />);
@@ -29,9 +16,6 @@ test('zustand store test', async () => {
 
   await userEvent.type(testInput, 'Hello Zustand');
   expect(testInput).toHaveValue('Hello Zustand');
-
-  const store = useTestStore.getState();
-  expect(store.testInput).toBe('Hello Zustand'); // 상태 확인
 });
 
 test('api test by msw mocking', async () => {
@@ -42,4 +26,21 @@ test('api test by msw mocking', async () => {
   console.log('Email text found:', emailText.textContent); // 요소 텍스트 확인
 
   expect(emailText).toHaveTextContent('jeong@hotmail.com');
+});
+
+describe('useMockStore Test', () => {
+  beforeEach(() => {
+    mockUseInputStore({ testInput: 'mocked input' });
+  });
+
+  it('renders with mocked input', async () => {
+    await render(<HomePage />);
+    expect(await screen.findByText('입력값: mocked input')).toBeInTheDocument();
+  });
+
+  it('updates input on button click', async () => {
+    const { user } = await render(<HomePage />);
+    user.click(await screen.findByText('입력값: mocked input'));
+    expect(await screen.findByText('입력값: mocked input')).toBeInTheDocument();
+  });
 });
