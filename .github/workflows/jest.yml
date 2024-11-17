@@ -1,0 +1,33 @@
+name: 'jest test'
+on: pull_request
+jobs:
+  Component-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 리포지토리 체크아웃
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Node.js 설정
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20 # engines.node에 맞게 설정
+          cache: 'pnpm' # pnpm 전용 캐시 설정
+
+      # pnpm 설치
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      # 의존성 설치
+      - name: Install dependencies
+        run: pnpm install
+
+      # Jest 테스트 실행
+      - name: Run Jest tests
+        run: pnpm test
+
+      # 커버리지 테스트 실행 (선택 사항)
+      - name: Run coverage tests
+        if: ${{ always() }}
+        run: pnpm coverage
