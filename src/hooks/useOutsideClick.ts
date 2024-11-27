@@ -1,20 +1,35 @@
-import { useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
+import { useEventListener } from './useEventListener';
 
-export const useOutsideClick = (callback: () => void) => {
-  const ref = useRef<HTMLDivElement>(null);
+type EventType = 'mousedown' | 'mouseup' | 'touchstart' | 'touchend' | 'focusin' | 'focusout';
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        callback();
+export const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
+  ref: RefObject<T> | RefObject<T>[],
+  handler: (event: MouseEvent | TouchEvent | FocusEvent) => void,
+  eventType: EventType = 'mousedown',
+  eventListenerOptions: AddEventListenerOptions = {},
+): void => {
+  useEventListener(
+    eventType,
+    (event) => {
+      const target = event.target as Node;
+
+      // Do nothing if the target is not connected element with document
+      if (!target || !target.isConnected) {
+        return;
       }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [callback]);
+      const isOutside = Array.isArray(ref)
+        ? ref
+            .filter((r) => Boolean(r.current))
+            .every((r) => r.current && !r.current.contains(target))
+        : ref.current && !ref.current.contains(target);
 
-  return ref;
+      if (isOutside) {
+        handler(event);
+      }
+    },
+    undefined,
+    eventListenerOptions,
+  );
 };

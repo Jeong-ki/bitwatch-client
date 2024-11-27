@@ -86,20 +86,6 @@ body {
   }
 }
 
-.container-landing {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  background-color: #f1f5f9;
-
-  main {
-    flex: 1;
-    padding-top: 10rem;
-    padding-bottom: 5rem;
-  }
-}
-
 .type_empty {
   min-width: auto;
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import Spinner from '@/components/common/spinner';
+import { Spinner } from '@/components/common/spinner';
 import { getUsers } from '@/api/auth';
 import useTestStore from '@/store/input';
 
