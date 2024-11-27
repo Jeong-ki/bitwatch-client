@@ -25,4 +25,66 @@
   --Error: #e76055;
   --Error-Hover: #d3584e;
   --Success: #2c6edb;
+
+  // Button Color
+  --button-font-secondary: #25292e;
+  --button-font-primary: #ffffff;
+  --button-font-danger: #d1242f;
+  --button-font-invisible: #25292e;
+
+  --button-bg-secondary: #F6F8FA;
+  --button-bg-primary: #1f883d;
+  --button-bg-danger: #f6f8fA;
+  --button-bg-invisible: #ffffff00;
+
+  --button-border-secondary: #D1D9E0;
+  --button-border-primary: #1f232826;
+  --button-border-danger: #d1d9e0;
+
+  // Button Hover Color
+  --button-font-secondary-hover: #25292e;
+  --button-font-primary-hover: #ffffff;
+  --button-font-danger-hover: #ffffff;
+  --button-font-invisible-hover: #25292e;
+
+  --button-bg-secondary-hover: #EFF2F5;
+  --button-bg-primary-hover: #1C8139;
+  --button-bg-danger-hover: #A40E26;
+  --button-bg-invisible-hover: #818b981a;
+
+  --button-border-secondary-hover: #d1d9e0;
+  --button-border-primary-hover: #1f232826;
+  --button-border-danger-hover: #1f232826;
+
+  // Button Disabled Color
+  --button-font-secondary-disabled: #818b98;
+  --button-font-primary-disabled: #ffffffcc;
+  --button-font-danger-disabled: #d1242f80;
+  --button-font-invisible-disabled: #818b98;
+    
+  --button-bg-secondary-disabled: #f6f8fA;
+  --button-bg-primary-disabled: #95d8a6;
+  --button-bg-danger-disabled: #f6f8fa;
+  --button-bg-invisible-disabled: #eff2f5;
+    
+  --button-border-secondary-disabled: #818b981a;
+  --button-border-primary-disabled: #95d8a6;
+
+  // Button Active Color
+  --button-font-secondary-active: #25292e;
+  --button-font-primary-active: #ffffff;
+  --button-font-danger-active: #ffffff;
+  --button-font-invisible-active: #25292e;
+  
+  --button-bg-secondary-active: #e6eaef;
+  --button-bg-primary-active: #197935;
+  --button-bg-danger-active: #8b0820;
+  --button-bg-invisible-active: #818B9826;
+  
+  --button-border-secondary-active: #d1d9e0;
+  --button-border-primary-active: #1f232826;
+  --button-border-danger-active: #1f232826;
+
+  // Button Focus
+  --button-focus: #0969da;
 }

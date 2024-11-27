@@ -3,8 +3,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border: 1px solid;
   box-sizing: border-box;
+  border-radius: 6px;
 
   .ico_comm {
     margin-top: -1px;
@@ -12,6 +13,10 @@
 
   &:hover {
     text-decoration: none;
+  }
+
+  &:focus {
+    border-color: var(--button-focus);
   }
 
   a {
@@ -52,139 +57,102 @@
   margin-top: 16px;
 }
 
-.btn_full {
-  width: 100%;
-  height: 44px;
-  padding: 1px 16px 0;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 45px;
-}
-
 .btn_large {
-  min-width: 120px;
-  height: 44px;
-  padding: 1px 16px 0;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 45px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
 }
-
 .btn_medium {
-  min-width: 64px;
-  height: 34px;
-  padding: 1px 8px 0;
-  font-weight: 500;
-  font-size: 13px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
 }
-
 .btn_small {
-  min-width: 56px;
-  height: 28px;
-  padding: 1px 8px 0;
-  font-size: 13px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .btn_primary {
-  color: var(--White);
-  background-color: var(--Blue-60);
+  color: var(--button-font-primary);
+  background-color: var(--button-bg-primary);
+  border-color: var(--button-border-primary);
 }
-
 .btn_primary:hover {
-  background-color: var(--Blue-90);
+  color: var(--button-font-primary-hover);
+  background-color: var(--button-bg-primary-hover);
+  border-color: var(--button-border-primary-hover);
 }
-
+.btn_primary:active {
+  color: var(--button-font-primary-active);
+  background-color: var(--button-bg-primary-active);
+  border-color: var(--button-border-primary-active);
+}
 .btn_primary:disabled {
-  color: var(--White);
-  background-color: var(--Blue-10);
+  color: var(--button-font-primary-disabled);
+  background-color: var(--button-bg-primary-disabled);
+  border-color: var(--button-border-primary-disabled);
 }
 
 .btn_secondary {
-  color: var(--White);
-  background-color: var(--Dark-Blue-50);
+  color: var(--button-font-secondary);
+  background-color: var(--button-bg-secondary);
+  border-color: var(--button-border-secondary);
 }
-
 .btn_secondary:hover {
-  background-color: var(--Dark-Blue-100);
+  color: var(--button-font-secondary-hover);
+  background-color: var(--button-bg-secondary-hover);
+  border-color: var(--button-border-secondary-hover);
 }
-
+.btn_secondary:active {
+  color: var(--button-font-secondary-active);
+  background-color: var(--button-bg-secondary-active);
+  border-color: var(--button-border-secondary-active);
+}
 .btn_secondary:disabled {
-  color: var(--White);
-  background-color: var(--Gray-10);
+  color: var(--button-font-secondary-disabled);
+  background-color: var(--button-bg-secondary-disabled);
+  border-color: var(--button-border-secondary-disabled);
 }
 
-.btn_white_line {
-  border: 1px solid var(--Gray-30);
-  color: var(--Gray-90);
-  background-color: var(--Gray-2);
+.btn_danger {
+  color: var(--button-font-danger);
+  background-color: var(--button-bg-danger);
+  border-color: var(--button-border-danger);
+}
+.btn_danger:hover {
+  color: var(--button-font-danger-hover);
+  background-color: var(--button-bg-danger-hover);
+  border-color: var(--button-border-danger-hover);
+}
+.btn_danger:active {
+  color: var(--button-font-danger-active);
+  background-color: var(--button-bg-danger-active);
+  border-color: var(--button-border-danger-active);
+}
+.btn_danger:disabled {
+  color: var(--button-font-danger-disabled);
+  background-color: var(--button-bg-danger-disabled);
+  border-color: transparent;
 }
 
-.btn_white_line:hover,
-.btn_white_line.active {
-  border-color: var(--Dark-Blue-50);
-  background-color: var(--Gray-5);
+.btn_invisible {
+  color: var(--button-font-invisible);
+  background-color: var(--button-bg-invisible);
+  border-color: transparent;
 }
-
-.btn_white_line:disabled {
-  color: var(--Gray-30);
-  border-color: var(--Gray-30);
-  background-color: var(--Gray-5);
+.btn_invisible:hover {
+  color: var(--button-font-invisible-hover);
+  background-color: var(--button-bg-invisible-hover);
+  border-color: transparent;
 }
-
-.btn_white_line.btn_large {
-  color: var(--Dark-Blue-100);
+.btn_invisible:active {
+  color: var(--button-font-invisible-active);
+  background-color: var(--button-bg-invisible-active);
+  border-color: transparent;
 }
-
-.btn_white_line.btn_large:disabled {
-  color: var(--Gray-30);
-}
-
-.btn_gray_line {
-  border: 1px solid var(--Gray-30);
-  color: var(--Gray-90);
-  background-color: var(--Gray-10);
-}
-
-.btn_gray_line:hover,
-.btn_gray_line.active {
-  border-color: var(--Dark-Blue-50);
-  background-color: var(--Gray-10);
-}
-
-.btn_gray_line:disabled {
-  color: var(--Gray-30);
-  border-color: var(--Gray-30);
-  background-color: var(--Gray-5);
-}
-
-.btn_gray_line.btn_large {
-  color: var(--Dark-Blue-100);
-}
-
-.btn_gray_line.btn_large:disabled {
-  color: var(--Gray-30);
-}
-
-.btn_gray {
-  color: var(--Gray-90);
-  background-color: var(--Gray-10);
-}
-
-.btn_gray:hover {
-  background-color: var(--Gray-30);
-}
-
-.btn_gray:disabled {
-  color: var(--Gray-30);
-  background-color: var(--Gray-5);
-}
-
-.btn_gray.btn_large {
-  color: var(--Dark-Blue-100);
-}
-
-.btn_black {
-  color: var(--White);
-  background-color: var(--Black);
-  padding: 0 12px;
+.btn_invisible:disabled {
+  color: var(--button-font-invisible-disabled);
+  background-color: var(--button-bg-invisible-disabled);
+  border-color: transparent;
 }

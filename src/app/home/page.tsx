@@ -6,7 +6,7 @@ import Spinner from '@/components/common/spinner';
 import { getUsers } from '@/api/auth';
 import useTestStore from '@/store/input';
 
-const HomePage = () => {
+export default function Home() {
   const { testInput, setTestInput } = useTestStore();
 
   const { data, isFetched } = useQuery({
@@ -35,6 +35,4 @@ const HomePage = () => {
       <p>입력값: {testInput}</p>
     </div>
   );
-};
-
-export default HomePage;
+}
