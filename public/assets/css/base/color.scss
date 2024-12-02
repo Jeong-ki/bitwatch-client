@@ -1,5 +1,5 @@
 :root {
-  --Black: #000;
+  --Black: #25292e;
   --White: #fff;
 
   --Blue-100: #007bff;
@@ -22,9 +22,9 @@
   --Gray-5: #f0f0f0;
   --Gray-2: #fafafa;
 
-  --Error: #e76055;
+  --Error: #cf222e;
   --Error-Hover: #d3584e;
-  --Success: #2c6edb;
+  --Success: #1a7f37;
 
   // Button Color
   --button-font-secondary: #25292e;
@@ -87,4 +87,14 @@
 
   // Button Focus
   --button-focus: #0969da;
+
+  // Input Color
+  --input-focus: #0969da;
+  --focus-outside: #0969da;
+  --input-error: #d1242f;
+  --input-success: #1a7f37;
+
+  // shadow
+  --shadow-inset: inset 0px 1px 0px 0px #1f23280a;
+
 }

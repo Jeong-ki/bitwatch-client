@@ -3,6 +3,13 @@
   display: inline-block;
   width: 100%;
   vertical-align: top;
+
+  .desc_error {
+    color: var(--input-error)
+  }
+  .desc_success {
+    color: var(--input-success)
+  }
 }
 
 .inner_tf {
@@ -18,23 +25,28 @@
 .tf_comm {
   display: inline-block;
   width: 100%;
-  padding: 6px 15px;
+  padding: 5px 12px;
   border: 1px solid var(--Gray-10);
-  border-radius: 4px;
-  font-size: 13px;
-  line-height: 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  height: 32px;
+  // line-height: 20px;
   color: var(--Gray-90);
   background-color: var(--White);
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
   box-sizing: border-box;
   outline: none;
   resize: none;
+  box-shadow: var(--shadow-inset);
+  transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  transition-property: color, background-color, box-shadow, border-color;
 }
 
-.tf_comm:hover,
 .tf_comm:focus {
-  border-color: var(--Gray-100);
+  border-color: var(--input-focus);
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--focus-outside);
 }
 
 .tf_comm:disabled {
@@ -55,6 +67,9 @@ input.tf_comm[readonly] {
 
 .tf_comm.error {
   border-color: var(--Error);
+}
+.tf_comm.success {
+  border-color: var(--Success);
 }
 
 .tf_comm::-webkit-input-placeholder {
