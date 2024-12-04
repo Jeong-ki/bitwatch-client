@@ -26,6 +26,47 @@
     text-decoration: none;
     color: inherit;
   }
+
+  &.search {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: #59636e;
+    padding: 5px 12px;
+    // line-height: 20px;
+    vertical-align: middle;
+    border: 1px solid #d1d9e0;
+    width: 260px;
+    height: 32px;
+    padding: 5px 8px;
+
+    img {
+      margin-right: 10px;
+    }
+
+    span {
+      display: inline-grid;
+      width: 15px;
+      height: 15px;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1.3333333333;
+      color: inherit;
+      vertical-align: baseline;
+      background: #ffffff00;
+      border: 1px solid #818b98;
+      border-radius: 0.1875rem;
+      box-shadow: none;
+      align-items: center;
+      justify-content: center;
+      margin-right: 3px;
+    }
+
+    p {
+      margin-top: 1px;
+      color: #818b98
+    }
+  }
 }
 
 .txt_btn {
