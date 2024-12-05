@@ -1,0 +1,247 @@
+
+
+/* 옵션박스 - search,select 공통 */
+.box_opt {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  border: 1px solid var(--Gray-10);
+    border-radius: 6px;
+  background: #fff;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.type_auto .box_opt {
+  right: auto;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.box_opt .list_opt {
+  overflow: auto;
+  max-height: 320px;
+  padding: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.box_opt .list_opt .link_opt {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: 0;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.box_opt .list_opt .txt_add {
+  display: block;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 18px;
+  color: #8F9396;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.box_opt .list_opt .link_opt:hover,
+.box_opt .list_opt .link_opt:focus {
+  color: #6A6E73;
+  background-color: #FAFAFA;
+}
+
+.box_opt .list_opt .on .link_opt {
+  font-weight: 500;
+  color: var(--input-focus);;
+  background-color: var(--Gray-2);
+}
+
+.box_opt .list_opt .on .link_opt:hover .txt_add,
+.box_opt .list_opt .on .link_opt:focus .txt_add,
+.box_opt .list_opt .on .txt_add {
+  color: #8F9396;
+}
+
+.box_opt .list_opt .link_opt:disabled {
+  background: #FAFAFA;
+  color: #B3B3B3;
+  pointer-events: none;
+}
+
+.box_opt .list_opt .txt_opt {
+  display: block;
+}
+
+.box_opt .list_opt .txt_clamp {
+  display: -webkit-box;
+}
+
+.box_opt .list_opt .ico_check_b {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -8px;
+}
+
+.box_opt .list_opt .on .ico_check_b {
+  display: block;
+}
+
+.box_opt .list_opt .txt_empty {
+  display: block;
+  padding: 17px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8F9396;
+  text-align: center;
+}
+
+.opt_open .box_opt {
+  display: block;
+}
+
+.opt_open .box_tf .tf_comm {
+  border-color: #1A1A1A;
+}
+
+.opt_reverse .box_opt {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
+
+/* Select */
+.opt_comm .select_opt {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  padding: 13px 31px 12px 15px;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  color: #20262D;
+  background: #FFF;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.opt_comm .select_opt:focus {
+  border-color: var(--input-focus);
+}
+
+.opt_comm .select_opt:disabled {
+  border-color: #E5E5E5;
+  color: #B3B3B3;
+  background-color: #FAFAFA;
+}
+
+.opt_comm .select_opt.error {
+  border-color: #FF8080;
+  outline: 4px solid #FFF2F2;
+}
+
+.opt_comm .select_opt+.ico_arr_d {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.opt_comm .select_opt:focus+.ico_arr_d {
+  opacity: 1;
+}
+
+.opt_comm .select_opt:disabled+.ico_arr_d {
+  opacity: 0.2;
+}
+
+.type_unselected .opt_comm .select_opt {
+  color: #6A6E73;
+}
+
+.opt_comm .link_selected {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 6px 31px 6px 15px;
+  border: 1px solid #E6E7E8;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6A6E73;
+  background: #fff;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.opt_comm .link_selected:focus {
+  border-color: var(--input-focus);
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--focus-outside);
+}
+
+.opt_comm .link_selected.disabled {
+  border-color: #E5E5E5;
+  color: #B3B3B3;
+  background-color: #FAFAFA;
+  cursor: not-allowed;
+}
+
+.opt_comm .link_selected.readonly {
+  border-color: #E5E5E5;
+  background-color: #FAFAFA;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.opt_comm .link_selected.error {
+  border-color: var(--Error);
+}
+
+.opt_comm .link_selected .ico_arr_d {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  opacity: 0.6;
+  transform: translateY(-50%);
+}
+
+.opt_comm .link_selected:hover .ico_arr_d,
+.opt_comm .link_selected:focus .ico_arr_d {
+  opacity: 1;
+}
+
+.opt_comm .link_selected.disabled .ico_arr_d {
+  opacity: 0.2;
+}
+
+.opt_open .link_selected {
+  border-color: #4C4C4C;
+}
+
+.opt_open .link_selected .ico_arr_d {
+  transform: rotate(180deg) translateY(50%);
+  opacity: 1;
+}
+
+.opt_on .link_selected {
+  color: #1A1A1A;
+}

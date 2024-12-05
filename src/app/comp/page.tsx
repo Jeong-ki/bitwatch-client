@@ -1,23 +1,30 @@
 'use client';
 
+import { OptionItem } from '@/@types/element';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { Select } from '@/components/common/select';
 import validateRule from '@/lib/react-hook-form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+const SelectOption = [
+  { text: 'select_01', value: 'select_value_01' },
+  { text: 'select_02', value: 'select_value_02' },
+  { text: 'select_03', value: 'select_value_03' },
+];
+
 export default function Comp() {
   const [value, setValue] = useState('');
+  const [selectValue, setSelectValue] = useState('');
+
   const [isCheckInp, setIsCheckInp] = useState(false);
   const {
     register,
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: { inp01: '' } });
-
-  console.log(watch('inp01'));
-  console.log(errors);
+  } = useForm({ defaultValues: { inp01: '', formSelect: '' } });
 
   const onSubmit = handleSubmit(
     (data) => {
@@ -30,8 +37,38 @@ export default function Comp() {
     },
   );
 
+  const handleCheckValue = (value: OptionItem['value']) => {
+    setSelectValue(value as string);
+  };
+
+  console.log(watch('formSelect'));
+
   return (
     <div style={{ margin: '10px' }}>
+      <Select
+        formSize="small"
+        value={selectValue}
+        onChange={handleCheckValue}
+        suggestList={SelectOption}
+      />
+      <br />
+      <br />
+      <Select
+        formSize="medium"
+        value={selectValue}
+        onChange={handleCheckValue}
+        suggestList={SelectOption}
+      />
+      <br />
+      <br />
+      <Select
+        formSize="large"
+        value={watch('formSelect')}
+        libProps={register('formSelect')}
+        suggestList={SelectOption}
+      />
+      <br />
+      <br />
       <Input value={value} onChange={(val) => setValue(val as string)} sizeType="small" />
       <br />
       <br />

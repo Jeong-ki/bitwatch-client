@@ -1,0 +1,23 @@
+/* icon */
+.ico_comm {
+  overflow: hidden;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: transparent;
+  vertical-align: top;
+  text-indent: 100%;
+  white-space: nowrap;
+  outline: 0 none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  color: transparent;
+}
+
+.ico_arr_d {
+  width: 16px;
+  height: 16px;
+  background-image: url('/assets/images/icon/arrow.svg');
+}
