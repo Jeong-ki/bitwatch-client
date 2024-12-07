@@ -2,7 +2,7 @@ import render from '@/utils/test/render';
 import { screen } from '@testing-library/react';
 import { Button } from '.';
 
-describe('버튼 컴포넌트 테스트', () => {
+describe('Button 컴포넌트 테스트', () => {
   it('버튼 렌더링 및 클릭 이벤트 테스트', async () => {
     const mockOnClick = jest.fn();
     const { user } = await render(
