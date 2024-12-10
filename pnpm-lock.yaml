@@ -20,6 +20,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      lodash.isempty:
+        specifier: ^4.4.0
+        version: 4.4.0
       next:
         specifier: 15.0.3
         version: 15.0.3(@babel/core@7.26.0)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)(sass@1.81.0)
@@ -57,6 +60,9 @@ importers:
       '@types/jest':
         specifier: ^29.5.14
         version: 29.5.14
+      '@types/lodash.isempty':
+        specifier: ^4.4.9
+        version: 4.4.9
       '@types/node':
         specifier: ^20
         version: 20.17.6
@@ -880,6 +886,12 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  '@types/lodash.isempty@4.4.9':
+    resolution: {integrity: sha512-DPSFfnT2JmZiAWNWOU8IRZws/Ha6zyGF5m06TydfsY+0dVoQqby2J61Na2QU4YtwiZ+moC6cJS6zWYBJq4wBVw==}
+
+  '@types/lodash@4.17.13':
+    resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
@@ -2591,6 +2603,9 @@ packages:
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
+
+  lodash.isempty@4.4.0:
+    resolution: {integrity: sha512-oKMuF3xEeqDltrGMfDxAPGIVMSSRv8tbRSODbrs4KGsRRLEhrW8N8Rd4DRgB2+621hY8A8XwwrTVhXWpxFvMzg==}
 
   lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
@@ -4515,6 +4530,12 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
+
+  '@types/lodash.isempty@4.4.9':
+    dependencies:
+      '@types/lodash': 4.17.13
+
+  '@types/lodash@4.17.13': {}
 
   '@types/ms@0.7.34': {}
 
@@ -6681,6 +6702,8 @@ snapshots:
   locate-path@6.0.0:
     dependencies:
       p-locate: 5.0.0
+
+  lodash.isempty@4.4.0: {}
 
   lodash.memoize@4.1.2: {}
 
