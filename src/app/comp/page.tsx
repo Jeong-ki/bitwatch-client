@@ -3,6 +3,7 @@
 import { OptionItem } from '@/@types/element';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { InputSearch } from '@/components/common/input/search';
 import { Select } from '@/components/common/select';
 import validateRule from '@/lib/react-hook-form';
 import { useState } from 'react';
@@ -15,16 +16,17 @@ const SelectOption = [
 ];
 
 export default function Comp() {
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [selectValue, setSelectValue] = useState('');
 
   const [isCheckInp, setIsCheckInp] = useState(false);
   const {
+    setValue,
     register,
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: { inp01: '', formSelect: '' } });
+  } = useForm({ defaultValues: { inp01: '', formSelect: '', formSearch: '' } });
 
   const onSubmit = handleSubmit(
     (data) => {
@@ -41,10 +43,33 @@ export default function Comp() {
     setSelectValue(value as string);
   };
 
-  console.log(watch('formSelect'));
+  console.log(watch());
 
   return (
     <div style={{ margin: '10px' }}>
+      <InputSearch
+        libProps={register('formSearch')}
+        value={watch('formSearch')}
+        setValue={setValue}
+        sizeType="small"
+      />
+      <br />
+      <br />
+      <InputSearch
+        value={inputValue}
+        onChange={(val) => setInputValue(val as string)}
+        sizeType="medium"
+      />
+      <br />
+      <br />
+      <InputSearch
+        value={inputValue}
+        onChange={(val) => setInputValue(val as string)}
+        sizeType="large"
+      />
+      <br />
+      <br />
+
       <Select
         formSize="small"
         value={selectValue}
@@ -69,13 +94,13 @@ export default function Comp() {
       />
       <br />
       <br />
-      <Input value={value} onChange={(val) => setValue(val as string)} sizeType="small" />
+      <Input value={inputValue} onChange={(val) => setInputValue(val as string)} sizeType="small" />
       <br />
       <br />
-      <Input value={value} onChange={(val: any) => setValue(val)} sizeType="medium" />
+      <Input value={inputValue} onChange={(val: any) => setInputValue(val)} sizeType="medium" />
       <br />
       <br />
-      <Input value={value} onChange={(val: any) => setValue(val)} sizeType="large" />
+      <Input value={inputValue} onChange={(val: any) => setInputValue(val)} sizeType="large" />
       <br />
       <br />
 

@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/common/button';
 import cn from 'classnames';
-import { useOnClickOutside } from '@/hooks/useOutsideClick';
+import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import SearchIcon from '@img/icon/search.svg';
 
 export const Header = () => {

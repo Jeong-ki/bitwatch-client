@@ -176,3 +176,89 @@ input.tf_comm[readonly] {
   height: 16px;
   width: 16px;
 }
+
+/* Input - Search */
+.box_tf .search_icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.box_tf .ico_search {
+  display: block;
+}
+
+.box_tf .btn_del {
+  position: absolute;
+  right: 27px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px;
+}
+
+.opt_comm {
+  position: relative;
+  width: 100%;
+}
+
+.opt_comm .tf_comm {
+  padding-right: 40px;
+}
+
+.opt_comm .box_tf .btn_g {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px 8px;
+  line-height: 0;
+  opacity: 0.6;
+}
+
+.opt_comm .box_tf .btn_g:last-child {
+  padding-right: 16px;
+}
+
+.opt_comm .box_tf .btn_g:disabled {
+  opacity: 0.2;
+}
+
+.opt_comm .box_tf .btn_del {
+  display: none;
+  right: 36px;
+  padding-right: 4px;
+  opacity: 1;
+}
+
+.opt_comm .tf_comm:focus {
+  border-color: var(--Gray-90);
+}
+
+.opt_comm .tf_comm:focus~.btn_g {
+  opacity: 1;
+}
+
+.opt_comm .tf_comm:disabled~.btn_del,
+.opt_comm .tf_comm[readonly]+.btn_del {
+  display: none;
+}
+
+.opt_comm .tf_comm.error:focus {
+  border-color: var(--Error);;
+}
+
+.opt_comm .write .tf_comm {
+  padding-right: 64px;
+}
+
+.opt_comm .write .tf_comm[readonly] {
+  padding-right: 31px;
+}
+
+.opt_comm .write .btn_g+.btn_g {
+  padding-left: 4px;
+}
+
+.opt_comm .write .btn_del {
+  display: block;
+}

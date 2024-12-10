@@ -1,5 +1,5 @@
 import { useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { useOnClickOutside } from '@/hooks/useOutsideClick';
+import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import cn from 'classnames';
 import { OptionItem } from '@/@types/element';
 import { ISelectProps } from './types';
