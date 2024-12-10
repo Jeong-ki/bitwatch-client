@@ -94,7 +94,7 @@ export const OptionList = ({
   }, [isOpened]);
 
   return (
-    <div className="box_opt">
+    <div className="box_opt" aria-hidden={!isOpened}>
       <ul className="list_opt">
         {items.length > 0 ? (
           (() => {

@@ -11,6 +11,7 @@ export const Select = ({
   suggestList = [],
   errorMsg,
   value,
+  noDataText,
   disabled,
   readOnly,
   onChange = () => {},
@@ -74,6 +75,7 @@ export const Select = ({
           compareValue={compareValue}
           onClick={handleClickItem}
           handleClose={handleClose}
+          noDataText={noDataText}
         />
         <input type="hidden" ref={inputHiddenRef} onChange={onChangeLib} {...otherLibProps} />
       </div>

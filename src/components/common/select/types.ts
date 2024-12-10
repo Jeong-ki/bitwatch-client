@@ -12,4 +12,5 @@ export interface ISelectProps {
   onChange?: (value: OptionItem['value'], item?: OptionItem) => void;
   setValue?: UseFormSetValue<any>;
   libProps?: Partial<UseFormRegisterReturn<InternalFieldName>> & { defaultValue?: InputValue };
+  noDataText?: string;
 }

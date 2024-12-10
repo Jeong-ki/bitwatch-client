@@ -2,7 +2,7 @@ import render from '@/utils/test/render';
 import { fireEvent, screen } from '@testing-library/react';
 import { Input } from '.';
 
-describe('Input 컴포넌트 테스트', () => {
+describe('Input 컴포넌트', () => {
   const defaultProps = {
     onChange: jest.fn(),
     onBlur: jest.fn(),
@@ -26,7 +26,7 @@ describe('Input 컴포넌트 테스트', () => {
     expect(inputElement).toBeInTheDocument();
   });
 
-  it('사이즈 및 에러 클래스명 입력 검증', () => {
+  it('사이즈 및 에러 클래스명 적용 검증', () => {
     render(
       <Input
         {...defaultProps}
@@ -42,7 +42,7 @@ describe('Input 컴포넌트 테스트', () => {
     expect(inputElement).toHaveClass('tf_comm', 'type_medium', 'error');
   });
 
-  it('에러/성공 클래스명 적용 검증', () => {
+  it('에러/성공 메세지 노출 검증', () => {
     render(
       <Input
         {...defaultProps}
@@ -56,7 +56,7 @@ describe('Input 컴포넌트 테스트', () => {
     expect(screen.getByText('This is a success')).toHaveClass('desc_success');
   });
 
-  it('onChange, onBlur 이벤트 핸들러 검증', () => {
+  it('입력 시 onChange, onBlur 이벤트 핸들러가 실행된다.', () => {
     const onChangeMock = jest.fn();
     const onBlurMock = jest.fn();
     render(<Input {...defaultProps} onChange={onChangeMock} onBlur={onBlurMock} />);
@@ -69,7 +69,7 @@ describe('Input 컴포넌트 테스트', () => {
     expect(onBlurMock).toHaveBeenCalled();
   });
 
-  it('maxLength 초과 시 이벤트 핸들러 미호출 검증', () => {
+  it('maxLength 초과 시 이벤트 핸들러가 호출되지 않는다.', () => {
     const onChangeMock = jest.fn();
     render(<Input {...defaultProps} onChange={onChangeMock} maxLength={5} />);
     const inputElement = screen.getByPlaceholderText('입력해 주세요.');
