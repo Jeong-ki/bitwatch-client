@@ -262,3 +262,12 @@ input.tf_comm[readonly] {
 .opt_comm .write .btn_del {
   display: block;
 }
+
+.type_inpsearch .tf_comm {
+  padding-right: 50px;
+}
+
+.opt_reverse .box_opt {
+  top: auto;
+  bottom: calc(100% + 4px);
+}
