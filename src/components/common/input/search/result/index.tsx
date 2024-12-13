@@ -18,9 +18,9 @@ import { getDummy } from '@/api/dummy';
 import { OptionList } from '@/components/common/option-list';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 // import { Alert } from '@/components/common/alert';
-import { IInputSearchSuggestProps } from './types';
+import { IInputSearchResultProps } from './types';
 
-export const InputSearchSuggest: FC<PropsWithChildren<IInputSearchSuggestProps>> = (props) => {
+export const InputSearchResult: FC<PropsWithChildren<IInputSearchResultProps>> = (props) => {
   const {
     value,
     suggestType = 'KKO',

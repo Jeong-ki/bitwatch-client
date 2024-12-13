@@ -1,0 +1,152 @@
+/* Textarea */
+.box_tf textarea {
+  min-height: 120px;
+  padding: 15px;
+}
+
+.type_count {
+  overflow: hidden;
+  border: 1px solid var(--Gray-10);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.type_count .tf_comm {
+  min-height: 83px;
+  padding-bottom: 0;
+  border: 0;
+}
+
+.type_count.focus {
+  border-color: var(--Black);
+}
+
+.type_count.readonly {
+  border-color: var(--Gray-2);
+}
+
+.type_count.disabled {
+  border-color: var(--Gray-10);
+  background-color: var(--Gray-2);
+}
+
+.type_count.error {
+  border-color: var(--Error);
+  outline: 4px solid var(--Error-Hover);
+}
+
+.box_tf .txt_byte {
+  padding: 7px 15px;
+  text-align: right;
+}
+
+.box_tf .num_byte {
+  display: inline-block;
+  color: var(--Gray-60);
+  vertical-align: top;
+}
+
+.box_tf .num_write {
+  color: var(--Gray-90);
+}
+
+.box_tf .txt_bar {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--Gray-60);
+  vertical-align: top;
+}
+
+.type_count.disabled .txt_byte {
+  background: var(--Gray-2);
+}
+
+.type_count.readonly .txt_byte {
+  background: var(--Gray-5);
+}
+
+.type_count.readonly .num_byte {
+  color: var(--Gray-30);
+}
+
+.type_count.readonly .txt_bar {
+  color: var(--Gray-30);
+}
+
+.txt_count {
+  flex-shrink: 0;
+  color: var(--Gray-60);
+}
+
+.txt_count .emph_g {
+  color: var(--Gray-90);
+}
+
+.inner_tf+.txt_count {
+  position: absolute;
+  top: 14px;
+  left: calc(100% + 4px);
+  white-space: nowrap;
+}
+
+.box_textarea {
+  display: flex;
+  position: relative;
+  padding: 16px;
+  border: 1px solid var(--Gray-10);
+  border-radius: 4px;
+  flex-direction: column;
+}
+
+.box_textarea:focus-within,
+.box_textarea:hover {
+  border-color: var(--input-focus);
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--focus-outside);
+}
+
+.box_textarea.disabled,
+.box_textarea.readonly {
+  background: var(--Gray-2);
+}
+
+.box_textarea.disabled:focus-within,
+.box_textarea.disabled:hover,
+.box_textarea.readonly:focus-within,
+.box_textarea.readonly:hover {
+  border-color: var(--Gray-10);
+}
+
+.box_textarea.error {
+  border-color: var(--Error);
+}
+
+.box_textarea.type_resize {
+  padding: 0;
+}
+
+.box_textarea.type_resize .tf_comm {
+  min-height: 67px;
+  padding: 16px;
+  resize: vertical;
+}
+
+.box_textarea .tf_comm {
+  min-height: 67px;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.box_textarea .tf_comm+.txt_count {
+  align-self: flex-end;
+  margin-top: 7px;
+}
+
+.box_textarea+.desc_error {
+  font-size: 13px;
+}

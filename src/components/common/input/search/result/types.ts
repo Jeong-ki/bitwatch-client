@@ -3,7 +3,7 @@ import { IInputSearchProps } from '../types';
 
 type TSuggestType = 'test1' | 'test2';
 
-export interface IInputSearchSuggestProps extends IInputSearchProps {
+export interface IInputSearchResultProps extends IInputSearchProps {
   suggestType?: TSuggestType;
   isAllowClickOutside?: boolean;
   isStrictCheck?: boolean;

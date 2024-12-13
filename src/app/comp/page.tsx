@@ -5,6 +5,7 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import { InputSearch } from '@/components/common/input/search';
 import { Select } from '@/components/common/select';
+import { Textarea } from '@/components/common/textarea';
 import validateRule from '@/lib/react-hook-form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -26,7 +27,9 @@ export default function Comp() {
     watch,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: { inp01: '', formSelect: '', formSearch: '' } });
+  } = useForm({
+    defaultValues: { inp01: '', formSelect: '', formSearch: '', contents01: '', contents02: '' },
+  });
 
   const onSubmit = handleSubmit(
     (data) => {
@@ -47,6 +50,24 @@ export default function Comp() {
 
   return (
     <div style={{ margin: '10px' }}>
+      <Textarea
+        value={watch('contents01')}
+        placeholder="입력해 주세요."
+        errorMsg={errors.contents01?.message}
+        libProps={register('contents01')}
+        maxLength={20}
+        sizeType="large"
+      />
+      <br />
+      <br />
+      <Textarea
+        value={watch('contents02')}
+        placeholder="입력해 주세요."
+        errorMsg={errors.contents02?.message}
+        libProps={register('contents02')}
+      />
+      <br />
+      <br />
       <InputSearch
         libProps={register('formSearch')}
         value={watch('formSearch')}
