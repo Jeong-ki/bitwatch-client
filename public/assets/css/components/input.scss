@@ -5,10 +5,11 @@
   vertical-align: top;
 
   .desc_error {
-    color: var(--input-error)
+    color: var(--input-error);
   }
+
   .desc_success {
-    color: var(--input-success)
+    color: var(--input-success);
   }
 }
 
@@ -20,6 +21,39 @@
 .box_tf {
   position: relative;
   display: flex;
+
+  .search_icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--Gray-60);
+    height: 20px;
+    width: 20px;
+  }
+
+  .del_icon {
+    position: absolute;
+    right: 27px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    color: var(--Gray-60);
+    height: 16px;
+    width: 16px;
+  }
+
+  .ico_search {
+    display: block;
+  }
+
+  .btn_del {
+    position: absolute;
+    right: 27px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+  }
 }
 
 .tf_comm {
@@ -30,7 +64,6 @@
   border-radius: 6px;
   font-size: 14px;
   height: 32px;
-  // line-height: 20px;
   color: var(--Gray-90);
   background-color: var(--White);
   text-align: left;
@@ -41,95 +74,61 @@
   box-shadow: var(--shadow-inset);
   transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
   transition-property: color, background-color, box-shadow, border-color;
-}
 
-.tf_comm:focus {
-  border-color: var(--input-focus);
-  outline: none;
-  box-shadow: inset 0 0 0 1px var(--focus-outside);
-}
+  &:focus {
+    border-color: var(--input-focus);
+    outline: none;
+    box-shadow: inset 0 0 0 1px var(--focus-outside);
+  }
 
-.tf_comm:disabled {
-  border-color: var(--Gray-10);
-  color: var(--Gray-30);
-  background-color: var(--Gray-2);
-  cursor: not-allowed;
-}
+  &:disabled {
+    border-color: var(--Gray-10);
+    color: var(--Gray-30);
+    background-color: var(--Gray-2);
+    cursor: not-allowed;
+  }
 
-.tf_comm[readonly] {
-  border-color: var(--Gray-10);
-  background: var(--Gray-2);
+  &[readonly] {
+    border-color: var(--Gray-10);
+    background: var(--Gray-2);
+  }
+
+  &.error {
+    border-color: var(--Error);
+  }
+
+  &.success {
+    border-color: var(--Success);
+  }
+
+  &::-webkit-input-placeholder {
+    color: var(--Gray-60);
+    opacity: 1;
+  }
+
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder {
+    color: var(--Gray-60);
+    opacity: 1;
+  }
+
+  &[readonly]::-webkit-input-placeholder {
+    color: var(--Gray-30);
+    opacity: 1;
+  }
+
+  &:disabled::-webkit-input-placeholder,
+  &:disabled::-moz-placeholder,
+  &:disabled:-ms-input-placeholder,
+  &:disabled:-moz-placeholder {
+    color: var(--Gray-30);
+    opacity: 1;
+  }
 }
 
 input.tf_comm[readonly] {
   background-color: var(--Gray-2);
-}
-
-.tf_comm.error {
-  border-color: var(--Error);
-}
-.tf_comm.success {
-  border-color: var(--Success);
-}
-
-.tf_comm::-webkit-input-placeholder {
-  color: var(--Gray-60);
-  opacity: 1;
-}
-
-.tf_comm::-moz-placeholder {
-  color: var(--Gray-60);
-  opacity: 1;
-}
-
-.tf_comm:-ms-input-placeholder {
-  color: var(--Gray-60);
-  opacity: 1;
-}
-
-.tf_comm:-moz-placeholder {
-  color: var(--Gray-60);
-  opacity: 1;
-}
-
-.tf_comm::-webkit-input-placeholder[readonly] {
-  color: var(--Gray-60);
-  opacity: 1;
-}
-
-.tf_comm::-moz-placeholder[readonly] {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:-ms-input-placeholder[readonly] {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:-moz-placeholder[readonly] {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:disabled::-webkit-input-placeholder {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:disabled::-moz-placeholder {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:disabled:-ms-input-placeholder {
-  color: var(--Gray-30);
-  opacity: 1;
-}
-
-.tf_comm:disabled:-moz-placeholder {
-  color: var(--Gray-30);
-  opacity: 1;
 }
 
 .form_small {
@@ -156,111 +155,74 @@ input.tf_comm[readonly] {
   color: var(--Success-Input);
 }
 
-.box_tf .search_icon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--Gray-60);
-  height: 20px;
-  width: 20px;
-}
-
-.box_tf .del_icon {
-  position: absolute;
-  right: 27px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 5px;
-  color: var(--Gray-60);
-  height: 16px;
-  width: 16px;
-}
-
-/* Input - Search */
-.box_tf .search_icon {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.box_tf .ico_search {
-  display: block;
-}
-
-.box_tf .btn_del {
-  position: absolute;
-  right: 27px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 5px;
-}
-
 .opt_comm {
   position: relative;
   width: 100%;
-}
 
-.opt_comm .tf_comm {
-  padding-right: 40px;
-}
+  .tf_comm {
+    padding-right: 40px;
 
-.opt_comm .box_tf .btn_g {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 16px 8px;
-  line-height: 0;
-  opacity: 0.6;
-}
+    &:focus {
+      border-color: var(--Gray-90);
+    }
 
-.opt_comm .box_tf .btn_g:last-child {
-  padding-right: 16px;
-}
+    &.error:focus {
+      border-color: var(--Error);
+    }
+  }
 
-.opt_comm .box_tf .btn_g:disabled {
-  opacity: 0.2;
-}
+  .box_tf {
+    .btn_g {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 16px 8px;
+      line-height: 0;
+      opacity: 0.6;
 
-.opt_comm .box_tf .btn_del {
-  display: none;
-  right: 36px;
-  padding-right: 4px;
-  opacity: 1;
-}
+      &:last-child {
+        padding-right: 16px;
+      }
 
-.opt_comm .tf_comm:focus {
-  border-color: var(--Gray-90);
-}
+      &:disabled {
+        opacity: 0.2;
+      }
+    }
 
-.opt_comm .tf_comm:focus~.btn_g {
-  opacity: 1;
-}
+    .btn_del {
+      display: none;
+      right: 36px;
+      padding-right: 4px;
+      opacity: 1;
+    }
 
-.opt_comm .tf_comm:disabled~.btn_del,
-.opt_comm .tf_comm[readonly]+.btn_del {
-  display: none;
-}
+    .tf_comm:focus~.btn_g {
+      opacity: 1;
+    }
 
-.opt_comm .tf_comm.error:focus {
-  border-color: var(--Error);;
-}
+    .tf_comm:disabled~.btn_del,
+    .tf_comm[readonly]+.btn_del {
+      display: none;
+    }
+  }
 
-.opt_comm .write .tf_comm {
-  padding-right: 64px;
-}
+  &.write {
+    .tf_comm {
+      padding-right: 64px;
 
-.opt_comm .write .tf_comm[readonly] {
-  padding-right: 31px;
-}
+      &[readonly] {
+        padding-right: 31px;
+      }
+    }
 
-.opt_comm .write .btn_g+.btn_g {
-  padding-left: 4px;
-}
+    .btn_g+.btn_g {
+      padding-left: 4px;
+    }
 
-.opt_comm .write .btn_del {
-  display: block;
+    .btn_del {
+      display: block;
+    }
+  }
 }
 
 .type_inpsearch .tf_comm {
