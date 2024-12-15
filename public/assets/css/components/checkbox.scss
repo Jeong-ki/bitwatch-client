@@ -1,0 +1,138 @@
+.checkbox_wrap,
+.radio_wrap {
+  display: inline-grid;
+  gap: 0.5rem;
+  grid-template-columns: min-content auto;
+}
+
+input[type=checkbox].checkbox_comm {
+  appearance: none;
+  border: 1px solid #818b98;
+  // border-color: #818b98;
+  border-radius: 0.1875rem;
+  cursor: pointer;
+  display: grid;
+  height: 1rem;
+  margin: 0;
+  margin-top: 0.125rem;
+  place-content: center;
+  position: relative;
+  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  width: 1rem;
+}
+
+input.checkbox_comm[type=checkbox]:checked {
+  background: #0969da;
+  border-color: #0969da;
+  transition: background-color, border-color 80ms cubic-bezier(0.32, 0, 0.67, 0) 0s;
+}
+
+input.checkbox_comm[type=checkbox]:before {
+  animation: checkmarkOut 80ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  background-color: #fff;
+  clip-path: inset(1rem 0 0 0);
+  content: "";
+  height: 1rem;
+  mask-image: url('/assets/images/icon/check.svg');
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 75%;
+  transition: visibility 0s linear .23s;
+  visibility: hidden;
+  width: 1rem;
+}
+
+input.checkbox_comm[type=checkbox]:checked:before {
+  animation: checkmarkIn 80ms cubic-bezier(0.65, 0, 0.35, 1) 80ms forwards;
+  transition: visibility 0s linear 0s;
+  visibility: visible;
+}
+
+:is(.checkbox_wrap, .radio_wrap) .checkbox_label_wrap,
+:is(.checkbox_wrap, .radio_wrap) .radio_label_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+:is(.checkbox_wrap, .radio_wrap) :is(.checkbox_label, .radio_label) {
+  cursor: pointer;
+}
+
+:is(.checkbox_label, .radio_label) {
+  color: #1f2328;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4285;
+}
+
+.checkbox_caption {
+  font-size: 0.75rem;
+  line-height: 1.3333;
+}
+
+.checkbox_caption {
+  color: #59636e;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+/* 체크 해제 애니메이션 */
+@keyframes checkmarkOut {
+  0% {
+    clip-path: inset(0 0 0 0); /* 애니메이션 시작 시 전체 영역 */
+  }
+  100% {
+    clip-path: inset(16px 0 0 0); /* 애니메이션 종료 시 특정 영역 */
+  }
+}
+
+/* 체크 애니메이션 */
+@keyframes checkmarkIn {
+  0% {
+    clip-path: inset(16px 0 0 0); /* 애니메이션 시작 시 특정 영역 */
+  }
+  100% {
+    clip-path: inset(0 0 0 0); /* 애니메이션 종료 시 전체 영역 */
+  }
+}
+
+/* Wrapper 스타일 */
+.radio_group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+/* 라디오 버튼 스타일 */
+input[type="radio"].radio_comm {
+  appearance: none;
+  background-color: #fff;
+  border: max(1px, 0.0625rem) solid #d1d9e0;
+  border-radius: 624.9375rem;
+  box-shadow: inset 0px 1px 0px 0px #1f23280a;
+  color: #1f2328;
+  cursor: pointer;
+  height: 1rem;
+  margin: 0;
+  margin-top: 0.125rem;
+  position: relative;
+  transition: background-color, border-color 80ms cubic-bezier(0.33, 1, 0.68, 1);
+  width: 1rem;
+}
+
+/* 라디오 버튼 선택된 상태 */
+input[type="radio"].radio_comm:checked {
+  border-color: #0969da;
+  border-width: 0.25rem;
+}
+
+
+/* 라벨 스타일 */
+:is(.checkbox_wrap, .radio_wrap) :is(.checkbox_label, .radio_label) {
+  cursor: pointer;
+  color: #1f2328;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4285;
+}
