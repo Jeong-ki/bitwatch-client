@@ -1,4 +1,6 @@
-interface IUsersRes {
+import { CommonResData } from '../types';
+
+export interface UsersRes {
   data: {
     id: number;
     email: string;
@@ -10,3 +12,10 @@ interface IUsersRes {
     updated_at: string;
   }[];
 }
+
+export interface SigninReqBody {
+  accountId: string;
+  accountPw: string;
+}
+
+export interface SigninResData extends CommonResData {}

@@ -39,7 +39,7 @@ export const InputElem = ({
 
   return (
     <input
-      placeholder="입력해 주세요."
+      placeholder=""
       onBlur={handleBlur}
       className={classNames('tf_comm', `${inputSizeType ? `type_${inputSizeType}` : ''}`, {
         error: errorMsg,

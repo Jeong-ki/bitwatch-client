@@ -1,8 +1,6 @@
 import '@css/style.scss';
 import { AppProvider } from '@/provider/app-provider';
 import { Metadata } from 'next';
-import { MainLayout } from '@/components/layout/main-layout';
-import { Sidebar } from '@/components/layout/sidebar';
 
 const TITLE = '워치비트';
 const DESCRIPTION = '가상화폐 시세 조회/알림';
@@ -36,10 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ko">
       <body>
-        <AppProvider>
-          <MainLayout>{children}</MainLayout>
-          <Sidebar />
-        </AppProvider>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

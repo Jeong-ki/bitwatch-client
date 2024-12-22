@@ -99,6 +99,15 @@
         ]
       }
     ],
-    "import/no-anonymous-default-export": "off"
+    "import/no-anonymous-default-export": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "some": [
+          "nesting",
+          "id"
+        ]
+      }
+    ],
   }
 }

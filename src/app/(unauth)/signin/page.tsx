@@ -1,0 +1,105 @@
+'use client';
+
+import { signinUser } from '@/api/auth';
+import { Button } from '@/components/common/button';
+import { Input } from '@/components/common/input';
+import validateRule from '@/lib/react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { SyntheticEvent } from 'react';
+import { useForm } from 'react-hook-form';
+
+interface ILoginData {
+  accountId: string;
+  accountPw: string;
+}
+
+export default function Signin() {
+  const router = useRouter();
+
+  const {
+    watch,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginData>({
+    defaultValues: {
+      accountId: '',
+      accountPw: '',
+    },
+  });
+
+  const { mutate: signup } = useMutation({
+    mutationFn: signinUser,
+    onSuccess: (res) => {
+      if (res.status === 200) {
+        router.refresh();
+        router.push('/');
+      }
+    },
+    onError: (err) => {
+      // Alert({
+      //   description: err?.message || '',
+      //   hasCancelBtn: false,
+      // });
+    },
+  });
+
+  const onSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    handleSubmit(async (data: ILoginData) => {
+      signup({
+        accountId: data.accountId,
+        accountPw: data.accountPw,
+      });
+    })(e);
+  };
+
+  return (
+    <div className="wrap_login">
+      <h1 className="tit_login">
+        BitWatch
+      </h1>
+      <div className="wrap_login_form">
+        <h2 className="screen_out">로그인</h2>
+        <div className="inner_left">
+          <h3 className="tit_sub">로그인</h3>
+          <form onSubmit={onSubmit}>
+            <fieldset>
+              <legend className="screen_out">로그인 입력폼</legend>
+              <div className="box_login">
+                <div className="group_form">
+                  <label htmlFor="accountId">이메일</label>
+                  <Input
+                    id="accountId"
+                    type="accountId"
+                    value={watch('accountId')}
+                    title="이메일 입력"
+                    showErrorMsg
+                    errorMsg={errors.accountId?.message}
+                    libProps={register('accountId', validateRule.id)}
+                  />
+                </div>
+                <div className="group_form">
+                  <label htmlFor="password">비밀번호</label>
+                  <Input
+                    id="password"
+                    type="password"
+                    title="비밀번호 입력"
+                    showErrorMsg
+                    errorMsg={errors.accountPw?.message}
+                    libProps={register('accountPw', validateRule.accountPw)}
+                  />
+                </div>
+                <Button type="submit" className="btn_login" size="medium" color="primary">
+                  로그인
+                </Button>
+              </div>
+            </fieldset>
+          </form>
+          <p className="desc_notice_pw">비밀번호 찾기 | 회원가입</p>
+        </div>
+      </div>
+    </div>
+  );
+}

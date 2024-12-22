@@ -22,7 +22,7 @@ describe('Input 컴포넌트', () => {
 
   it('Input 렌더링 및 placeholder 기본 값 검증', () => {
     render(<Input {...defaultProps} />);
-    const inputElement = screen.getByPlaceholderText('입력해 주세요.');
+    const inputElement = screen.getByPlaceholderText('');
     expect(inputElement).toBeInTheDocument();
   });
 
@@ -36,9 +36,9 @@ describe('Input 컴포넌트', () => {
         itemClassName="custom-class"
       />,
     );
-    const containerElement = screen.getByPlaceholderText('입력해 주세요.').closest('.item_form');
+    const containerElement = screen.getByPlaceholderText('').closest('.item_form');
     expect(containerElement).toHaveClass('item_form', 'form_large', 'custom-class');
-    const inputElement = screen.getByPlaceholderText('입력해 주세요.');
+    const inputElement = screen.getByPlaceholderText('');
     expect(inputElement).toHaveClass('tf_comm', 'type_medium', 'error');
   });
 
@@ -60,7 +60,7 @@ describe('Input 컴포넌트', () => {
     const onChangeMock = jest.fn();
     const onBlurMock = jest.fn();
     render(<Input {...defaultProps} onChange={onChangeMock} onBlur={onBlurMock} />);
-    const inputElement = screen.getByPlaceholderText('입력해 주세요.');
+    const inputElement = screen.getByPlaceholderText('');
 
     fireEvent.change(inputElement, { target: { value: 'new value' } });
     expect(onChangeMock).toHaveBeenCalledWith('new value');
@@ -72,7 +72,7 @@ describe('Input 컴포넌트', () => {
   it('maxLength 초과 시 이벤트 핸들러가 호출되지 않는다.', () => {
     const onChangeMock = jest.fn();
     render(<Input {...defaultProps} onChange={onChangeMock} maxLength={5} />);
-    const inputElement = screen.getByPlaceholderText('입력해 주세요.');
+    const inputElement = screen.getByPlaceholderText('');
 
     fireEvent.change(inputElement, { target: { value: 'exceeding' } });
     expect(onChangeMock).not.toHaveBeenCalled();
