@@ -1,25 +1,17 @@
-html,
 body {
-  height: 100%;
+  display: flex;
+  z-index: 0;
+  position: relative;
+  isolation: isolate;
 }
 
 .container-doc {
   display: flex;
   flex-direction: column;
-  position: relative;
-  min-width: 1000px;
-  height: 100%;
-
-  &.gnb_open {
-    .main-sub {
-      left: 0;
-    }
-
-    .main-content,
-    .doc-footer {
-      padding-left: 240px;
-    }
-  }
+  flex: 1 1;
+  min-width: 0;
+  align-items: center;
+  min-height: 100vh;
 
   .doc-main {
     flex: none;

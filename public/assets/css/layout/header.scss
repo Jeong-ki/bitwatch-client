@@ -1,11 +1,19 @@
 .doc-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 2px 20px 0;
-  border: 1px solid transparent;
-  background-color: var(--White);
+    top: 0;
+    height: 60px;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    z-index: 10001;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 20px 0;
+    border: 1px solid transparent;
+    background-color: var(--White);
+  }
 
   .link_logo {
     display: flex;

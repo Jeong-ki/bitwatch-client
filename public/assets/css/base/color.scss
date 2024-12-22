@@ -26,6 +26,9 @@
   --Error-Hover: #d3584e;
   --Success: #1a7f37;
 
+  --border-width-thin: max(1px, 0.0625rem);
+  --border-color-default: #d1d9e0;
+
   // Button Color
   --button-font-secondary: #25292e;
   --button-font-primary: #ffffff;
@@ -97,4 +100,6 @@
   // shadow
   --shadow-inset: inset 0px 1px 0px 0px #1f23280a;
 
+  // sidebar
+  --sidebar-background: #f6f8fa;
 }

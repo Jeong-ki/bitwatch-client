@@ -1,0 +1,120 @@
+.doc-sidebar {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 100dvh;
+  overflow: visible;
+  z-index: 10001;
+  box-sizing: border-box;
+  transition: width 0.3s ease-in-out;
+
+  &.open {
+    width: 370px;
+  }
+
+  .inner_sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 8px 0 24px;
+    width: 56px;
+    height: inherit;
+    // height: 100%;
+    background-color: var(--sidebar-background);
+    border-left: 1px solid var(--border-color-default);
+    z-index: 10;
+
+    .sidebar_menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+      align-items: center;
+      
+      button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        color: var(--Gray-60);
+
+        .ico_wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      button:hover {
+        color: var(--Black);
+        .ico_wrap {
+          span {
+            background-color: var(--Black);
+          }
+        }
+      }
+
+      .btn_clicked {
+        color: var(--Black)
+      }
+
+      hr {
+        margin: 8px auto;
+        width: 28px;
+        height: 1px;
+        background-color: var(--border-color-default);
+        border: 0;
+      }
+    }
+  }
+  .sidebar_sub {
+    position: sticky;
+    top: 0;
+    right: 56px;
+    width: 314px;
+    min-width: 314px;
+    height: 100%;
+    padding: 18px 0;
+    display: grid;
+    grid-template-rows: minmax(10px, 1fr);
+    grid-template-columns: minmax(10px, 1fr);
+    background-color: var(--sidebar-background);
+    border-left: 1px solid var(--border-color-default);
+
+    transform: translateX(370px) translateZ(0px);
+    transition: transform 0.2s ease-in-out;
+
+    .inner_sub {
+      display: flex;
+      flex-direction: column;
+      padding: 0 18px;
+
+      .sub_tit {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    hr {
+      margin: 8px auto;
+      width: 280px;
+      height: 1px;
+      background-color: var(--border-color-default);
+      border: 0;
+    }
+  }
+  
+  &.open .sidebar_sub {
+    transform: translateX(0);
+  }
+}
+

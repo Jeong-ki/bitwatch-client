@@ -2,7 +2,7 @@ import { Header } from '../header';
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="container-doc gnb_open">
+    <div className="container-doc">
       <Header />
       <main className="doc-main">
         <section className="inner-main">

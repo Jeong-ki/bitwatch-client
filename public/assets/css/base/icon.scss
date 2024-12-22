@@ -33,3 +33,83 @@
   height: 16px;
   background-image: url('/assets/images/icon/delete.svg');
 }
+
+.ico_bell {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Gray-60);
+  mask: url('/assets/images/icon/bell.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/bell.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_bell_fill {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/bell_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/bell_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_star {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Gray-60);
+  mask: url('/assets/images/icon/star.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/star.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_star_fill {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_clock {
+  width: 17px;
+  height: 17px;
+  background-color: var(--Gray-60);
+  mask: url('/assets/images/icon/clock.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/clock.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_clock_fill {
+  width: 17px;
+  height: 17px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/clock_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/clock_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_trophy {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Gray-60);
+  mask: url('/assets/images/icon/trophy.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/trophy.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_trophy_fill {
+  width: 18px;
+  height: 18px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/trophy_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/trophy_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
