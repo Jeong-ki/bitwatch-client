@@ -2,11 +2,11 @@
 
 import { FC, PropsWithChildren, useMemo, useState, FocusEvent, useRef } from 'react';
 import { Input } from '@/components/common/input';
-import { IInputSearchProps } from '@/components/common/input/search/types';
+import { InputSearchProps } from '@/components/common/input/search/types';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import { InputValue } from '@/@types/element';
 
-export const InputSearch: FC<PropsWithChildren<IInputSearchProps>> = ({
+export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
   children,
   value,
   setValue,
@@ -22,7 +22,7 @@ export const InputSearch: FC<PropsWithChildren<IInputSearchProps>> = ({
     [value, isFocus, otherProps.disabled, otherProps.readOnly],
   );
 
-  const setMatchedValue = (value: IInputSearchProps['value']) => {
+  const setMatchedValue = (value: InputSearchProps['value']) => {
     if (setValue) {
       setValue(libProps?.name ?? '', value, { shouldValidate: true });
     }

@@ -1,7 +1,7 @@
 import { OptionItem } from '@/@types/element';
-import { IInputProps } from '@/components/common/input/types';
+import { InputProps } from '@/components/common/input/types';
 
-export interface IInputSearchProps extends Omit<IInputProps, 'value' | 'onChange'> {
+export interface InputSearchProps extends Omit<InputProps, 'value' | 'onChange'> {
   value?: OptionItem['value'];
   onChange?: (value: OptionItem['value']) => void;
 }

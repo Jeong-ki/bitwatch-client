@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren } from 'react';
-import { ITextareaProps } from '@/components/common/textarea/types';
+import { TextareaProps } from '@/components/common/textarea/types';
 import classNames from 'classnames';
 import { TextareaElem } from '@/components/common/textarea/elem';
 
@@ -17,7 +17,7 @@ export const Textarea = ({
   isAbleResize,
   itemClassName = '',
   ...otherProps
-}: PropsWithChildren<ITextareaProps>) => {
+}: PropsWithChildren<TextareaProps>) => {
   return (
     <div className={classNames('item_form', { [`form_${sizeType}`]: sizeType }, itemClassName)}>
       <div

@@ -1,14 +1,14 @@
 'use client';
 
 import { ChangeEvent } from 'react';
-import { ITextAreaElemProps } from '@/components/common/textarea/elem/types';
+import { TextAreaElemProps } from '@/components/common/textarea/elem/types';
 
 export const TextareaElem = ({
   onChange = () => {},
   libProps = {},
   placeholder,
   ...otherProps
-}: ITextAreaElemProps) => {
+}: TextAreaElemProps) => {
   const { onChange: onChangeLib = () => {}, ...otherLibProps } = libProps;
 
   const onChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) => {

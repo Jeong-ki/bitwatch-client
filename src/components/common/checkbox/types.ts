@@ -1,6 +1,6 @@
-import { IInputCheckboxElemProps } from '@/components/common/checkbox/elem/types';
+import { InputCheckboxElemProps } from '@/components/common/checkbox/elem/types';
 
-export interface ICheckboxProps extends IInputCheckboxElemProps {
+export interface CheckboxProps extends InputCheckboxElemProps {
   text?: string;
   description?: string;
 }

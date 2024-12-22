@@ -1,5 +1,5 @@
-import { IRadioItemProps } from '@/components/common/radio/elem/types';
+import { RadioItemProps } from '@/components/common/radio/elem/types';
 
-export interface IRadioProps extends Omit<IRadioItemProps, 'selected'> {
-  items: Omit<IRadioItemProps, 'selected'>[];
+export interface RadioProps extends Omit<RadioItemProps, 'selected'> {
+  items: Omit<RadioItemProps, 'selected'>[];
 }

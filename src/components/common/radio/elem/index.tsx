@@ -2,7 +2,7 @@
 
 import { PropsWithChildren, useId } from 'react';
 import { InputElem } from '@/components/common/input/elem';
-import { IRadioItemProps } from '@/components/common/radio/elem/types';
+import { RadioItemProps } from '@/components/common/radio/elem/types';
 
 export const RadioElem = ({
   value,
@@ -11,7 +11,7 @@ export const RadioElem = ({
   selected,
   type = 'radio',
   ...otherProps
-}: PropsWithChildren<IRadioItemProps>) => {
+}: PropsWithChildren<RadioItemProps>) => {
   const uniqueId = useId();
 
   return (

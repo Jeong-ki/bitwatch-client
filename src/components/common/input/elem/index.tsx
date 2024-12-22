@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent, FocusEvent } from 'react';
-import { IInputElemProps } from '@/components/common/input/elem/types';
+import { InputElemProps } from '@/components/common/input/elem/types';
 import classNames from 'classnames';
 
 export const InputElem = ({
@@ -13,7 +13,7 @@ export const InputElem = ({
   libProps = {},
   inputSizeType,
   ...otherProps
-}: IInputElemProps) => {
+}: InputElemProps) => {
   const {
     onBlur: onBlurLib = () => {},
     onChange: onChangeLib = () => {},

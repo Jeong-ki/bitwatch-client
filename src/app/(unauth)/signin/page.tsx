@@ -5,11 +5,12 @@ import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import validateRule from '@/lib/react-hook-form';
 import { useMutation } from '@tanstack/react-query';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
-interface ILoginData {
+interface LoginData {
   accountId: string;
   accountPw: string;
 }
@@ -22,7 +23,7 @@ export default function Signin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginData>({
+  } = useForm<LoginData>({
     defaultValues: {
       accountId: '',
       accountPw: '',
@@ -47,7 +48,7 @@ export default function Signin() {
 
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    handleSubmit(async (data: ILoginData) => {
+    handleSubmit(async (data: LoginData) => {
       signup({
         accountId: data.accountId,
         accountPw: data.accountPw,
@@ -97,7 +98,7 @@ export default function Signin() {
               </div>
             </fieldset>
           </form>
-          <p className="desc_notice_pw">비밀번호 찾기 | 회원가입</p>
+          <p className="desc_notice_pw">비밀번호 찾기 | <Link href="/signup">회원가입</Link></p>
         </div>
       </div>
     </div>

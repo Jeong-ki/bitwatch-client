@@ -1,3 +1,5 @@
+import { Footer } from "@/components/layout/footer";
+
 export default function UnAuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="container-doc type_empty">
@@ -10,6 +12,7 @@ export default function UnAuthLayout({ children }: { children: React.ReactNode }
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }

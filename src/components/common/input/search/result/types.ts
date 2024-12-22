@@ -1,10 +1,10 @@
 import { OptionItem } from '@/@types/element';
-import { IInputSearchProps } from '../types';
+import { InputSearchProps } from '../types';
 
-type TSuggestType = 'test1' | 'test2';
+type SuggestType = 'test1' | 'test2';
 
-export interface IInputSearchResultProps extends IInputSearchProps {
-  suggestType?: TSuggestType;
+export interface InputSearchResultProps extends InputSearchProps {
+  suggestType?: SuggestType;
   isAllowClickOutside?: boolean;
   isStrictCheck?: boolean;
   isExactMatchValue?: boolean;

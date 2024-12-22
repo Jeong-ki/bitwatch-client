@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren } from 'react';
-import { IInputProps } from '@/components/common/input/types';
+import { InputProps } from '@/components/common/input/types';
 import classNames from 'classnames';
 import { InputElem } from './elem';
 
@@ -18,7 +18,7 @@ export const Input = ({
   boxChildren,
   itemChildren,
   ...otherProps
-}: PropsWithChildren<IInputProps>) => {
+}: PropsWithChildren<InputProps>) => {
   return (
     <div
       ref={refProp}

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Select } from '@/components/common/select';
 import { useQuery } from '@tanstack/react-query';
-import { ISelectResult } from '@/components/common/select/result/types';
+import { SelectResultProps } from '@/components/common/select/result/types';
 import isEmpty from 'lodash.isempty';
 import { getDummy } from '@/api/dummy';
 import { OptionItem } from '@/@types/element';
@@ -21,7 +21,7 @@ export const SelectResult = ({
   prependSuggestList = [],
   refetchKeys = [],
   ...otherProps
-}: ISelectResult) => {
+}: SelectResultProps) => {
   const [isFetchedAndSetChanged, setIsFetchedAndSetChanged] = useState<boolean>(false);
   const DEFAULT_PARAMS = {
     test1: { id: 'test', useYn: 'Y' },
@@ -32,7 +32,7 @@ export const SelectResult = ({
     test2: getDummy,
   };
 
-  const getConvertSuggestList = (type: ISelectResult['type'], result: unknown, isAll?: boolean) => {
+  const getConvertSuggestList = (type: SelectResultProps['type'], result: unknown, isAll?: boolean) => {
     const convertedList = [];
     if (!result || !type) {
       return [];

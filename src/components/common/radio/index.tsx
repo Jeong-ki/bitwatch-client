@@ -1,10 +1,10 @@
 'use client';
 
 import { PropsWithChildren } from 'react';
-import { IRadioProps } from '@/components/common/radio/types';
+import { RadioProps } from '@/components/common/radio/types';
 import { RadioElem } from '@/components/common/radio/elem';
 
-export const Radio = ({ value, items = [], ...otherProps }: PropsWithChildren<IRadioProps>) => {
+export const Radio = ({ value, items = [], ...otherProps }: PropsWithChildren<RadioProps>) => {
   return (
     <div className="radio_group">
       {items.map((item, index) => {

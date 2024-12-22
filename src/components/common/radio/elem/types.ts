@@ -1,6 +1,6 @@
-import { IInputElemProps } from '@/components/common/input/elem/types';
+import { InputElemProps } from '@/components/common/input/elem/types';
 
-export interface IRadioItemProps extends Omit<IInputElemProps, 'value'> {
+export interface RadioItemProps extends Omit<InputElemProps, 'value'> {
   text?: string;
   value?: any;
   description?: string;

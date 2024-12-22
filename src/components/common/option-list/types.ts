@@ -1,6 +1,6 @@
 import { OptionItem } from '@/@types/element';
 
-export interface IOptionList {
+export interface OptionListProps {
   value: OptionItem['value'] | undefined;
   items: OptionItem[];
   compareKey?: keyof OptionItem;
@@ -10,6 +10,6 @@ export interface IOptionList {
   noDataText?: string;
   isOpened: boolean;
   isTopPosition?: boolean;
-  compareValue: (value: IOptionList['value'], item: OptionItem) => boolean;
+  compareValue: (value: OptionListProps['value'], item: OptionItem) => boolean;
   handleClose: () => void;
 }

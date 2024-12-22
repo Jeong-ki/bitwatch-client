@@ -1,7 +1,7 @@
 'use client';
 
 import { ChangeEvent } from 'react';
-import { IInputCheckboxElemProps } from '@/components/common/checkbox/elem/types';
+import { InputCheckboxElemProps } from '@/components/common/checkbox/elem/types';
 import classNames from 'classnames';
 
 export const CheckboxElem = ({
@@ -9,7 +9,7 @@ export const CheckboxElem = ({
   onChange = () => {},
   libProps = {},
   ...otherProps
-}: IInputCheckboxElemProps) => {
+}: InputCheckboxElemProps) => {
   const { onChange: onChangeLib = () => {}, ...otherLibProps } = libProps;
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { OptionItem } from '@/@types/element';
 import useMemoizedFn from '@/hooks/useMemoizedFn';
 import cn from 'classnames';
-import { IOptionList } from './types';
+import { OptionListProps } from './types';
 
 export const OptionList = ({
   value,
@@ -13,7 +13,7 @@ export const OptionList = ({
   compareValue,
   onClick,
   onEnter = () => {},
-}: IOptionList) => {
+}: OptionListProps) => {
   const [focusedIdx, setFocusedIdx] = useState<number>(-1);
 
   const initState = () => {

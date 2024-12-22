@@ -3,7 +3,7 @@
 import { Fragment, useState } from 'react';
 import cn from 'classnames';
 
-interface ISidebarMenu {
+interface SidebarMenu {
   name: string;
   subName: string;
   icoNm: string;
@@ -38,7 +38,7 @@ const SidebarMenu = [
 ];
 
 export const Sidebar = () => {
-  const [menuList, setMenuList] = useState<ISidebarMenu[]>(SidebarMenu);
+  const [menuList, setMenuList] = useState<SidebarMenu[]>(SidebarMenu);
 
   const handleMenuList = (index: number) => () => {
     setMenuList((prevMenuList) =>

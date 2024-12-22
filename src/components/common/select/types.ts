@@ -1,7 +1,7 @@
 import { FormSize, InputValue, OptionItem } from '@/@types/element';
 import { InternalFieldName, UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form';
 
-export interface ISelectProps {
+export interface SelectProps {
   placeholder?: string;
   formSize?: FormSize;
   suggestList: OptionItem[] | undefined;

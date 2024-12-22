@@ -1,4 +1,4 @@
-import useTestStore, { ITestlState } from '@/store/input';
+import useTestStore, { TestlState } from '@/store/input';
 
 import { UseBoundStore, StoreApi } from 'zustand';
 
@@ -9,6 +9,6 @@ const mockStore = <T>(store: UseBoundStore<StoreApi<T>>, state: Partial<T>): voi
   store.setState({ ...initState, ...state }, true);
 };
 
-export const mockUseInputStore = (state: MockState<ITestlState>) => {
+export const mockUseInputStore = (state: MockState<TestlState>) => {
   mockStore(useTestStore, state);
 };

@@ -2,14 +2,14 @@
 
 import { PropsWithChildren, useId } from 'react';
 import { CheckboxElem } from '@/components/common/checkbox/elem';
-import { ICheckboxProps } from '@/components/common/checkbox/types';
+import { CheckboxProps } from '@/components/common/checkbox/types';
 
 export const Checkbox = ({
   text = '',
   description = '',
   type = 'checkbox',
   ...otherProps
-}: PropsWithChildren<ICheckboxProps>) => {
+}: PropsWithChildren<CheckboxProps>) => {
   const uniqueId = useId();
 
   return (

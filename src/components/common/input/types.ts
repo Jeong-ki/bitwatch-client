@@ -1,9 +1,9 @@
 import { ReactNode, RefObject } from 'react';
-import { IInputElemProps } from '@/components/common/input/elem/types';
+import { InputElemProps } from '@/components/common/input/elem/types';
 import { UseFormSetValue } from 'react-hook-form';
 import { FormSize } from '@/@types/element';
 
-export interface IInputProps extends IInputElemProps {
+export interface InputProps extends InputElemProps {
   refProp?: RefObject<any>;
   sizeType?: FormSize;
   inputSizeType?: FormSize;

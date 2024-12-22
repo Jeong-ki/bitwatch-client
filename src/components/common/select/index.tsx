@@ -2,7 +2,7 @@ import { useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import cn from 'classnames';
 import { OptionItem } from '@/@types/element';
-import { ISelectProps } from './types';
+import { SelectProps } from './types';
 import { OptionList } from '../option-list';
 
 export const Select = ({
@@ -16,7 +16,7 @@ export const Select = ({
   readOnly,
   onChange = () => {},
   libProps = {},
-}: ISelectProps) => {
+}: SelectProps) => {
   const { onChange: onChangeLib = () => {}, ref: libRef = () => {}, ...otherLibProps } = libProps;
   const [isFocused, setIsFocused] = useState(false);
   const selectRef = useRef<HTMLDivElement | null>(null);
