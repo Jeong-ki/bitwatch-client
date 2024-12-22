@@ -17,7 +17,7 @@ export default function Error({ error }: { error: Error & { digest?: string } })
   return (
     <html lang="ko">
       <body>
-        <ErrorPage status={404} />;
+        <ErrorPage />;
       </body>
     </html>
   );

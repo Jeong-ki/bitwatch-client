@@ -18,7 +18,7 @@ const SelectOption = [
   { text: 'select_03', value: 'select_value_03' },
 ];
 
-export const OPTION_YN_KO = [
+const OPTION_YN_KO = [
   { text: '예', value: 'Y', description: '동의하면 예를 누르세요.' },
   { text: '아니오', value: 'N', description: '동의하지 않으면 아니오를 누르세요.' },
 ];

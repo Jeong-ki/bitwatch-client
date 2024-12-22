@@ -1,3 +1,4 @@
+import { Footer } from '../footer';
 import { Header } from '../header';
 
 export const MainLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,7 +7,6 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <main className="doc-main">
         <section className="inner-main">
-          {/* <Gnb /> */}
           <div className="main-content">
             <article className="content-article">
               <div className="wrap_contents">{children}</div>
@@ -14,7 +14,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </section>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
