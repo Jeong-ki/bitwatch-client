@@ -98,7 +98,7 @@ export const Header = () => {
             </div>
           ) : (
             <Button color="primary" size="medium">
-              로그인
+              <Link href="/signin">로그인</Link>
             </Button>
           )}
         </div>

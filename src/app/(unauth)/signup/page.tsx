@@ -1,0 +1,140 @@
+'use client';
+
+import { signinUser, signupUser } from '@/api/auth';
+import { Button } from '@/components/common/button';
+import { Input } from '@/components/common/input';
+import validateRule from '@/lib/react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { SyntheticEvent, useState } from 'react';
+import { useForm } from 'react-hook-form';
+
+interface SignupData {
+  accountId: string;
+  authNumber: string;
+  accountPw: string;
+  accountConfirmPw: string;
+}
+
+export default function Signup() {
+  const router = useRouter();
+  const [isSendEmail, setIsSendEmail] = useState(false);
+
+  const {
+    watch,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupData>({
+    defaultValues: {
+      accountId: '',
+      authNumber: '',
+      accountPw: '',
+      accountConfirmPw: '',
+    },
+  });
+
+  const { mutate: signup } = useMutation({
+    mutationFn: signupUser,
+    onSuccess: (res) => {
+      if (res.status === 200) {
+        router.refresh();
+        router.push('/');
+      }
+    },
+    onError: (err) => {
+      // Alert({
+      //   description: err?.message || '',
+      //   hasCancelBtn: false,
+      // });
+    },
+  });
+
+  const handleEmailAuth = () => {
+    if (true) {
+      // 이메일 보내기 API 성공 후 Alert로 전송 됐다고 알림 후 isSend 변경
+      setIsSendEmail(true);
+    }
+  }
+
+  const onSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
+    handleSubmit((data: SignupData) => {
+      signup(data);
+    })(e);
+  };
+
+  return (
+    <div className="wrap_login signup">
+      <h1 className="tit_login">
+        BitWatch
+      </h1>
+      <div className="wrap_login_form">
+        <h2 className="screen_out">회원가입</h2>
+        <div className="inner_left">
+          <h3 className="tit_sub">회원가입</h3>
+          <form onSubmit={onSubmit}>
+            <fieldset>
+              <legend className="screen_out">회원가입 입력폼</legend>
+              <div className="box_login">
+                <div className="group_form">
+                  <label htmlFor="account_id">이메일</label>
+                  <div className="signup_email">
+                    <Input
+                      id="account_id"
+                      value={watch('accountId')}
+                      title="이메일 입력"
+                      showErrorMsg
+                      errorMsg={errors.accountId?.message}
+                      libProps={register('accountId', validateRule.id)}
+                    />
+                    <Button type='button' size="medium" color="primary" onClick={handleEmailAuth}>
+                      인증하기
+                    </Button>
+                  </div>
+                  {isSendEmail && 
+                    <Input
+                      id="auth_number"
+                      title="인증번호 입력"
+                      placeholder='인증번호를 입력해주세요.'
+                      showErrorMsg
+                      errorMsg={errors.authNumber?.message}
+                      libProps={register('authNumber', validateRule.required)}
+                    />
+                  }
+                </div>
+                <div className="group_form">
+                  <label htmlFor="password">비밀번호</label>
+                  <Input
+                    id="password"
+                    type="password"
+                    title="비밀번호 입력"
+                    showErrorMsg
+                    errorMsg={errors.accountPw?.message}
+                    libProps={register('accountPw', validateRule.accountPw)}
+                  />
+                </div>
+                <div className="group_form">
+                  <label htmlFor="confirm_password">비밀번호 확인</label>
+                  <Input
+                    id="confirm_password"
+                    type="password"
+                    title="확인 비밀번호 입력"
+                    showErrorMsg
+                    errorMsg={errors.accountConfirmPw?.message}
+                    libProps={register('accountConfirmPw', validateRule.accountPw)}
+                  />
+                </div>
+                <Button type="submit" className="btn_login" size="medium" color="primary">
+                  회원가입
+                </Button>
+              </div>
+            </fieldset>
+          </form>
+          <p className="desc_notice_pw">이미 계정이 있으신가요? <Link href="/signin">로그인</Link></p>
+        </div>
+      </div>
+    </div>
+  );
+}

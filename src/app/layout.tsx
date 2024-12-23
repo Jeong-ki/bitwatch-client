@@ -2,7 +2,7 @@ import '@css/style.scss';
 import { AppProvider } from '@/provider/app-provider';
 import { Metadata } from 'next';
 
-const TITLE = '워치비트';
+const TITLE = '비트워치(BitWatch)';
 const DESCRIPTION = '가상화폐 시세 조회/알림';
 const IMAGE_URL = '/vercel.svg';
 const FAVICON_URL = '/vercel.svg';

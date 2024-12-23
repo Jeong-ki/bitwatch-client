@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
-interface LoginData {
+interface Signin {
   accountId: string;
   accountPw: string;
 }
@@ -23,7 +23,7 @@ export default function Signin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginData>({
+  } = useForm<Signin>({
     defaultValues: {
       accountId: '',
       accountPw: '',
@@ -48,11 +48,8 @@ export default function Signin() {
 
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    handleSubmit(async (data: LoginData) => {
-      signup({
-        accountId: data.accountId,
-        accountPw: data.accountPw,
-      });
+    handleSubmit((data: Signin) => {
+      signup(data);
     })(e);
   };
 
@@ -70,10 +67,9 @@ export default function Signin() {
               <legend className="screen_out">로그인 입력폼</legend>
               <div className="box_login">
                 <div className="group_form">
-                  <label htmlFor="accountId">이메일</label>
+                  <label htmlFor="account_id">이메일</label>
                   <Input
-                    id="accountId"
-                    type="accountId"
+                    id="account_id"
                     value={watch('accountId')}
                     title="이메일 입력"
                     showErrorMsg

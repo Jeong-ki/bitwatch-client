@@ -5,6 +5,20 @@
 .wrap_login {
   width: 310px;
   box-sizing: border-box;
+
+  &.signup {
+    width: 330px;
+  }
+
+  .signup_email {
+    display: flex;
+    margin-bottom: 8px;
+
+    button {
+      height: 32px;
+      margin-left: 6px;
+    }
+  }
 }
 
 .wrap_login:not(.type_wide) .tit_sub {

@@ -17,5 +17,11 @@ export interface SigninReqBody {
   accountId: string;
   accountPw: string;
 }
-
 export interface SigninResData extends CommonResData {}
+
+export interface SignupReqBody {
+  accountId: string;
+  accountPw: string;
+  accountConfirmPw: string;
+}
+export interface SignupResData extends CommonResData {}
