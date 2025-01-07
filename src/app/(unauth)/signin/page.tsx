@@ -11,8 +11,8 @@ import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
 interface Signin {
-  accountId: string;
-  accountPw: string;
+  email: string;
+  password: string;
 }
 
 export default function Signin() {
@@ -25,10 +25,13 @@ export default function Signin() {
     formState: { errors },
   } = useForm<Signin>({
     defaultValues: {
-      accountId: '',
-      accountPw: '',
+      email: '',
+      password: '',
     },
   });
+
+  console.log(errors);
+  
 
   const { mutate: signup } = useMutation({
     mutationFn: signinUser,
@@ -70,11 +73,11 @@ export default function Signin() {
                   <label htmlFor="account_id">이메일</label>
                   <Input
                     id="account_id"
-                    value={watch('accountId')}
+                    value={watch('email')}
                     title="이메일 입력"
                     showErrorMsg
-                    errorMsg={errors.accountId?.message}
-                    libProps={register('accountId', validateRule.id)}
+                    errorMsg={errors.email?.message}
+                    libProps={register('email', validateRule.email)}
                   />
                 </div>
                 <div className="group_form">
@@ -84,8 +87,8 @@ export default function Signin() {
                     type="password"
                     title="비밀번호 입력"
                     showErrorMsg
-                    errorMsg={errors.accountPw?.message}
-                    libProps={register('accountPw', validateRule.accountPw)}
+                    errorMsg={errors.password?.message}
+                    libProps={register('password', validateRule.password)}
                   />
                 </div>
                 <Button type="submit" className="btn_login" size="medium" color="primary">

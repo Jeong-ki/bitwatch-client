@@ -11,10 +11,10 @@ import { SyntheticEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 interface SignupData {
-  accountId: string;
+  email: string;
   authNumber: string;
-  accountPw: string;
-  accountConfirmPw: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default function Signup() {
@@ -28,10 +28,10 @@ export default function Signup() {
     formState: { errors },
   } = useForm<SignupData>({
     defaultValues: {
-      accountId: '',
+      email: '',
       authNumber: '',
-      accountPw: '',
-      accountConfirmPw: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
@@ -83,11 +83,11 @@ export default function Signup() {
                   <div className="signup_email">
                     <Input
                       id="account_id"
-                      value={watch('accountId')}
+                      value={watch('email')}
                       title="이메일 입력"
                       showErrorMsg
-                      errorMsg={errors.accountId?.message}
-                      libProps={register('accountId', validateRule.id)}
+                      errorMsg={errors.email?.message}
+                      libProps={register('email', validateRule.email)}
                     />
                     <Button type='button' size="medium" color="primary" onClick={handleEmailAuth}>
                       인증하기
@@ -111,8 +111,8 @@ export default function Signup() {
                     type="password"
                     title="비밀번호 입력"
                     showErrorMsg
-                    errorMsg={errors.accountPw?.message}
-                    libProps={register('accountPw', validateRule.accountPw)}
+                    errorMsg={errors.password?.message}
+                    libProps={register('password', validateRule.password)}
                   />
                 </div>
                 <div className="group_form">
@@ -122,8 +122,8 @@ export default function Signup() {
                     type="password"
                     title="확인 비밀번호 입력"
                     showErrorMsg
-                    errorMsg={errors.accountConfirmPw?.message}
-                    libProps={register('accountConfirmPw', validateRule.accountPw)}
+                    errorMsg={errors.confirmPassword?.message}
+                    libProps={register('confirmPassword', validateRule.password)}
                   />
                 </div>
                 <Button type="submit" className="btn_login" size="medium" color="primary">

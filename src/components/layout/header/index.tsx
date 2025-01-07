@@ -9,8 +9,10 @@ import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import SearchIcon from '@img/icon/search.svg';
 import useGlobalStore from '@/store/global';
 import { isTokenValid } from '@/utils/common';
+import { useRouter } from 'next/navigation';
 
 export const Header = () => {
+  const router = useRouter();
   const { accessToken } = useGlobalStore();
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
@@ -97,8 +99,8 @@ export const Header = () => {
               </div>
             </div>
           ) : (
-            <Button color="primary" size="medium">
-              <Link href="/signin">로그인</Link>
+            <Button color="primary" size="medium" onClick={() => router.push('/signin')}>
+              로그인
             </Button>
           )}
         </div>

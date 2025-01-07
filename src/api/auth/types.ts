@@ -14,14 +14,14 @@ export interface UsersRes {
 }
 
 export interface SigninReqBody {
-  accountId: string;
-  accountPw: string;
+  email: string;
+  password: string;
 }
 export interface SigninResData extends CommonResData {}
 
 export interface SignupReqBody {
-  accountId: string;
-  accountPw: string;
-  accountConfirmPw: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 export interface SignupResData extends CommonResData {}

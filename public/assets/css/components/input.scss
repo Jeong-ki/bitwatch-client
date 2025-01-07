@@ -5,10 +5,16 @@
   vertical-align: top;
 
   .desc_error {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 21px;
     color: var(--input-error);
   }
 
   .desc_success {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 21px;
     color: var(--input-success);
   }
 }

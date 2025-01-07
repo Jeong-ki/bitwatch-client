@@ -103,7 +103,7 @@ const validateRule = {
       message: '5~30자의 영문 소문자, 숫자만 사용 가능합니다.',
     },
   },
-  accountPw: {
+  password: {
     required: {
       value: true,
       message: '비밀번호를 입력해주세요.',
@@ -112,7 +112,7 @@ const validateRule = {
   email: {
     required: {
       value: true,
-      message: '이메일',
+      message: '이메일을 입력해주세요.',
     },
     pattern: {
       value:
