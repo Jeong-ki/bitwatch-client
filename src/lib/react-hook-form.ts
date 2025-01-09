@@ -109,6 +109,18 @@ const validateRule = {
       message: '비밀번호를 입력해주세요.',
     },
   },
+  confirmPassword: {
+    required: {
+      value: true,
+      message: '비밀번호 확인을 입력해주세요.',
+    },
+    validate: (value: string, context: { password: string }) => {
+      if (value !== context.password) {
+        return '비밀번호가 일치하지 않습니다.';
+      }
+      return true;
+    },
+  },
   email: {
     required: {
       value: true,
@@ -118,6 +130,24 @@ const validateRule = {
       value:
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       message: '올바른 이메일 형식으로 입력해주세요.',
+    },
+  },
+  nickname: {
+    required: {
+      value: true,
+      message: '닉네임을 입력해주세요.',
+    },
+    pattern: {
+      value: /^[a-zA-Z가-힣0-9]+$/,
+      message: '닉네임은 영문, 한글, 숫자만 사용할 수 있습니다.',
+    },
+    minLength: {
+      value: 2,
+      message: '닉네임은 최소 2자 이상이어야 합니다.',
+    },
+    maxLength: {
+      value: 15,
+      message: '닉네임은 최대 15자 이하로 입력해주세요.',
     },
   },
   phone: {

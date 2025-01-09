@@ -6,14 +6,14 @@ import { SigninReqBody, SigninResData, SignupReqBody, SignupResData, UsersRes } 
  * @api POST /api/users/signin
  */
 export const signinUser = (body: SigninReqBody) =>
-  postFetch<SigninResData>('/api/users/signin', { body });
+  postFetch<SigninResData>('/api/users/signin', body);
 
 /**
  * @title 회원가입
  * @api POST /api/users/signup
  */
 export const signupUser = (body: SignupReqBody) =>
-  postFetch<SignupResData>('/api/users/signup', { body });
+  postFetch<SignupResData>('/api/users/signup', body);
 
 export const getUsers = (): Promise<UsersRes> => {
   return getFetch('/api/users');

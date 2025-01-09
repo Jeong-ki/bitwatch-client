@@ -22,7 +22,16 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
   const queryParams = options?.params ? `?${new URLSearchParams(options.params).toString()}` : '';
 
   const baseURL = process.env.NEXT_PUBLIC_API_URL as string;
-  return fetch(baseURL + url + queryParams, config);
+  const response = await fetch(baseURL + url + queryParams, config);
+
+  if (!response.ok) {
+    const errorData = await response.json(); // 에러 메시지 파싱
+    console.log(errorData);
+    
+    throw new Error(errorData.message || `HTTP Error: ${response.status}`);
+  }
+
+  return response;
 };
 
 export const getFetch = async <T>(url: string, options?: FetchOptions): Promise<T> => {

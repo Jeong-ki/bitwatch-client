@@ -13,6 +13,7 @@ import { useForm } from 'react-hook-form';
 interface SignupData {
   email: string;
   authNumber: string;
+  nickname: string;
   password: string;
   confirmPassword: string;
 }
@@ -30,6 +31,7 @@ export default function Signup() {
     defaultValues: {
       email: '',
       authNumber: '',
+      nickname: '',
       password: '',
       confirmPassword: '',
     },
@@ -38,12 +40,14 @@ export default function Signup() {
   const { mutate: signup } = useMutation({
     mutationFn: signupUser,
     onSuccess: (res) => {
+      console.log('성공', res)
       if (res.status === 200) {
         router.refresh();
         router.push('/');
       }
     },
     onError: (err) => {
+      console.log('onError', err.message);
       // Alert({
       //   description: err?.message || '',
       //   hasCancelBtn: false,
@@ -105,6 +109,17 @@ export default function Signup() {
                   }
                 </div>
                 <div className="group_form">
+                  <label htmlFor="password">닉네임</label>
+                  <Input
+                    id="nickname"
+                    type="text"
+                    title="닉네임 입력"
+                    showErrorMsg
+                    errorMsg={errors.nickname?.message}
+                    libProps={register('nickname', validateRule.nickname)}
+                  />
+                </div>
+                <div className="group_form">
                   <label htmlFor="password">비밀번호</label>
                   <Input
                     id="password"
@@ -123,7 +138,7 @@ export default function Signup() {
                     title="확인 비밀번호 입력"
                     showErrorMsg
                     errorMsg={errors.confirmPassword?.message}
-                    libProps={register('confirmPassword', validateRule.password)}
+                    libProps={register('confirmPassword', validateRule.confirmPassword)}
                   />
                 </div>
                 <Button type="submit" className="btn_login" size="medium" color="primary">
