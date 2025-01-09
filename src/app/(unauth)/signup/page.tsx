@@ -1,6 +1,6 @@
 'use client';
 
-import { signinUser, signupUser } from '@/api/auth';
+import { emailVerification, signinUser, signupUser } from '@/api/auth';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import validateRule from '@/lib/react-hook-form';
@@ -24,6 +24,7 @@ export default function Signup() {
 
   const {
     watch,
+    getValues,
     register,
     handleSubmit,
     formState: { errors },
@@ -40,14 +41,13 @@ export default function Signup() {
   const { mutate: signup } = useMutation({
     mutationFn: signupUser,
     onSuccess: (res) => {
-      console.log('성공', res)
-      if (res.status === 200) {
+      if (res.status === 201) {
         router.refresh();
-        router.push('/');
+        router.push('/signin');
       }
     },
     onError: (err) => {
-      console.log('onError', err.message);
+      console.log('onError: ', err.message);
       // Alert({
       //   description: err?.message || '',
       //   hasCancelBtn: false,
@@ -55,11 +55,24 @@ export default function Signup() {
     },
   });
 
+  const {mutate: sendEmail} = useMutation({
+    mutationFn: emailVerification,
+    onSuccess: (res) => {
+      if (res.status === 200) {
+        setIsSendEmail(true);
+        // Alert({
+        //   description: res.message,
+        //   hasCancelBtn: false,
+        // });
+      }
+    },
+    onError: (err) => {
+      console.log('onError: ', err.message);
+    },
+  })
+
   const handleEmailAuth = () => {
-    if (true) {
-      // 이메일 보내기 API 성공 후 Alert로 전송 됐다고 알림 후 isSend 변경
-      setIsSendEmail(true);
-    }
+    sendEmail({email: getValues('email')})
   }
 
   const onSubmit = async (e: SyntheticEvent) => {

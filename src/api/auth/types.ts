@@ -25,3 +25,8 @@ export interface SignupReqBody {
   confirmPassword: string;
 }
 export interface SignupResData extends CommonResData {}
+
+export interface EmailVerificationReqBody {
+  email: string;
+}
+export interface EmailVerificationResData extends CommonResData { }

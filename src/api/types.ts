@@ -1,6 +1,5 @@
 export interface CommonResData<Res = object> {
-  code?: number;
-  message?: string;
-  result?: Res;
+  message: string;
   status: number;
+  result?: Res;
 }
