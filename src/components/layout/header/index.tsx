@@ -10,6 +10,7 @@ import SearchIcon from '@img/icon/search.svg';
 import useGlobalStore from '@/store/global';
 import { isTokenValid } from '@/utils/common';
 import { useRouter } from 'next/navigation';
+import { Alert } from '@/components/common/alert';
 
 export const Header = () => {
   const router = useRouter();
@@ -99,7 +100,13 @@ export const Header = () => {
               </div>
             </div>
           ) : (
-            <Button color="primary" size="medium" onClick={() => router.push('/signin')}>
+            <Button color="primary" size="medium" onClick={() => {
+                Alert({
+                  title: '얼럿 제목',
+                  description: '얼럿 테스트 내용'
+                })
+              // router.push('/signin')
+              }}>
               로그인
             </Button>
           )}

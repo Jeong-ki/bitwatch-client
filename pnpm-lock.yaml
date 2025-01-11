@@ -35,6 +35,9 @@ importers:
       react-hook-form:
         specifier: ^7.53.2
         version: 7.53.2(react@19.0.0-rc-66855b96-20241106)
+      react-modal-promise:
+        specifier: ^1.0.2
+        version: 1.0.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       zustand:
         specifier: ^5.0.1
         version: 5.0.1(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
@@ -3015,6 +3018,12 @@ packages:
 
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
+
+  react-modal-promise@1.0.2:
+    resolution: {integrity: sha512-dqT618ROhG8qh1+O6EZkia5ELw3zaZWGpMX2YfEH4bgwYENPuFonqKw1W70LFx3K/SCZvVBcD6UYEI12yzYXzg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   react@19.0.0-rc-66855b96-20241106:
     resolution: {integrity: sha512-klH7xkT71SxRCx4hb1hly5FJB21Hz0ACyxbXYAECEqssUjtJeFUAaI2U1DgJAzkGEnvEm3DkxuBchMC/9K4ipg==}
@@ -7096,6 +7105,11 @@ snapshots:
   react-is@17.0.2: {}
 
   react-is@18.3.1: {}
+
+  react-modal-promise@1.0.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
 
   react@19.0.0-rc-66855b96-20241106: {}
 

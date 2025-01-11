@@ -106,7 +106,7 @@ export default function Signup() {
                       errorMsg={errors.email?.message}
                       libProps={register('email', validateRule.email)}
                     />
-                    <Button type='button' size="medium" color="primary" onClick={handleEmailAuth}>
+                    <Button type='button' size="medium" color="primary" onClick={handleEmailAuth} disabled={isSendEmail}>
                       인증하기
                     </Button>
                   </div>

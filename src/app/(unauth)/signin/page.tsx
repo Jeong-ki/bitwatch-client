@@ -1,6 +1,7 @@
 'use client';
 
 import { signinUser } from '@/api/auth';
+import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import validateRule from '@/lib/react-hook-form';
@@ -30,13 +31,11 @@ export default function Signin() {
     },
   });
 
-  console.log(errors);
-  
-
-  const { mutate: signup } = useMutation({
+  const { mutate: signin } = useMutation({
     mutationFn: signinUser,
     onSuccess: (res) => {
       if (res.status === 200) {
+        // TODO: 토큰/유저정보 zustand 저장
         router.refresh();
         router.push('/');
       }
@@ -52,7 +51,7 @@ export default function Signin() {
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     handleSubmit((data: Signin) => {
-      signup(data);
+      signin(data);
     })(e);
   };
 
