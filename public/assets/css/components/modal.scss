@@ -273,11 +273,14 @@
 
 .alert_layer .layer_foot .btn {
   flex: 1;
-  border-radius: 0 0 0 4px;
+  border-radius: 0 0 0 6px;
   height: 40px;
+}
+.alert_layer .layer_foot .btn_single {
+  border-radius: 0 0 6px 6px;
 }
 
 .alert_layer .layer_foot .btn+.btn {
   margin-left: 0;
-  border-radius: 0 0 4px 0;
+  border-radius: 0 0 6px 0;
 }

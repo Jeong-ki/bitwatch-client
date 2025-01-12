@@ -43,8 +43,14 @@ export default function Signup() {
     mutationFn: signupUser,
     onSuccess: (res) => {
       if (res.status === 201) {
-        router.refresh();
-        router.push('/signin');
+        Alert({
+          description: res?.message || '',
+          hasCancelBtn: false,
+        }).then(({ isConfirm }) => {
+          if (isConfirm) {
+            router.push('/signin');
+          }
+        });
       }
     },
     onError: (err) => {

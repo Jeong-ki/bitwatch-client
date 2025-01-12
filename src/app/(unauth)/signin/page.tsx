@@ -5,6 +5,8 @@ import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import validateRule from '@/lib/react-hook-form';
+import useAuthStore from '@/store/auth';
+import useUserStore from '@/store/user';
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -18,6 +20,8 @@ interface SigninData {
 
 export default function Signin() {
   const router = useRouter();
+  const { setUser } = useUserStore();
+  const { setAccessToken } = useAuthStore();
 
   const {
     watch,
@@ -35,8 +39,9 @@ export default function Signin() {
     mutationFn: signinUser,
     onSuccess: (res) => {
       if (res.status === 200) {
-        // TODO: 토큰/유저정보 zustand 저장
-        router.refresh();
+        const { email, nickname, accessToken } = res.data!;
+        setUser({ email, nickname });
+        setAccessToken(accessToken);
         router.push('/');
       }
     },

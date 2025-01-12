@@ -1,8 +1,9 @@
 'use client';
 
 import { create } from 'react-modal-promise';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { Button } from '@/components/common/button';
+import cn from 'classnames';
 import { ModalProps } from './types';
 
 const Modal = ({
@@ -14,8 +15,16 @@ const Modal = ({
   isOpen,
   onResolve,
 }: ModalProps) => {
+  const btnRef = useRef<HTMLButtonElement | null>(null);
   const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
+
+  useEffect(() => {
+    if (!btnRef.current) return;
+    setTimeout(() => {
+      btnRef.current?.focus?.();
+    }, 100);
+  }, [btnRef]);
 
   return (
     <div
@@ -46,7 +55,11 @@ const Modal = ({
               {cancelText || '취소'}
             </Button>
           )}
-          <Button color="primary" onClick={onConfirm}>
+          <Button
+            btnRef={btnRef}
+            color="primary"
+            onClick={onConfirm}
+            className={cn({ btn_single: !hasCancelBtn })}>
             {confirmText || '확인'}
           </Button>
         </div>

@@ -13,20 +13,27 @@ export interface UsersRes {
   }[];
 }
 
-export interface SigninReqBody {
+export interface SigninReq {
   email: string;
   password: string;
 }
-export interface SigninResData extends CommonResData {}
 
-export interface SignupReqBody {
+interface SigninResData {
+  email: string;
+  nickname: string;
+  accessToken: string;
+}
+export type SigninRes = CommonResData<SigninResData>;
+
+export interface SignupReq {
   email: string;
   password: string;
   confirmPassword: string;
 }
-export interface SignupResData extends CommonResData {}
 
-export interface EmailVerificationReqBody {
+export type SignupRes = CommonResData;
+
+export interface EmailVerificationReq {
   email: string;
 }
-export interface EmailVerificationResData extends CommonResData { }
+export interface EmailVerificationResData extends CommonResData {}

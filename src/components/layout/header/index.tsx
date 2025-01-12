@@ -7,19 +7,30 @@ import { Button } from '@/components/common/button';
 import cn from 'classnames';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import SearchIcon from '@img/icon/search.svg';
-import useGlobalStore from '@/store/global';
 import { isTokenValid } from '@/utils/common';
 import { useRouter } from 'next/navigation';
+import useAuthStore from '@/store/auth';
+import { signoutUser } from '@/api/auth';
+import { useMutation } from '@tanstack/react-query';
 
 export const Header = () => {
   const router = useRouter();
-  const { accessToken } = useGlobalStore();
+  const { accessToken, clearAuth } = useAuthStore();
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
   const profileRef = useRef(null);
 
+  const { mutate: signout } = useMutation({
+    mutationFn: signoutUser,
+  });
+
   const handleOpenProfile = () => {
     setIsOpenProfile((prev) => !prev);
+  };
+
+  const handleSignout = () => {
+    signout();
+    clearAuth();
   };
 
   useOnClickOutside(profileRef, () => setIsOpenProfile(false));
@@ -57,7 +68,7 @@ export const Header = () => {
         </nav>
         <div>
           {isLoggedIn ? (
-            <div ref={profileRef} className={cn('info_my', { layer_open: isOpenProfile })}>
+            <div ref={profileRef} className="info_my">
               <div className="profile_user">
                 <strong className="screen_out">사용자 프로필</strong>
                 <button className="link_thumb" type="button" onClick={handleOpenProfile}>
@@ -71,7 +82,7 @@ export const Header = () => {
                   </div>
                 </button>
               </div>
-              <div className="profile_layer">
+              <div className={cn('profile_layer', { layer_open: isOpenProfile })}>
                 <div className="inner_layer">
                   <div className="layer_body">
                     <div className="info_profile">
@@ -91,7 +102,7 @@ export const Header = () => {
                     </div>
                   </div>
                   <div className="layer_foot">
-                    <button type="button" className="btn_txt">
+                    <button type="button" className="btn_txt" onClick={handleSignout}>
                       로그아웃
                     </button>
                   </div>
