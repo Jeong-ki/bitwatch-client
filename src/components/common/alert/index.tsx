@@ -1,7 +1,7 @@
 'use client';
 
 import { create } from 'react-modal-promise';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment } from 'react';
 import { Button } from '@/components/common/button';
 import { ModalProps } from './types';
 
@@ -14,7 +14,6 @@ const Modal = ({
   isOpen,
   onResolve,
 }: ModalProps) => {
-  const btnRef = useRef<HTMLButtonElement | null>(null);
   const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
 
@@ -30,11 +29,11 @@ const Modal = ({
               <span className="txt_sub" style={{ whiteSpace: 'break-spaces' }}>
                 {description.includes('<br/>')
                   ? description.split('<br/>').map((text, index) => (
-                    <Fragment key={index}>
-                      {text}
-                      <br />
-                    </Fragment>
-                  ))
+                      <Fragment key={index}>
+                        {text}
+                        <br />
+                      </Fragment>
+                    ))
                   : description}
               </span>
             )}
@@ -42,10 +41,12 @@ const Modal = ({
         </div>
 
         <div className="layer_foot">
-          {hasCancelBtn && <Button color="secondary" onClick={onCancel}>{cancelText || '취소'}</Button>}
-          <Button 
-            color="primary"
-            onClick={onConfirm}>
+          {hasCancelBtn && (
+            <Button color="secondary" onClick={onCancel}>
+              {cancelText || '취소'}
+            </Button>
+          )}
+          <Button color="primary" onClick={onConfirm}>
             {confirmText || '확인'}
           </Button>
         </div>

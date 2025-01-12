@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
-interface Signin {
+interface SigninData {
   email: string;
   password: string;
 }
@@ -24,7 +24,7 @@ export default function Signin() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Signin>({
+  } = useForm<SigninData>({
     defaultValues: {
       email: '',
       password: '',
@@ -41,25 +41,23 @@ export default function Signin() {
       }
     },
     onError: (err) => {
-      // Alert({
-      //   description: err?.message || '',
-      //   hasCancelBtn: false,
-      // });
+      Alert({
+        description: err?.message || '',
+        hasCancelBtn: false,
+      });
     },
   });
 
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    handleSubmit((data: Signin) => {
+    handleSubmit((data: SigninData) => {
       signin(data);
     })(e);
   };
 
   return (
     <div className="wrap_login">
-      <h1 className="tit_login">
-        BitWatch
-      </h1>
+      <h1 className="tit_login">BitWatch</h1>
       <div className="wrap_login_form">
         <h2 className="screen_out">로그인</h2>
         <div className="inner_left">
@@ -96,7 +94,9 @@ export default function Signin() {
               </div>
             </fieldset>
           </form>
-          <p className="desc_notice_pw">비밀번호 찾기 | <Link href="/signup">회원가입</Link></p>
+          <p className="desc_notice_pw">
+            비밀번호 찾기 | <Link href="/signup">회원가입</Link>
+          </p>
         </div>
       </div>
     </div>

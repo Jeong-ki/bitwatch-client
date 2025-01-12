@@ -1,4 +1,4 @@
-import { Footer } from "@/components/layout/footer";
+import { Footer } from '@/components/layout/footer';
 
 export default function UnAuthLayout({ children }: { children: React.ReactNode }) {
   return (

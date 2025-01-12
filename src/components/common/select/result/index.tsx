@@ -32,7 +32,11 @@ export const SelectResult = ({
     test2: getDummy,
   };
 
-  const getConvertSuggestList = (type: SelectResultProps['type'], result: unknown, isAll?: boolean) => {
+  const getConvertSuggestList = (
+    type: SelectResultProps['type'],
+    result: unknown,
+    isAll?: boolean,
+  ) => {
     const convertedList = [];
     if (!result || !type) {
       return [];

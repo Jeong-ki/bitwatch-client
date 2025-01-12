@@ -1,6 +1,7 @@
 'use client';
 
-import { emailVerification, signinUser, signupUser } from '@/api/auth';
+import { emailVerification, signupUser } from '@/api/auth';
+import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
 import validateRule from '@/lib/react-hook-form';
@@ -48,32 +49,36 @@ export default function Signup() {
     },
     onError: (err) => {
       console.log('onError: ', err.message);
-      // Alert({
-      //   description: err?.message || '',
-      //   hasCancelBtn: false,
-      // });
+      Alert({
+        description: err?.message || '',
+        hasCancelBtn: false,
+      });
     },
   });
 
-  const {mutate: sendEmail} = useMutation({
+  const { mutate: sendEmail } = useMutation({
     mutationFn: emailVerification,
     onSuccess: (res) => {
       if (res.status === 200) {
         setIsSendEmail(true);
-        // Alert({
-        //   description: res.message,
-        //   hasCancelBtn: false,
-        // });
+        Alert({
+          description: res.message,
+          hasCancelBtn: false,
+        });
       }
     },
     onError: (err) => {
       console.log('onError: ', err.message);
+      Alert({
+        description: err?.message || '',
+        hasCancelBtn: false,
+      });
     },
-  })
+  });
 
   const handleEmailAuth = () => {
-    sendEmail({email: getValues('email')})
-  }
+    sendEmail({ email: getValues('email') });
+  };
 
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -84,9 +89,7 @@ export default function Signup() {
 
   return (
     <div className="wrap_login signup">
-      <h1 className="tit_login">
-        BitWatch
-      </h1>
+      <h1 className="tit_login">BitWatch</h1>
       <div className="wrap_login_form">
         <h2 className="screen_out">회원가입</h2>
         <div className="inner_left">
@@ -106,20 +109,25 @@ export default function Signup() {
                       errorMsg={errors.email?.message}
                       libProps={register('email', validateRule.email)}
                     />
-                    <Button type='button' size="medium" color="primary" onClick={handleEmailAuth} disabled={isSendEmail}>
+                    <Button
+                      type="button"
+                      size="medium"
+                      color="primary"
+                      onClick={handleEmailAuth}
+                      disabled={isSendEmail}>
                       인증하기
                     </Button>
                   </div>
-                  {isSendEmail && 
+                  {isSendEmail && (
                     <Input
                       id="auth_number"
                       title="인증번호 입력"
-                      placeholder='인증번호를 입력해주세요.'
+                      placeholder="인증번호를 입력해주세요."
                       showErrorMsg
                       errorMsg={errors.authNumber?.message}
                       libProps={register('authNumber', validateRule.required)}
                     />
-                  }
+                  )}
                 </div>
                 <div className="group_form">
                   <label htmlFor="password">닉네임</label>
@@ -160,7 +168,9 @@ export default function Signup() {
               </div>
             </fieldset>
           </form>
-          <p className="desc_notice_pw">이미 계정이 있으신가요? <Link href="/signin">로그인</Link></p>
+          <p className="desc_notice_pw">
+            이미 계정이 있으신가요? <Link href="/signin">로그인</Link>
+          </p>
         </div>
       </div>
     </div>
