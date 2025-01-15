@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/common/button';
 import cn from 'classnames';
@@ -10,18 +10,50 @@ import SearchIcon from '@img/icon/search.svg';
 import { isTokenValid } from '@/utils/common';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '@/store/auth';
-import { signoutUser } from '@/api/auth';
-import { useMutation } from '@tanstack/react-query';
+import { getUsers, reissueUser, signoutUser } from '@/api/auth';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import useUserStore from '@/store/user';
 
 export const Header = () => {
   const router = useRouter();
   const { accessToken, clearAuth } = useAuthStore();
-  const isLoggedIn = !!accessToken && isTokenValid(accessToken);
+  const { user, setUser, clearUser } = useUserStore();
+
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
+  const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const profileRef = useRef(null);
+
+  // 테스트용
+  const { data, refetch } = useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+    staleTime: 0,
+    gcTime: 0,
+    enabled: false,
+  });
+
+  console.log(data);
+
+  const clearInfo = () => {
+    signout();
+    clearAuth();
+    clearUser();
+  };
 
   const { mutate: signout } = useMutation({
     mutationFn: signoutUser,
+  });
+
+  const { mutate: reissue } = useMutation({
+    mutationFn: reissueUser,
+    onSuccess: (res) => {
+      if (res.status === 200 && res.data) {
+        setUser(res.data);
+      }
+    },
+    onError: () => {
+      clearInfo();
+    },
   });
 
   const handleOpenProfile = () => {
@@ -29,17 +61,31 @@ export const Header = () => {
   };
 
   const handleSignout = () => {
-    signout();
-    clearAuth();
+    clearInfo();
   };
 
   useOnClickOutside(profileRef, () => setIsOpenProfile(false));
+
+  useEffect(() => {
+    if (!accessToken && user) {
+      clearUser();
+    }
+    if (accessToken && !user) {
+      reissue();
+    }
+  }, [accessToken, user]);
 
   return (
     <header className="doc-header">
       <nav>
         <h1 className="doc-title">
-          <Link href="/" className="link_logo">
+          <Link
+            href="/"
+            className="link_logo"
+            onClick={() => {
+              // 테스트
+              refetch();
+            }}>
             BitWatch
           </Link>
         </h1>
@@ -96,8 +142,8 @@ export const Header = () => {
                         />
                       </div>
                       <div className="info_thumb">
-                        <strong className="tit_name">유저명</strong>
-                        <span className="txt_id">이메일</span>
+                        <strong className="tit_name">{user?.nickname}</strong>
+                        <span className="txt_id">{user?.email}</span>
                       </div>
                     </div>
                   </div>

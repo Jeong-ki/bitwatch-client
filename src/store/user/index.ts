@@ -1,5 +1,5 @@
 import { create, StateCreator } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 interface User {
   email: string;
@@ -9,15 +9,19 @@ interface User {
 interface UserState {
   user: User | null;
   setUser: (user: User) => void;
+  clearUser: () => void;
 }
 
 const store: StateCreator<UserState> = (set) => ({
   user: null,
   setUser: (user) => set({ user }),
+  clearUser: () => set({ user: null }),
 });
 
 const useUserStore = create<UserState>()(
-  devtools(store, { enabled: process.env.NODE_ENV === 'development' }),
+  devtools(persist(store, { name: 'user-storage' }), {
+    enabled: process.env.NODE_ENV === 'development',
+  }),
 );
 
 export default useUserStore;

@@ -9,7 +9,7 @@ interface FetchOptions {
 }
 
 const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptions) => {
-  const { accessToken, refreshAccessToken } = useAuthStore.getState();
+  const { accessToken, setAccessToken, clearAuth } = useAuthStore.getState();
 
   const config: RequestInit = {
     method,
@@ -31,11 +31,28 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
     const response = await fetch(baseURL + url + queryParams, config);
 
     if (response.status === 401) {
-      const newAccessToken = await refreshAccessToken();
-      if (newAccessToken) {
-        return await fetchCoreConfig(url, method, options);
+      console.warn('Access token expired. Attempting to refresh...');
+      const refreshResponse = await fetch(`${baseURL}/api/user/refresh`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      console.log('refreshResponse: ', refreshResponse);
+
+      if (!refreshResponse.ok) {
+        clearAuth();
+        throw new Error('Failed to refresh token');
       }
-      throw new Error('Session expired. Please log in again.');
+
+      const refreshData = await refreshResponse.json();
+      setAccessToken(refreshData.accessToken);
+
+      // 실패 API 재시도
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${refreshData.accessToken}`,
+      };
+
+      return await fetch(baseURL + url + queryParams, config);
     }
 
     if (!response.ok) {
