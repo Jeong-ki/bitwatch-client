@@ -12,39 +12,39 @@ import {
 
 /**
  * @title 로그인
- * @api POST /api/user/signin
+ * @api POST /user/signin
  */
-export const signinUser = (body: SigninReq) => postFetch<SigninRes>('/api/user/signin', body);
+export const signinUser = (body: SigninReq) => postFetch<SigninRes>('/user/signin', body);
 
 /**
  * @title 회원가입
- * @api POST /api/user/signup
+ * @api POST /user/signup
  */
-export const signupUser = (body: SignupReq) => postFetch<SignupRes>('/api/user/signup', body);
+export const signupUser = (body: SignupReq) => postFetch<SignupRes>('/user/signup', body);
 
 /**
  * @title 인증번호 발송
- * @api POST /api/user/email-verification
+ * @api POST /user/email-verification
  */
 export const emailVerification = (body: EmailVerificationReq) =>
-  postFetch<EmailVerificationResData>('/api/user/email-verification', body);
+  postFetch<EmailVerificationResData>('/user/email-verification', body);
 
 /**
  * @title 로그아웃
- * @api POST /api/user/signout
+ * @api POST /user/signout
  */
-export const signoutUser = () => postFetch('/api/user/signout');
+export const signoutUser = () => postFetch('/user/signout');
 
 /**
  * @title 유저정보 재발급
- * @api POST /api/user/reissue-user
+ * @api POST /user/reissue-user
  */
-export const reissueUser = (): Promise<ReissueUserRes> => postFetch('/api/user/reissue-user');
+export const reissueUser = (): Promise<ReissueUserRes> => postFetch('/user/reissue-user');
 
 /**
  * @title 유저 정보 호출
- * @api GET /api/user
+ * @api GET /user
  */
 export const getUsers = (): Promise<UsersRes> => {
-  return getFetch('/api/user/all');
+  return getFetch('/user/all');
 };

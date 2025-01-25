@@ -32,7 +32,7 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
 
     if (response.status === 401) {
       console.warn('Access token expired. Attempting to refresh...');
-      const refreshResponse = await fetch(`${baseURL}/api/user/refresh`, {
+      const refreshResponse = await fetch(`${baseURL}/user/refresh`, {
         method: 'POST',
         credentials: 'include',
       });
