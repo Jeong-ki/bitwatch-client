@@ -1,12 +1,18 @@
-import '@css/style.scss';
-import { MainLayout } from '@/components/layout/main-layout';
-import { Sidebar } from '@/components/layout/sidebar';
+import { Footer } from '@/components/layout/footer';
 
-export default function AuthLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function UnAuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <MainLayout>{children}</MainLayout>
-      <Sidebar />
-    </>
+    <div className="container-doc type_empty">
+      <main className="doc-main cont_login">
+        <section className="inner-main">
+          <div className="main-content">
+            <article id="mainContent" className="content-article">
+              {children}
+            </article>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 }
