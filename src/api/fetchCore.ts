@@ -44,12 +44,11 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
       }
 
       const refreshData = await refreshResponse.json();
-      setAccessToken(refreshData.accessToken);
+      setAccessToken(refreshData.data.accessToken);
 
-      // 실패 API 재시도
       config.headers = {
         ...config.headers,
-        Authorization: `Bearer ${refreshData.accessToken}`,
+        Authorization: `Bearer ${refreshData.data.accessToken}`,
       };
 
       return await fetch(baseURL + url + queryParams, config);

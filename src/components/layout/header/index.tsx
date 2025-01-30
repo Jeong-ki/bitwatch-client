@@ -10,8 +10,8 @@ import SearchIcon from '@img/icon/search.svg';
 import { isTokenValid } from '@/utils/common';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '@/store/auth';
-import { getUsers, reissueUser, signoutUser } from '@/api/auth';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { reissueUser, signoutUser } from '@/api/auth';
+import { useMutation } from '@tanstack/react-query';
 import useUserStore from '@/store/user';
 
 export const Header = () => {
@@ -22,17 +22,6 @@ export const Header = () => {
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const profileRef = useRef(null);
-
-  // 테스트용
-  const { data, refetch } = useQuery({
-    queryKey: ['users'],
-    queryFn: getUsers,
-    staleTime: 0,
-    gcTime: 0,
-    enabled: false,
-  });
-
-  console.log(data);
 
   const clearInfo = () => {
     signout();
@@ -79,13 +68,7 @@ export const Header = () => {
     <header className="doc-header">
       <nav>
         <h1 className="doc-title">
-          <Link
-            href="/"
-            className="link_logo"
-            onClick={() => {
-              // 테스트
-              refetch();
-            }}>
+          <Link href="/" className="link_logo">
             BitWatch
           </Link>
         </h1>
