@@ -32,6 +32,9 @@ importers:
       react-dom:
         specifier: 19.0.0-rc-66855b96-20241106
         version: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+      react-focus-lock:
+        specifier: ^2.13.6
+        version: 2.13.6(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
       react-hook-form:
         specifier: ^7.53.2
         version: 7.53.2(react@19.0.0-rc-66855b96-20241106)
@@ -89,10 +92,10 @@ importers:
         version: 8.56.0
       eslint-config-airbnb:
         specifier: 19.0.4
-        version: 19.0.4(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint-plugin-jsx-a11y@6.10.2(eslint@8.56.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.56.0))(eslint-plugin-react@7.37.2(eslint@8.56.0))(eslint@8.56.0)
+        version: 19.0.4(eslint-plugin-import@2.31.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@8.56.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.56.0))(eslint-plugin-react@7.37.2(eslint@8.56.0))(eslint@8.56.0)
       eslint-config-airbnb-typescript:
         specifier: 17.1.0
-        version: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0)(typescript@5.6.3))(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint@8.56.0)
+        version: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0)(typescript@5.6.3))(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-plugin-import@2.31.0)(eslint@8.56.0)
       eslint-config-next:
         specifier: 14.1.0
         version: 14.1.0(eslint@8.56.0)(typescript@5.6.3)
@@ -1529,6 +1532,9 @@ packages:
     resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
     engines: {node: '>=8'}
 
+  detect-node-es@1.1.0:
+    resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
+
   diff-sequences@29.6.3:
     resolution: {integrity: sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1922,6 +1928,10 @@ packages:
 
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
+
+  focus-lock@1.3.6:
+    resolution: {integrity: sha512-Ik/6OCk9RQQ0T5Xw+hKNLWrjSMtv51dD4GRmJjbD5a58TIEpI5a5iXagKVl3Z5UuyslMCA8Xwnu76jQob62Yhg==}
+    engines: {node: '>=10'}
 
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -2999,10 +3009,24 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
+  react-clientside-effect@1.2.7:
+    resolution: {integrity: sha512-gce9m0Pk/xYYMEojRI9bgvqQAkl6hm7ozQvqWPyQx+kULiatdHgkNM1QG4DQRx5N9BAzWSCJmt9mMV8/KsdgVg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+
   react-dom@19.0.0-rc-66855b96-20241106:
     resolution: {integrity: sha512-D25vdaytZ1wFIRiwNU98NPQ/upS2P8Co4/oNoa02PzHbh8deWdepjm5qwZM/46OdSiGv4WSWwxP55RO9obqJEQ==}
     peerDependencies:
       react: 19.0.0-rc-66855b96-20241106
+
+  react-focus-lock@2.13.6:
+    resolution: {integrity: sha512-ehylFFWyYtBKXjAO9+3v8d0i+cnc1trGS0vlTGhzFW1vbFXVUTmR8s2tt/ZQG8x5hElg6rhENlLG1H3EZK0Llg==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   react-hook-form@7.53.2:
     resolution: {integrity: sha512-YVel6fW5sOeedd1524pltpHX+jgU2u3DSDtXEaBORNdqiNrsX/nUI/iGXONegttg0mJVnfrIkiV0cmTU6Oo2xw==}
@@ -3541,6 +3565,26 @@ packages:
 
   url-parse@1.5.10:
     resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
+
+  use-callback-ref@1.3.3:
+    resolution: {integrity: sha512-jQL3lRnocaFtu3V00JToYz/4QkNWswxijDaCVNZRiRTO3HQDLsdu1ZtmIUvV4yPp+rvWm5j0y0TG/S61cuijTg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
+  use-sidecar@1.1.3:
+    resolution: {integrity: sha512-Fedw0aZvkhynoPYlA5WXrMCAMm+nSWdZt6lzJQ7Ok8S6Q+VsHmHpRWndVRJ8Be0ZbkfPc5LRYH+5XrzXcEeLRQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -5260,6 +5304,8 @@ snapshots:
 
   detect-newline@3.1.0: {}
 
+  detect-node-es@1.1.0: {}
+
   diff-sequences@29.6.3: {}
 
   diff@4.0.2: {}
@@ -5434,7 +5480,7 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-config-airbnb-base@15.0.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint@8.56.0):
+  eslint-config-airbnb-base@15.0.0(eslint-plugin-import@2.31.0)(eslint@8.56.0):
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.56.0
@@ -5443,18 +5489,18 @@ snapshots:
       object.entries: 1.1.8
       semver: 6.3.1
 
-  eslint-config-airbnb-typescript@17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0)(typescript@5.6.3))(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint@8.56.0):
+  eslint-config-airbnb-typescript@17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0)(typescript@5.6.3))(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-plugin-import@2.31.0)(eslint@8.56.0):
     dependencies:
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0)(typescript@5.6.3)
       '@typescript-eslint/parser': 6.21.0(eslint@8.56.0)(typescript@5.6.3)
       eslint: 8.56.0
-      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint@8.56.0)
+      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.31.0)(eslint@8.56.0)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.3)(eslint@8.56.0)
 
-  eslint-config-airbnb@19.0.4(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint-plugin-jsx-a11y@6.10.2(eslint@8.56.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.56.0))(eslint-plugin-react@7.37.2(eslint@8.56.0))(eslint@8.56.0):
+  eslint-config-airbnb@19.0.4(eslint-plugin-import@2.31.0)(eslint-plugin-jsx-a11y@6.10.2(eslint@8.56.0))(eslint-plugin-react-hooks@4.6.0(eslint@8.56.0))(eslint-plugin-react@7.37.2(eslint@8.56.0))(eslint@8.56.0):
     dependencies:
       eslint: 8.56.0
-      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint@8.56.0))(eslint@8.56.0)
+      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.31.0)(eslint@8.56.0)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.3)(eslint@8.56.0)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.56.0)
       eslint-plugin-react: 7.37.2(eslint@8.56.0)
@@ -5499,7 +5545,7 @@ snapshots:
       debug: 4.3.7(supports-color@8.1.1)
       enhanced-resolve: 5.17.1
       eslint: 8.56.0
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@8.56.0))(eslint@8.56.0)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.56.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.8.1
       is-bun-module: 1.2.1
@@ -5512,7 +5558,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@8.56.0))(eslint@8.56.0):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.56.0):
     dependencies:
       debug: 3.2.7(supports-color@8.1.1)
     optionalDependencies:
@@ -5534,7 +5580,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0)(eslint@8.56.0))(eslint@8.56.0)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@6.21.0(eslint@8.56.0)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.56.0)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -5805,6 +5851,10 @@ snapshots:
       rimraf: 3.0.2
 
   flatted@3.3.1: {}
+
+  focus-lock@1.3.6:
+    dependencies:
+      tslib: 2.8.1
 
   for-each@0.3.3:
     dependencies:
@@ -7091,10 +7141,27 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
+  react-clientside-effect@1.2.7(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      react: 19.0.0-rc-66855b96-20241106
+
   react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106):
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
       scheduler: 0.25.0-rc-66855b96-20241106
+
+  react-focus-lock@2.13.6(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      focus-lock: 1.3.6
+      prop-types: 15.8.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-clientside-effect: 1.2.7(react@19.0.0-rc-66855b96-20241106)
+      use-callback-ref: 1.3.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+      use-sidecar: 1.1.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   react-hook-form@7.53.2(react@19.0.0-rc-66855b96-20241106):
     dependencies:
@@ -7655,6 +7722,21 @@ snapshots:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+
+  use-callback-ref@1.3.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+      tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 18.3.12
+
+  use-sidecar@1.1.3(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      detect-node-es: 1.1.0
+      react: 19.0.0-rc-66855b96-20241106
+      tslib: 2.8.1
+    optionalDependencies:
+      '@types/react': 18.3.12
 
   util-deprecate@1.0.2: {}
 

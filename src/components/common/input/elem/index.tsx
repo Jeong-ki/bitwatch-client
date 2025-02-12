@@ -2,7 +2,7 @@
 
 import { ChangeEvent, FocusEvent } from 'react';
 import { InputElemProps } from '@/components/common/input/elem/types';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 export const InputElem = ({
   errorMsg,
@@ -12,6 +12,7 @@ export const InputElem = ({
   onChange = () => {},
   libProps = {},
   inputSizeType,
+  className,
   ...otherProps
 }: InputElemProps) => {
   const {
@@ -41,7 +42,7 @@ export const InputElem = ({
     <input
       placeholder=""
       onBlur={handleBlur}
-      className={classNames('tf_comm', `${inputSizeType ? `type_${inputSizeType}` : ''}`, {
+      className={cn('tf_comm', className, inputSizeType && `type_${inputSizeType}`, {
         error: errorMsg,
         success: showSuccessMsg,
       })}

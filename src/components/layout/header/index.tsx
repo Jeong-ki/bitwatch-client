@@ -13,6 +13,7 @@ import useAuthStore from '@/store/auth';
 import { reissueUser, signoutUser } from '@/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import useUserStore from '@/store/user';
+import { SearchModal } from '../search-modal';
 
 export const Header = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ export const Header = () => {
   const { user, setUser, clearUser } = useUserStore();
 
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
+  const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const profileRef = useRef(null);
 
@@ -53,7 +55,30 @@ export const Header = () => {
     clearInfo();
   };
 
+  const handleOpenSearchModal = () => {
+    SearchModal().then(() => {
+      setIsOpenSearchModal(false);
+    });
+    setIsOpenSearchModal(true);
+  };
+
   useOnClickOutside(profileRef, () => setIsOpenProfile(false));
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === '/') {
+        if (!isOpenSearchModal) {
+          console.log(isOpenSearchModal);
+          handleOpenSearchModal();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpenSearchModal]);
 
   useEffect(() => {
     if (!accessToken && user) {
@@ -90,7 +115,7 @@ export const Header = () => {
               </Button>
             </li>
           </ul>
-          <Button className="search">
+          <Button className="search" onClick={handleOpenSearchModal}>
             <Image src={SearchIcon} width={16} height={16} alt="조회 아이콘" />
             <span>/</span> <p>를 눌러 검색해보세요.</p>
           </Button>

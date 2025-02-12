@@ -12,7 +12,6 @@ const Modal = ({
   hasCancelBtn = true,
   cancelText,
   confirmText,
-  isOpen,
   onResolve,
 }: ModalProps) => {
   const btnRef = useRef<HTMLButtonElement | null>(null);
@@ -28,8 +27,7 @@ const Modal = ({
 
   return (
     <div
-      className="comm_layer alert_layer"
-      style={{ display: isOpen ? undefined : 'none', zIndex: 100000 }}>
+      className="comm_layer alert_layer">
       <div className="inner_layer">
         <div className="layer_body">
           <p className="desc_layer">

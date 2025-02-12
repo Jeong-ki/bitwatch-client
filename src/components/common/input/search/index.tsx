@@ -56,6 +56,7 @@ export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
       onChange={onChangeInput}
       onFocus={handleFocus}
       libProps={libProps}
+      className="tf_search"
       {...otherProps}>
       {children}
       {isShowResetBtn && (

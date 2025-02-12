@@ -29,8 +29,11 @@
   display: flex;
 
   .search_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    right: 8px;
+    left: 8px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--Gray-60);
@@ -80,6 +83,11 @@
   box-shadow: var(--shadow-inset);
   transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
   transition-property: color, background-color, box-shadow, border-color;
+
+  &.tf_search {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   &:focus {
     border-color: var(--input-focus);
