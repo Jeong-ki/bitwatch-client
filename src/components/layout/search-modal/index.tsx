@@ -2,7 +2,7 @@
 
 import { InputSearch } from '@/components/common/input/search';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { create, InstanceProps } from 'react-modal-promise';
 import FocusLock from 'react-focus-lock';
 
@@ -86,10 +86,17 @@ const dummyData = [
 ];
 
 const Modal = ({ isOpen, onResolve }: ModalProps) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLDivElement>(null);
   const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
+  const modalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useCallback((node: HTMLDivElement | null) => {
+    if (node) {
+      const inputEl = node.querySelector('input');
+      if (inputEl) {
+        inputEl.focus();
+      }
+    }
+  }, []);
 
   useOnClickOutside(modalRef, onCancel);
 
@@ -108,46 +115,36 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    if (!inputRef.current) return;
-    const inputEl = inputRef.current.querySelector('input');
-    if (inputEl) {
-      setTimeout(() => {
-        inputEl.focus();
-      }, 100);
-    }
-  }, [inputRef]);
-
   return (
     <div className="comm_layer">
       <FocusLock disabled={!isOpen} autoFocus={false}>
-      <div className="inner_layer layer_search" ref={modalRef}>
-        <div className="layer_body">
-          <InputSearch refProp={inputRef} />
-          <ul className="list_search">
-            {dummyData.map((item, index) => {
-              const upDownClass = Number(item.change) >= 0 ? 'up' : 'down';
-              return (
-                <li key={index}>
-                  <button>
-                    <div>
-                      <span>{item.logo}</span>
+        <div className="inner_layer layer_search" ref={modalRef}>
+          <div className="layer_body">
+            <InputSearch refProp={inputRef} />
+            <ul className="list_search">
+              {dummyData.map((item, index) => {
+                const upDownClass = Number(item.change) >= 0 ? 'up' : 'down';
+                return (
+                  <li key={index}>
+                    <button>
                       <div>
-                        <p>{item.name}</p>
-                        <p>{item.code}</p>
+                        <span>{item.logo}</span>
+                        <div>
+                          <p>{item.name}</p>
+                          <p>{item.code}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <p>{item.price}</p>
-                      <p className={upDownClass}>{item.change}%</p>
-                    </div>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+                      <div>
+                        <p>{item.price}</p>
+                        <p className={upDownClass}>{item.change}%</p>
+                      </div>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-      </div>
       </FocusLock>
     </div>
   );

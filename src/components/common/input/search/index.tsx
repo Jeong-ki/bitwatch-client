@@ -15,7 +15,7 @@ export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
   libProps,
   ...otherProps
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const localRef = useRef<HTMLDivElement>(null);
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const isShowResetBtn = useMemo(
     () => isFocus && !!value && !otherProps.disabled && !otherProps.readOnly,
@@ -47,11 +47,11 @@ export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
     setMatchedValue('');
   };
 
-  useOnClickOutside(otherProps?.refProp ?? ref, handleClose);
+  useOnClickOutside(localRef, handleClose);
 
   return (
     <Input
-      refProp={otherProps?.refProp ?? ref}
+      refProp={otherProps?.refProp ?? localRef}
       value={value}
       onChange={onChangeInput}
       onFocus={handleFocus}

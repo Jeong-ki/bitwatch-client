@@ -1,7 +1,7 @@
 'use client';
 
 import { create } from 'react-modal-promise';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useCallback } from 'react';
 import { Button } from '@/components/common/button';
 import cn from 'classnames';
 import { ModalProps } from './types';
@@ -14,20 +14,17 @@ const Modal = ({
   confirmText,
   onResolve,
 }: ModalProps) => {
-  const btnRef = useRef<HTMLButtonElement | null>(null);
   const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
 
-  useEffect(() => {
-    if (!btnRef.current) return;
-    setTimeout(() => {
-      btnRef.current?.focus?.();
-    }, 100);
-  }, [btnRef]);
+  const btnRef = useCallback((node: HTMLButtonElement | null) => {
+    if (node) {
+      node.focus();
+    }
+  }, []);
 
   return (
-    <div
-      className="comm_layer alert_layer">
+    <div className="comm_layer alert_layer">
       <div className="inner_layer">
         <div className="layer_body">
           <p className="desc_layer">
