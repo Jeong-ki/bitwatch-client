@@ -1,5 +1,6 @@
 'use client';
 
+import { HTTP_STATUS } from '@/@types/enum';
 import { signinUser } from '@/api/auth';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
@@ -38,7 +39,7 @@ export default function Signin() {
   const { mutate: signin } = useMutation({
     mutationFn: signinUser,
     onSuccess: (res) => {
-      if (res.status === 200) {
+      if (res.status === HTTP_STATUS.OK) {
         const { email, nickname, accessToken } = res.data!;
         setUser({ email, nickname });
         setAccessToken(accessToken);

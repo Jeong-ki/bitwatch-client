@@ -1,5 +1,6 @@
 'use client';
 
+import { HTTP_STATUS } from '@/@types/enum';
 import { emailVerification, signupUser } from '@/api/auth';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
@@ -42,7 +43,7 @@ export default function Signup() {
   const { mutate: signup } = useMutation({
     mutationFn: signupUser,
     onSuccess: (res) => {
-      if (res.status === 201) {
+      if (res.status === HTTP_STATUS.CREATED) {
         Alert({
           description: res?.message || '',
           hasCancelBtn: false,
@@ -65,7 +66,7 @@ export default function Signup() {
   const { mutate: sendEmail } = useMutation({
     mutationFn: emailVerification,
     onSuccess: (res) => {
-      if (res.status === 200) {
+      if (res.status === HTTP_STATUS.OK) {
         setIsSendEmail(true);
         Alert({
           description: res.message,

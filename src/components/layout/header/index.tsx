@@ -13,6 +13,7 @@ import useAuthStore from '@/store/auth';
 import { reissueUser, signoutUser } from '@/api/auth';
 import { useMutation } from '@tanstack/react-query';
 import useUserStore from '@/store/user';
+import { HTTP_STATUS } from '@/@types/enum';
 import { SearchModal } from '../search-modal';
 
 export const Header = () => {
@@ -38,7 +39,7 @@ export const Header = () => {
   const { mutate: reissue } = useMutation({
     mutationFn: reissueUser,
     onSuccess: (res) => {
-      if (res.status === 200 && res.data) {
+      if (res.status === HTTP_STATUS.OK && res.data) {
         setUser(res.data);
       }
     },

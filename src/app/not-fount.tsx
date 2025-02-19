@@ -4,6 +4,7 @@ import '@css/style.scss';
 import { ErrorPage } from '@/components/layout/error';
 import { Viewport } from 'next';
 import { useEffect } from 'react';
+import { HTTP_STATUS } from '@/@types/enum';
 
 export const viewport: Viewport = {
   initialScale: 0.1,
@@ -17,7 +18,7 @@ export default function Error({ error }: { error: Error & { digest?: string } })
   return (
     <html lang="ko">
       <body>
-        <ErrorPage status={404} />;
+        <ErrorPage status={HTTP_STATUS.NOT_FOUND} />;
       </body>
     </html>
   );

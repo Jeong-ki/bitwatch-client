@@ -1,3 +1,4 @@
+import { HTTP_STATUS } from '@/@types/enum';
 import useAuthStore from '@/store/auth';
 
 type METHOD = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT';
@@ -30,7 +31,7 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
   try {
     const response = await fetch(baseURL + url + queryParams, config);
 
-    if (response.status === 401) {
+    if (response.status === HTTP_STATUS.UNAUTHORIZED) {
       console.warn('Access token expired. Attempting to refresh...');
       const refreshResponse = await fetch(`${baseURL}/user/refresh`, {
         method: 'POST',

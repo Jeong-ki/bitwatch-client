@@ -1,5 +1,6 @@
 import { isEmptyNum } from '@/utils/common';
 import Link from 'next/link';
+import { HTTP_STATUS } from '@/@types/enum';
 import { Footer } from '../footer';
 
 export const ErrorPage = ({ status }: { status?: number }) => {
@@ -15,7 +16,7 @@ export const ErrorPage = ({ status }: { status?: number }) => {
                 <div className="area_error_ico">
                   <span className="ico_comm ico_wran">삭제</span>
                 </div>
-                {status === 404 ? (
+                {status === HTTP_STATUS.NOT_FOUND ? (
                   <>
                     <h1 className="tit_error_txt">시스템 이용에 불편을 드려 죄송합니다.</h1>
                     <div className="area_error_txt">
@@ -25,7 +26,7 @@ export const ErrorPage = ({ status }: { status?: number }) => {
                       입력하신 페이지의 주소가 정확한지 다시 한번 확인해 주시길 부탁드립니다.
                     </div>
                   </>
-                ) : status === 500 ? (
+                ) : status === HTTP_STATUS.INTERNAL_SERVER_ERROR ? (
                   <>
                     <h1 className="tit_error_txt">시스템 이용에 불편을 드려 죄송합니다.</h1>
                     <div className="area_error_txt">
