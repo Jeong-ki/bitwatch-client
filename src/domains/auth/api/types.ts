@@ -37,9 +37,3 @@ export interface EmailVerificationReq {
   email: string;
 }
 export type EmailVerificationResData = CommonResData;
-interface ReissueUserResData {
-  email: string;
-  nickname: string;
-}
-
-export type ReissueUserRes = CommonResData<ReissueUserResData>;

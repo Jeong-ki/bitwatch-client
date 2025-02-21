@@ -75,7 +75,7 @@ module.exports = {
       },
       {
         selector: 'property',
-        format: ['camelCase', 'UPPER_CASE', 'PascalCase', 'snake_case']
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase', 'snake_case'],
       },
       {
         selector: 'method',
