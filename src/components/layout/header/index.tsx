@@ -7,14 +7,15 @@ import { Button } from '@/components/common/button';
 import cn from 'classnames';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import SearchIcon from '@img/icon/search.svg';
-import { isTokenValid } from '@/utils/common';
 import { useRouter } from 'next/navigation';
-import useAuthStore from '@/store/auth';
-import { reissueUser, signoutUser } from '@/api/auth';
+import useAuthStore from '@/domains/auth/store';
 import { useMutation } from '@tanstack/react-query';
-import useUserStore from '@/store/user';
+import useUserStore from '@/domains/user/store';
 import { HTTP_STATUS } from '@/@types/enum';
 import { SearchModal } from '../search-modal';
+import { signoutUser } from '@/domains/auth/api';
+import { isTokenValid } from '@/domains/auth/utils';
+import { reissueUser } from '@/domains/user/api';
 
 export const Header = () => {
   const router = useRouter();

@@ -1,13 +1,11 @@
-import { getFetch, postFetch } from '../fetchCore';
+import { postFetch } from '@/api/fetchCore';
 import {
   EmailVerificationReq,
   EmailVerificationResData,
-  ReissueUserRes,
   SigninReq,
   SigninRes,
   SignupReq,
-  SignupRes,
-  UsersRes
+  SignupRes
 } from './types';
 
 /**
@@ -36,18 +34,3 @@ export const emailVerification = (body: EmailVerificationReq) =>
  * @api POST /user/signout
  */
 export const signoutUser = () => postFetch('/user/signout');
-
-/**
- * @title 유저정보 재발급
- * @api POST /user/reissue-user
- */
-export const reissueUser = (): Promise<ReissueUserRes> =>
-  postFetch('/user/reissue-user');
-
-/**
- * @title 유저 정보 호출
- * @api GET /user
- */
-export const getUsers = (): Promise<UsersRes> => {
-  return getFetch('/user/all');
-};

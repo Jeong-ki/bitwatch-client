@@ -3,8 +3,8 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Spinner } from '@/components/common/spinner';
-import { getUsers } from '@/api/auth';
 import useTestStore from '@/store/input';
+import { getUsers } from '@/domains/user/api';
 
 export default function Home() {
   const { testInput, setTestInput } = useTestStore();

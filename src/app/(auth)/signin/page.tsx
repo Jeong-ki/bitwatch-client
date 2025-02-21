@@ -1,13 +1,13 @@
 'use client';
 
 import { HTTP_STATUS } from '@/@types/enum';
-import { signinUser } from '@/api/auth';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { signinUser } from '@/domains/auth/api';
 import validateRule from '@/lib/react-hook-form';
-import useAuthStore from '@/store/auth';
-import useUserStore from '@/store/user';
+import useAuthStore from '@/domains/auth/store';
+import useUserStore from '@/domains/user/store';
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

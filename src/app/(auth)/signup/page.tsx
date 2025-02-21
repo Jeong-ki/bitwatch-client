@@ -1,10 +1,10 @@
 'use client';
 
 import { HTTP_STATUS } from '@/@types/enum';
-import { emailVerification, signupUser } from '@/api/auth';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
+import { emailVerification, signupUser } from '@/domains/auth/api';
 import validateRule from '@/lib/react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';

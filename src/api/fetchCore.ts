@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from '@/@types/enum';
-import useAuthStore from '@/store/auth';
+import useAuthStore from '@/domains/auth/store';
 
 type METHOD = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT';
 

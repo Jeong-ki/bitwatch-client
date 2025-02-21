@@ -1,4 +1,4 @@
-import { CommonResData } from '../types';
+import { CommonResData } from '@/api/types';
 
 export interface UsersRes {
   data: {
@@ -37,7 +37,6 @@ export interface EmailVerificationReq {
   email: string;
 }
 export type EmailVerificationResData = CommonResData;
-
 interface ReissueUserResData {
   email: string;
   nickname: string;
