@@ -7,16 +7,16 @@ interface AuthState {
   clearAuth: () => void;
 }
 
-const store: StateCreator<AuthState> = (set) => ({
+const store: StateCreator<AuthState> = set => ({
   accessToken: null,
-  setAccessToken: (state) => set({ accessToken: state }),
-  clearAuth: () => set({ accessToken: null }),
+  setAccessToken: state => set({ accessToken: state }),
+  clearAuth: () => set({ accessToken: null })
 });
 
 const useAuthStore = create<AuthState>()(
   devtools(persist(store, { name: 'auth-storage' }), {
-    enabled: process.env.NODE_ENV === 'development',
-  }),
+    enabled: process.env.NODE_ENV === 'development'
+  })
 );
 
 export default useAuthStore;

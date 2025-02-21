@@ -12,7 +12,7 @@ export const OptionList = ({
   noDataText,
   compareValue,
   onClick,
-  onEnter = () => {},
+  onEnter = () => {}
 }: OptionListProps) => {
   const [focusedIdx, setFocusedIdx] = useState<number>(-1);
 
@@ -35,7 +35,7 @@ export const OptionList = ({
   const toMove = useMemoizedFn((isArrowUp: boolean) => {
     if (items.length === 0) return;
 
-    setFocusedIdx((focusedIdx) => {
+    setFocusedIdx(focusedIdx => {
       const optionLength = items.length;
       const isFocused = focusedIdx !== -1;
       const targetIdx = isArrowUp
@@ -94,7 +94,9 @@ export const OptionList = ({
   }, [isOpened]);
 
   return (
-    <div className="box_opt" aria-hidden={!isOpened}>
+    <div
+      className="box_opt"
+      aria-hidden={!isOpened}>
       <ul className="list_opt">
         {items.length > 0 ? (
           (() => {
@@ -108,13 +110,17 @@ export const OptionList = ({
                 <li
                   key={`option_item_${index}`}
                   className={cn({ on: isOn })}
-                  style={{ background: index === focusedIdx ? '#f0f0f0' : undefined }}>
+                  style={{
+                    background: index === focusedIdx ? '#f0f0f0' : undefined
+                  }}>
                   <button
                     type="button"
                     className="link_opt"
                     onClick={() => handleClickOption(item)}
                     disabled={item?.disabled}>
-                    <span className="txt_opt txt_ellipsis">{item.text ?? '-'}</span>
+                    <span className="txt_opt txt_ellipsis">
+                      {item.text ?? '-'}
+                    </span>
                   </button>
                 </li>
               );
@@ -122,7 +128,9 @@ export const OptionList = ({
           })()
         ) : (
           <li>
-            <button type="button" className="link_opt">
+            <button
+              type="button"
+              className="link_opt">
               <span className="txt_opt txt_ellipsis">{noDataText ?? '-'}</span>
             </button>
           </li>

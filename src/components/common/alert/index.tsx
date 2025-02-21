@@ -12,7 +12,7 @@ const Modal = ({
   hasCancelBtn = true,
   cancelText,
   confirmText,
-  onResolve,
+  onResolve
 }: ModalProps) => {
   const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
@@ -30,7 +30,9 @@ const Modal = ({
           <p className="desc_layer">
             {title}
             {description && (
-              <span className="txt_sub" style={{ whiteSpace: 'break-spaces' }}>
+              <span
+                className="txt_sub"
+                style={{ whiteSpace: 'break-spaces' }}>
                 {description.includes('<br/>')
                   ? description.split('<br/>').map((text, index) => (
                       <Fragment key={index}>
@@ -46,7 +48,9 @@ const Modal = ({
 
         <div className="layer_foot">
           {hasCancelBtn && (
-            <Button color="secondary" onClick={onCancel}>
+            <Button
+              color="secondary"
+              onClick={onCancel}>
               {cancelText || '취소'}
             </Button>
           )}

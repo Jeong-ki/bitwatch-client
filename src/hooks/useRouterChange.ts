@@ -3,7 +3,7 @@ import { useLayoutEffect, useState } from 'react';
 import usePrevious from './usePrevious';
 
 export const useRouterChange = ({
-  onRouteChangeStart,
+  onRouteChangeStart
 }: {
   onRouteChangeStart: (url: string) => void;
 }) => {
@@ -18,7 +18,11 @@ export const useRouterChange = ({
       return;
     }
     setFullPathname(url);
-    if (!!prevFullPathname && !!fullPathname && fullPathname !== prevFullPathname) {
+    if (
+      !!prevFullPathname &&
+      !!fullPathname &&
+      fullPathname !== prevFullPathname
+    ) {
       onRouteChangeStart(url);
     }
   }, [pathname, searchParams, fullPathname]);

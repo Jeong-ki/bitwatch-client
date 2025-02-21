@@ -28,17 +28,17 @@ export default function Signin() {
     watch,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<SigninData>({
     defaultValues: {
       email: '',
-      password: '',
-    },
+      password: ''
+    }
   });
 
   const { mutate: signin } = useMutation({
     mutationFn: signinUser,
-    onSuccess: (res) => {
+    onSuccess: res => {
       if (res.status === HTTP_STATUS.OK) {
         const { email, nickname, accessToken } = res.data!;
         setUser({ email, nickname });
@@ -46,12 +46,12 @@ export default function Signin() {
         router.push('/');
       }
     },
-    onError: (err) => {
+    onError: err => {
       Alert({
         description: err?.message || '',
-        hasCancelBtn: false,
+        hasCancelBtn: false
       });
-    },
+    }
   });
 
   const onSubmit = async (e: SyntheticEvent) => {
@@ -94,7 +94,11 @@ export default function Signin() {
                     libProps={register('password', validateRule.password)}
                   />
                 </div>
-                <Button type="submit" className="btn_login" size="medium" color="primary">
+                <Button
+                  type="submit"
+                  className="btn_login"
+                  size="medium"
+                  color="primary">
                   로그인
                 </Button>
               </div>

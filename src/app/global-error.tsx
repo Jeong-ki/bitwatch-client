@@ -6,10 +6,14 @@ import { Viewport } from 'next';
 import { useEffect } from 'react';
 
 export const viewport: Viewport = {
-  initialScale: 0.1,
+  initialScale: 0.1
 };
 
-export default function Error({ error }: { error: Error & { digest?: string } }) {
+export default function Error({
+  error
+}: {
+  error: Error & { digest?: string };
+}) {
   useEffect(() => {
     console.error(error);
   }, [error]);

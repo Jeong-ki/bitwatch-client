@@ -22,7 +22,9 @@ export const Checkbox = ({
         {...otherProps}
       />
       <span className="checkbox_label_wrap">
-        <label htmlFor={`checkbox_${uniqueId}`} className="checkbox_label">
+        <label
+          htmlFor={`checkbox_${uniqueId}`}
+          className="checkbox_label">
           {text && text}
         </label>
         {description && <span className="checkbox_caption">{description}</span>}

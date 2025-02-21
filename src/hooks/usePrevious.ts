@@ -6,7 +6,7 @@ const defaultShouldUpdate = <T>(a?: T, b?: T) => !Object.is(a, b);
 
 function usePrevious<T>(
   state: T,
-  shouldUpdate: ShouldUpdateFunc<T> = defaultShouldUpdate,
+  shouldUpdate: ShouldUpdateFunc<T> = defaultShouldUpdate
 ): T | undefined {
   const prevRef = useRef<T>();
   const curRef = useRef<T>();

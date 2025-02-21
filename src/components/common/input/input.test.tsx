@@ -17,7 +17,7 @@ describe('Input 컴포넌트', () => {
     children: null,
     boxChildren: null,
     itemChildren: null,
-    refProp: undefined,
+    refProp: undefined
   };
 
   it('Input 렌더링 및 placeholder 기본 값 검증', () => {
@@ -34,10 +34,16 @@ describe('Input 컴포넌트', () => {
         sizeType="large"
         inputSizeType="medium"
         itemClassName="custom-class"
-      />,
+      />
     );
-    const containerElement = screen.getByPlaceholderText('').closest('.item_form');
-    expect(containerElement).toHaveClass('item_form', 'form_large', 'custom-class');
+    const containerElement = screen
+      .getByPlaceholderText('')
+      .closest('.item_form');
+    expect(containerElement).toHaveClass(
+      'item_form',
+      'form_large',
+      'custom-class'
+    );
     const inputElement = screen.getByPlaceholderText('');
     expect(inputElement).toHaveClass('tf_comm', 'type_medium', 'error');
   });
@@ -50,7 +56,7 @@ describe('Input 컴포넌트', () => {
         showErrorMsg
         successMsg="This is a success"
         showSuccessMsg
-      />,
+      />
     );
     expect(screen.getByText('This is an error')).toHaveClass('desc_error');
     expect(screen.getByText('This is a success')).toHaveClass('desc_success');
@@ -59,7 +65,13 @@ describe('Input 컴포넌트', () => {
   it('입력 시 onChange, onBlur 이벤트 핸들러가 실행된다.', () => {
     const onChangeMock = jest.fn();
     const onBlurMock = jest.fn();
-    render(<Input {...defaultProps} onChange={onChangeMock} onBlur={onBlurMock} />);
+    render(
+      <Input
+        {...defaultProps}
+        onChange={onChangeMock}
+        onBlur={onBlurMock}
+      />
+    );
     const inputElement = screen.getByPlaceholderText('');
 
     fireEvent.change(inputElement, { target: { value: 'new value' } });
@@ -71,7 +83,13 @@ describe('Input 컴포넌트', () => {
 
   it('maxLength 초과 시 이벤트 핸들러가 호출되지 않는다.', () => {
     const onChangeMock = jest.fn();
-    render(<Input {...defaultProps} onChange={onChangeMock} maxLength={5} />);
+    render(
+      <Input
+        {...defaultProps}
+        onChange={onChangeMock}
+        maxLength={5}
+      />
+    );
     const inputElement = screen.getByPlaceholderText('');
 
     fireEvent.change(inputElement, { target: { value: 'exceeding' } });
@@ -85,7 +103,7 @@ describe('Input 컴포넌트', () => {
         boxChildren={<span>Box Child</span>}
         itemChildren={<span>Item Child</span>}>
         <span>Inner Child</span>
-      </Input>,
+      </Input>
     );
     expect(screen.getByText('Box Child')).toBeInTheDocument();
     expect(screen.getByText('Item Child')).toBeInTheDocument();

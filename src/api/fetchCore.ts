@@ -9,23 +9,30 @@ interface FetchOptions {
   headers?: Record<string, string>;
 }
 
-const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptions) => {
+const fetchCoreConfig = async (
+  url: string,
+  method: METHOD,
+  options?: FetchOptions
+) => {
   const { accessToken, setAccessToken, clearAuth } = useAuthStore.getState();
 
   const config: RequestInit = {
     method,
     headers: {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
       ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
-      ...options?.headers,
-    },
+      ...options?.headers
+    }
   };
 
   if (method !== 'GET' && options?.body) {
     config.body = JSON.stringify(options.body);
   }
 
-  const queryParams = options?.params ? `?${new URLSearchParams(options.params).toString()}` : '';
+  const queryParams = options?.params
+    ? `?${new URLSearchParams(options.params).toString()}`
+    : '';
   const baseURL = process.env.NEXT_PUBLIC_API_URL as string;
 
   try {
@@ -35,7 +42,7 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
       console.warn('Access token expired. Attempting to refresh...');
       const refreshResponse = await fetch(`${baseURL}/user/refresh`, {
         method: 'POST',
-        credentials: 'include',
+        credentials: 'include'
       });
       console.log('refreshResponse: ', refreshResponse);
 
@@ -49,7 +56,7 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
 
       config.headers = {
         ...config.headers,
-        Authorization: `Bearer ${refreshData.data.accessToken}`,
+        Authorization: `Bearer ${refreshData.data.accessToken}`
       };
 
       return await fetch(baseURL + url + queryParams, config);
@@ -67,27 +74,45 @@ const fetchCoreConfig = async (url: string, method: METHOD, options?: FetchOptio
   }
 };
 
-export const getFetch = async <T>(url: string, options?: FetchOptions): Promise<T> => {
+export const getFetch = async <T>(
+  url: string,
+  options?: FetchOptions
+): Promise<T> => {
   const response = await fetchCoreConfig(url, 'GET', options);
   return response.json();
 };
 
-export const postFetch = async <T>(url: string, body?: any, options?: FetchOptions): Promise<T> => {
+export const postFetch = async <T>(
+  url: string,
+  body?: any,
+  options?: FetchOptions
+): Promise<T> => {
   const response = await fetchCoreConfig(url, 'POST', { ...options, body });
   return response.json();
 };
 
-export const putFetch = async <T>(url: string, body: any, options?: FetchOptions): Promise<T> => {
+export const putFetch = async <T>(
+  url: string,
+  body: any,
+  options?: FetchOptions
+): Promise<T> => {
   const response = await fetchCoreConfig(url, 'PUT', { ...options, body });
   return response.json();
 };
 
-export const patchFetch = async <T>(url: string, body: any, options?: FetchOptions): Promise<T> => {
+export const patchFetch = async <T>(
+  url: string,
+  body: any,
+  options?: FetchOptions
+): Promise<T> => {
   const response = await fetchCoreConfig(url, 'PATCH', { ...options, body });
   return response.json();
 };
 
-export const deleteFetch = async <T>(url: string, options?: FetchOptions): Promise<T> => {
+export const deleteFetch = async <T>(
+  url: string,
+  options?: FetchOptions
+): Promise<T> => {
   const response = await fetchCoreConfig(url, 'DELETE', options);
   return response.json();
 };

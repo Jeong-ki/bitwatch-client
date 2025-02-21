@@ -15,12 +15,16 @@ import { useForm } from 'react-hook-form';
 const SelectOption = [
   { text: 'select_01', value: 'select_value_01' },
   { text: 'select_02', value: 'select_value_02' },
-  { text: 'select_03', value: 'select_value_03' },
+  { text: 'select_03', value: 'select_value_03' }
 ];
 
 const OPTION_YN_KO = [
   { text: '예', value: 'Y', description: '동의하면 예를 누르세요.' },
-  { text: '아니오', value: 'N', description: '동의하지 않으면 아니오를 누르세요.' },
+  {
+    text: '아니오',
+    value: 'N',
+    description: '동의하지 않으면 아니오를 누르세요.'
+  }
 ];
 
 export default function Comp() {
@@ -33,7 +37,7 @@ export default function Comp() {
     register,
     watch,
     formState: { errors },
-    handleSubmit,
+    handleSubmit
   } = useForm({
     defaultValues: {
       inp01: '',
@@ -42,19 +46,19 @@ export default function Comp() {
       contents01: '',
       contents02: '',
       checkbox: true,
-      useYn: 'Y',
-    },
+      useYn: 'Y'
+    }
   });
 
   const onSubmit = handleSubmit(
-    (data) => {
+    data => {
       console.log('submit data: ', data);
       setIsCheckInp(true);
     },
-    (err) => {
+    err => {
       console.log('submit error: ', err);
       setIsCheckInp(false);
-    },
+    }
   );
 
   const handleCheckValue = (value: OptionItem['value']) => {
@@ -65,7 +69,11 @@ export default function Comp() {
 
   return (
     <div style={{ margin: '10px' }}>
-      <Radio value={watch('useYn')} items={OPTION_YN_KO} libProps={register('useYn')} />
+      <Radio
+        value={watch('useYn')}
+        items={OPTION_YN_KO}
+        libProps={register('useYn')}
+      />
       <br />
       <br />
       <Checkbox
@@ -103,14 +111,14 @@ export default function Comp() {
       <br />
       <InputSearch
         value={inputValue}
-        onChange={(val) => setInputValue(val as string)}
+        onChange={val => setInputValue(val as string)}
         sizeType="medium"
       />
       <br />
       <br />
       <InputSearch
         value={inputValue}
-        onChange={(val) => setInputValue(val as string)}
+        onChange={val => setInputValue(val as string)}
         sizeType="large"
       />
       <br />
@@ -139,13 +147,25 @@ export default function Comp() {
       />
       <br />
       <br />
-      <Input value={inputValue} onChange={(val) => setInputValue(val as string)} sizeType="small" />
+      <Input
+        value={inputValue}
+        onChange={val => setInputValue(val as string)}
+        sizeType="small"
+      />
       <br />
       <br />
-      <Input value={inputValue} onChange={(val: any) => setInputValue(val)} sizeType="medium" />
+      <Input
+        value={inputValue}
+        onChange={(val: any) => setInputValue(val)}
+        sizeType="medium"
+      />
       <br />
       <br />
-      <Input value={inputValue} onChange={(val: any) => setInputValue(val)} sizeType="large" />
+      <Input
+        value={inputValue}
+        onChange={(val: any) => setInputValue(val)}
+        sizeType="large"
+      />
       <br />
       <br />
       <Input
@@ -156,65 +176,104 @@ export default function Comp() {
         successMsg="인증되었습니다."
         showSuccessMsg={isCheckInp}
       />
-      <Button color="primary" size="medium" onClick={onSubmit}>
+      <Button
+        color="primary"
+        size="medium"
+        onClick={onSubmit}>
         Submit
       </Button>
       <br />
       <br />
       <br />
       <br />
-      <Button color="primary" size="medium">
+      <Button
+        color="primary"
+        size="medium">
         Button
       </Button>
-      <Button color="primary" size="medium" disabled>
+      <Button
+        color="primary"
+        size="medium"
+        disabled>
         Button
       </Button>
-      <Button color="primary" size="small">
+      <Button
+        color="primary"
+        size="small">
         Button
       </Button>
-      <Button color="primary" size="large">
-        Button
-      </Button>
-      <br />
-      <br />
-      <Button color="secondary" size="medium">
-        Button
-      </Button>
-      <Button color="secondary" size="medium" disabled>
-        Button
-      </Button>
-      <Button color="secondary" size="small">
-        Button
-      </Button>
-      <Button color="secondary" size="large">
+      <Button
+        color="primary"
+        size="large">
         Button
       </Button>
       <br />
       <br />
-      <Button color="danger" size="medium">
+      <Button
+        color="secondary"
+        size="medium">
         Button
       </Button>
-      <Button color="danger" size="medium" disabled>
+      <Button
+        color="secondary"
+        size="medium"
+        disabled>
         Button
       </Button>
-      <Button color="danger" size="small">
+      <Button
+        color="secondary"
+        size="small">
         Button
       </Button>
-      <Button color="danger" size="large">
+      <Button
+        color="secondary"
+        size="large">
         Button
       </Button>
       <br />
       <br />
-      <Button color="invisible" size="medium">
+      <Button
+        color="danger"
+        size="medium">
         Button
       </Button>
-      <Button color="invisible" size="medium" disabled>
+      <Button
+        color="danger"
+        size="medium"
+        disabled>
         Button
       </Button>
-      <Button color="invisible" size="small">
+      <Button
+        color="danger"
+        size="small">
         Button
       </Button>
-      <Button color="invisible" size="large">
+      <Button
+        color="danger"
+        size="large">
+        Button
+      </Button>
+      <br />
+      <br />
+      <Button
+        color="invisible"
+        size="medium">
+        Button
+      </Button>
+      <Button
+        color="invisible"
+        size="medium"
+        disabled>
+        Button
+      </Button>
+      <Button
+        color="invisible"
+        size="small">
+        Button
+      </Button>
+      <Button
+        color="invisible"
+        size="large">
         Button
       </Button>
     </div>

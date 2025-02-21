@@ -22,7 +22,11 @@ export const Input = ({
   return (
     <div
       ref={refProp}
-      className={classNames('item_form', { [`form_${sizeType}`]: sizeType }, itemClassName)}>
+      className={classNames(
+        'item_form',
+        { [`form_${sizeType}`]: sizeType },
+        itemClassName
+      )}>
       <div className="box_tf">
         <div className="inner_tf">
           <InputElem
@@ -37,7 +41,9 @@ export const Input = ({
       </div>
       {itemChildren}
       {errorMsg && showErrorMsg && <p className="desc_error">{errorMsg}</p>}
-      {successMsg && showSuccessMsg && <p className="desc_success">{successMsg}</p>}
+      {successMsg && showSuccessMsg && (
+        <p className="desc_success">{successMsg}</p>
+      )}
     </div>
   );
 };

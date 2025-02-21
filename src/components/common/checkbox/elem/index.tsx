@@ -14,7 +14,7 @@ export const CheckboxElem = ({
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { checked },
+      target: { checked }
     } = e;
 
     onChange(checked, otherProps?.value);

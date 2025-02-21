@@ -8,12 +8,12 @@ function makeQueryClient() {
          * 요청 실패시 재요청 횟수
          */
         retry: false,
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: false
         /**
          * errorBounce 설정
          */
-      },
-    },
+      }
+    }
   });
 }
 

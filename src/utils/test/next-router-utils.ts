@@ -6,7 +6,7 @@ jest.mock('next/router', () => jest.requireActual('next-router-mock'));
 mockRouter.useParser(
   createDynamicRouteParser([
     // @see https://github.com/scottrippey/next-router-mock#dynamic-routes
-  ]),
+  ])
 );
 
 jest.mock<typeof import('next/navigation')>('next/navigation', () => {
@@ -27,7 +27,7 @@ jest.mock<typeof import('next/navigation')>('next/navigation', () => {
     ...actual,
     useRouter: jest.fn().mockImplementation(useRouter),
     usePathname,
-    useSearchParams,
+    useSearchParams
   };
 });
 

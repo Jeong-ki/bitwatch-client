@@ -26,7 +26,9 @@ export const RadioElem = ({
         {...otherProps}
       />
       <div className="radio_label_wrap">
-        <label htmlFor={`radio_${uniqueId}`} className="radio_label">
+        <label
+          htmlFor={`radio_${uniqueId}`}
+          className="radio_label">
           {text}
         </label>
         <span className="radio_caption">{description}</span>

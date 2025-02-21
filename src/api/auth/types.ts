@@ -36,7 +36,7 @@ export type SignupRes = CommonResData;
 export interface EmailVerificationReq {
   email: string;
 }
-export interface EmailVerificationResData extends CommonResData {}
+export type EmailVerificationResData = CommonResData;
 
 interface ReissueUserResData {
   email: string;

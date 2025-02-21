@@ -8,7 +8,7 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState,
+  useState
 } from 'react';
 import { InputSearch } from '@/components/common/input/search';
 import { useQuery } from '@tanstack/react-query';
@@ -20,7 +20,9 @@ import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 // import { Alert } from '@/components/common/alert';
 import { InputSearchResultProps } from './types';
 
-export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = (props) => {
+export const InputSearchResult: FC<
+  PropsWithChildren<InputSearchResultProps>
+> = props => {
   const {
     value,
     suggestType = 'KKO',
@@ -36,7 +38,11 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
     libProps = {},
     ...otherProps
   } = props;
-  const { onChange: onChangeLib = () => {}, ref: libRef = () => {}, ...otherLibProps } = libProps;
+  const {
+    onChange: onChangeLib = () => {},
+    ref: libRef = () => {},
+    ...otherLibProps
+  } = libProps;
   const searchRef = useRef<HTMLDivElement | null>(null);
   const inputHiddenRef = useRef<HTMLInputElement | null>(null);
   const [isTopPosition, setIsTopPosition] = useState<boolean>(true);
@@ -44,44 +50,50 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
   const [isOpenOption, setIsOpenOption] = useState<boolean>(false);
   const [items, setItems] = useState([]);
 
-  const FETCH_INFO: {
-    [key: string]: {
-      queryKey: string;
-      resultKey: string;
-      compareKey: keyof OptionItem;
-      subCompareKey?: string;
-      params?: Record<string, any>;
-      fetchMethod: (params: any) => Promise<any>;
+  const matchedFetchInfo = useMemo(() => {
+    const FETCH_INFO: {
+      [key: string]: {
+        queryKey: string;
+        resultKey: string;
+        compareKey: keyof OptionItem;
+        subCompareKey?: string;
+        params?: Record<string, any>;
+        fetchMethod: (params: any) => Promise<any>;
+      };
+    } = {
+      test1: {
+        queryKey: 'test1',
+        resultKey: 'testList',
+        compareKey: 'text',
+        fetchMethod: getDummy
+      },
+      test2: {
+        queryKey: 'test1',
+        resultKey: 'testList',
+        compareKey: 'text',
+        fetchMethod: getDummy
+      }
     };
-  } = {
-    test1: {
-      queryKey: 'test1',
-      resultKey: 'testList',
-      compareKey: 'text',
-      fetchMethod: getDummy,
-    },
-    test2: {
-      queryKey: 'test1',
-      resultKey: 'testList',
-      compareKey: 'text',
-      fetchMethod: getDummy,
-    },
-  };
 
-  const matchedFetchInfo = useMemo(() => FETCH_INFO[suggestType], [suggestType, FETCH_INFO]);
+    return FETCH_INFO[suggestType];
+  }, [suggestType]);
 
   const hasOptionItems = useMemo(() => items.length !== 0, [items]);
 
   const suggestItems = useMemo(() => {
     if (['test1', 'test2'].includes(suggestType)) {
-      return (items as any[]).map((item) => ({
+      return (items as any[]).map(item => ({
         text: item.text,
         value: item.value,
-        data: item,
+        data: item
       }));
     }
     return [];
   }, [suggestType, items]);
+
+  const onClose = () => {
+    setIsOpenOption(false);
+  };
 
   const initState = () => {
     setItems([]);
@@ -93,14 +105,16 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
     queryFn: async () =>
       matchedFetchInfo.fetchMethod({
         ...(matchedFetchInfo?.params ?? {}),
-        [matchedFetchInfo.queryKey]: String(value),
+        [matchedFetchInfo.queryKey]: String(value)
       } as any),
     enabled: false,
-    gcTime: 10000,
+    gcTime: 10000
   });
 
-  const compareValue = (value: OptionItem['value'] | undefined, item: OptionItem) =>
-    value === item?.text;
+  const compareValue = (
+    value: OptionItem['value'] | undefined,
+    item: OptionItem
+  ) => value === item?.text;
 
   const fetch = async () => {
     try {
@@ -133,92 +147,14 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
     setIsOpenOption(true);
   };
 
-  const handleFocus = (e: FocusEvent<HTMLInputElement, Element>) => {
-    setIsFocus(true);
-    setIsOpenOption(true);
-    checkScrollIsTopPosition(isFocus);
-    onFocus(e);
-  };
-
-  const handleBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
-    setIsFocus(false);
-    onBlur(e);
-  };
-
-  const onClose = () => {
-    setIsOpenOption(false);
-  };
-
-  const onOutsideClick = () => {
-    if (!isFocus) {
-      return;
-    }
-
-    if (isAllowClickOutside) {
-      checkExactMatchValue(true);
-    }
-    onClose();
-  };
-
-  useOnClickOutside(searchRef, onOutsideClick);
-
-  const setMatchedValue = (item?: OptionItem) => {
-    if (setValue) {
-      setValue(
-        props?.libProps?.name ?? '',
-        isExactMatchValue ? item?.value : (item?.textValue ?? item?.text),
-        {
-          shouldValidate: true,
-        },
-      );
-    }
-
-    props?.onChange?.(item?.textValue ?? item?.text ?? '');
-  };
-
-  const onKeyPress = (e: any) => {
-    const { key } = e;
-    if (key === 'Enter') {
-      e.preventDefault();
-      checkExactMatchValue(false);
-    }
-  };
-
-  const checkExactMatchValue = (isStrict: boolean) => {
-    if (!isExactMatchValue) {
-      return;
-    }
-
-    const exactMatchValue = suggestItems.find((suggestItem) => {
-      return compareValue(value, suggestItem);
-    });
-
-    if (!exactMatchValue) {
-      if (isStrictCheck && isStrict) {
-        setMatchedValue();
-      }
-      return;
-    }
-
-    onClickOptionItem(exactMatchValue);
-  };
-
-  const onClickOptionItem = (itemData: OptionItem) => {
-    setMatchedValue(itemData);
-
-    if (isExactMatchValue) {
-      onSelectExactValue(itemData);
-    }
-
-    onClose();
-  };
-
   const checkScrollIsTopPosition = (isFocus: boolean) => {
     if (isFocus) {
       return;
     }
     const inputElem = searchRef.current;
-    const wrapperElem = inputElem?.closest?.('.box_tbl.type_scroll') as HTMLElement;
+    const wrapperElem = inputElem?.closest?.(
+      '.box_tbl.type_scroll'
+    ) as HTMLElement;
 
     if (!inputElem || !wrapperElem) {
       return;
@@ -230,7 +166,8 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
     const wrapperElemScrollTop = wrapperElem?.scrollTop;
     const wrapperElemOffsetTop = wrapperElem?.offsetTop;
     const inputElemPositionTop = inputElemOffsetTop - wrapperElemOffsetTop;
-    const boxOptionElem: HTMLElement | null = inputElem.querySelector('.box_opt');
+    const boxOptionElem: HTMLElement | null =
+      inputElem.querySelector('.box_opt');
     if (!boxOptionElem) {
       return;
     }
@@ -247,14 +184,93 @@ export const InputSearchResult: FC<PropsWithChildren<InputSearchResultProps>> = 
     setIsTopPosition(isValidPosition);
   };
 
+  const handleFocus = (e: FocusEvent<HTMLInputElement, Element>) => {
+    setIsFocus(true);
+    setIsOpenOption(true);
+    checkScrollIsTopPosition(isFocus);
+    onFocus(e);
+  };
+
+  const handleBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
+    setIsFocus(false);
+    onBlur(e);
+  };
+
+  const setMatchedValue = (item?: OptionItem) => {
+    if (setValue) {
+      setValue(
+        props?.libProps?.name ?? '',
+        isExactMatchValue ? item?.value : (item?.textValue ?? item?.text),
+        {
+          shouldValidate: true
+        }
+      );
+    }
+
+    props?.onChange?.(item?.textValue ?? item?.text ?? '');
+  };
+
+  const onClickOptionItem = (itemData: OptionItem) => {
+    setMatchedValue(itemData);
+
+    if (isExactMatchValue) {
+      onSelectExactValue(itemData);
+    }
+
+    onClose();
+  };
+
+  const checkExactMatchValue = (isStrict: boolean) => {
+    if (!isExactMatchValue) {
+      return;
+    }
+
+    const exactMatchValue = suggestItems.find(suggestItem => {
+      return compareValue(value, suggestItem);
+    });
+
+    if (!exactMatchValue) {
+      if (isStrictCheck && isStrict) {
+        setMatchedValue();
+      }
+      return;
+    }
+
+    onClickOptionItem(exactMatchValue);
+  };
+
+  const onOutsideClick = () => {
+    if (!isFocus) {
+      return;
+    }
+
+    if (isAllowClickOutside) {
+      checkExactMatchValue(true);
+    }
+    onClose();
+  };
+
+  useOnClickOutside(searchRef, onOutsideClick);
+
+  const onKeyPress = (e: any) => {
+    const { key } = e;
+    if (key === 'Enter') {
+      e.preventDefault();
+      checkExactMatchValue(false);
+    }
+  };
+
   useImperativeHandle(libRef, () => inputHiddenRef.current);
 
   return (
     <InputSearch
       itemClassName={classNames(
-        { opt_open: isOpenOption && hasOptionItems, opt_reverse: !isTopPosition },
+        {
+          opt_open: isOpenOption && hasOptionItems,
+          opt_reverse: !isTopPosition
+        },
         itemClassName,
-        'type_inpsearch',
+        'type_inpsearch'
       )}
       value={value}
       refProp={searchRef}

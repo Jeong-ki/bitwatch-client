@@ -6,5 +6,7 @@ export interface InputCheckboxElemProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   onChange?: (checked: boolean, value?: InputValue) => void;
   errorMsg?: any;
-  libProps?: Partial<UseFormRegisterReturn<InternalFieldName>> & { defaultValue?: InputValue };
+  libProps?: Partial<UseFormRegisterReturn<InternalFieldName>> & {
+    defaultValue?: InputValue;
+  };
 }

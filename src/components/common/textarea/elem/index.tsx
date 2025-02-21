@@ -13,10 +13,13 @@ export const TextareaElem = ({
 
   const onChangeInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const {
-      target: { value: targetValue },
+      target: { value: targetValue }
     } = e;
 
-    if (typeof otherProps.maxLength === 'number' && otherProps?.maxLength < targetValue.length) {
+    if (
+      typeof otherProps.maxLength === 'number' &&
+      otherProps?.maxLength < targetValue.length
+    ) {
       return;
     }
 

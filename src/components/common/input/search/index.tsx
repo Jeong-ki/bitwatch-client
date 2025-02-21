@@ -1,6 +1,13 @@
 'use client';
 
-import { FC, PropsWithChildren, useMemo, useState, FocusEvent, useRef } from 'react';
+import {
+  FC,
+  PropsWithChildren,
+  useMemo,
+  useState,
+  FocusEvent,
+  useRef
+} from 'react';
 import { Input } from '@/components/common/input';
 import { InputSearchProps } from '@/components/common/input/search/types';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
@@ -19,7 +26,7 @@ export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const isShowResetBtn = useMemo(
     () => isFocus && !!value && !otherProps.disabled && !otherProps.readOnly,
-    [value, isFocus, otherProps.disabled, otherProps.readOnly],
+    [value, isFocus, otherProps.disabled, otherProps.readOnly]
   );
 
   const setMatchedValue = (value: InputSearchProps['value']) => {
@@ -60,7 +67,10 @@ export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
       {...otherProps}>
       {children}
       {isShowResetBtn && (
-        <button type="button" className="btn_g btn_del" onClick={onClickDeleteBtn}>
+        <button
+          type="button"
+          className="btn_g btn_del"
+          onClick={onClickDeleteBtn}>
           <span className="ico_comm ico_delete">삭제</span>
         </button>
       )}

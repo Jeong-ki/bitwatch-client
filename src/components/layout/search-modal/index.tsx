@@ -10,7 +10,7 @@ interface IResponse {
   isConfirm: boolean;
 }
 
-export interface ModalProps extends InstanceProps<IResponse, IResponse> {}
+export type ModalProps = InstanceProps<IResponse, IResponse>;
 
 const dummyData = [
   {
@@ -18,75 +18,75 @@ const dummyData = [
     name: '테슬라',
     code: 'TSLA',
     price: '381,399원',
-    change: '+0.12',
+    change: '+0.12'
   },
   {
     logo: '로고',
     name: '애플',
     code: 'AAPL',
     price: '150,000원',
-    change: '-0.32',
+    change: '-0.32'
   },
   {
     logo: '로고',
     name: '구글',
     code: 'GOOGL',
     price: '280,000원',
-    change: '+1.05',
+    change: '+1.05'
   },
   {
     logo: '로고',
     name: '마이크로소프트',
     code: 'MSFT',
     price: '320,500원',
-    change: '-2.4',
+    change: '-2.4'
   },
   {
     logo: '로고',
     name: '아마존',
     code: 'AMZN',
     price: '410,000원',
-    change: '+0.78',
+    change: '+0.78'
   },
   {
     logo: '로고',
     name: '테슬라',
     code: 'TSLA',
     price: '381,399원',
-    change: '+0.12',
+    change: '+0.12'
   },
   {
     logo: '로고',
     name: '애플',
     code: 'AAPL',
     price: '150,000원',
-    change: '-0.32',
+    change: '-0.32'
   },
   {
     logo: '로고',
     name: '구글',
     code: 'GOOGL',
     price: '280,000원',
-    change: '+1.05',
+    change: '+1.05'
   },
   {
     logo: '로고',
     name: '마이크로소프트',
     code: 'MSFT',
     price: '320,500원',
-    change: '-2.4',
+    change: '-2.4'
   },
   {
     logo: '로고',
     name: '아마존',
     code: 'AMZN',
     price: '410,000원',
-    change: '+0.78',
-  },
+    change: '+0.78'
+  }
 ];
 
 const Modal = ({ isOpen, onResolve }: ModalProps) => {
-  const onConfirm = () => onResolve({ isConfirm: true });
+  // const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useCallback((node: HTMLDivElement | null) => {
@@ -117,8 +117,12 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
 
   return (
     <div className="comm_layer">
-      <FocusLock disabled={!isOpen} autoFocus={false}>
-        <div className="inner_layer layer_search" ref={modalRef}>
+      <FocusLock
+        disabled={!isOpen}
+        autoFocus={false}>
+        <div
+          className="inner_layer layer_search"
+          ref={modalRef}>
           <div className="layer_body">
             <InputSearch refProp={inputRef} />
             <ul className="list_search">

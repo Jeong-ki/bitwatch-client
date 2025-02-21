@@ -13,7 +13,11 @@ export const Button = ({
   return (
     <button
       ref={btnRef}
-      className={cn('btn', { [`btn_${size}`]: size, [`btn_${color}`]: color }, className)}
+      className={cn(
+        'btn',
+        { [`btn_${size}`]: size, [`btn_${color}`]: color },
+        className
+      )}
       type={type}
       {...otherProps}>
       {children}

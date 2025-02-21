@@ -26,30 +26,30 @@ export const Header = () => {
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const profileRef = useRef(null);
 
+  const { mutate: signout } = useMutation({
+    mutationFn: signoutUser
+  });
+
   const clearInfo = () => {
     signout();
     clearAuth();
     clearUser();
   };
 
-  const { mutate: signout } = useMutation({
-    mutationFn: signoutUser,
-  });
-
   const { mutate: reissue } = useMutation({
     mutationFn: reissueUser,
-    onSuccess: (res) => {
+    onSuccess: res => {
       if (res.status === HTTP_STATUS.OK && res.data) {
         setUser(res.data);
       }
     },
     onError: () => {
       clearInfo();
-    },
+    }
   });
 
   const handleOpenProfile = () => {
-    setIsOpenProfile((prev) => !prev);
+    setIsOpenProfile(prev => !prev);
   };
 
   const handleSignout = () => {
@@ -94,39 +94,59 @@ export const Header = () => {
     <header className="doc-header">
       <nav>
         <h1 className="doc-title">
-          <Link href="/" className="link_logo">
+          <Link
+            href="/"
+            className="link_logo">
             BitWatch
           </Link>
         </h1>
         <nav className="nav-header">
           <ul>
             <li>
-              <Button color="invisible" size="medium">
+              <Button
+                color="invisible"
+                size="medium">
                 <Link href="/">홈</Link>
               </Button>
             </li>
             <li>
-              <Button color="invisible" size="medium">
+              <Button
+                color="invisible"
+                size="medium">
                 <Link href="/">채팅</Link>
               </Button>
             </li>
             <li>
-              <Button color="invisible" size="medium">
+              <Button
+                color="invisible"
+                size="medium">
                 <Link href="/">커뮤니티</Link>
               </Button>
             </li>
           </ul>
-          <Button className="search" onClick={handleOpenSearchModal}>
-            <Image src={SearchIcon} width={16} height={16} alt="조회 아이콘" />
+          <Button
+            className="search"
+            onClick={handleOpenSearchModal}>
+            <Image
+              src={SearchIcon}
+              width={16}
+              height={16}
+              alt="조회 아이콘"
+            />
             <span>/</span> <p>를 눌러 검색해보세요.</p>
           </Button>
         </nav>
         <div>
           {isLoggedIn ? (
-            <div ref={profileRef} className="info_my">
+            <div
+              ref={profileRef}
+              className="info_my">
               <div className="profile_user">
                 <strong className="screen_out">사용자 프로필</strong>
-                <button className="link_thumb" type="button" onClick={handleOpenProfile}>
+                <button
+                  className="link_thumb"
+                  type="button"
+                  onClick={handleOpenProfile}>
                   <div className="wrap_thumb">
                     <Image
                       src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
@@ -137,7 +157,8 @@ export const Header = () => {
                   </div>
                 </button>
               </div>
-              <div className={cn('profile_layer', { layer_open: isOpenProfile })}>
+              <div
+                className={cn('profile_layer', { layer_open: isOpenProfile })}>
                 <div className="inner_layer">
                   <div className="layer_body">
                     <div className="info_profile">
@@ -157,7 +178,10 @@ export const Header = () => {
                     </div>
                   </div>
                   <div className="layer_foot">
-                    <button type="button" className="btn_txt" onClick={handleSignout}>
+                    <button
+                      type="button"
+                      className="btn_txt"
+                      onClick={handleSignout}>
                       로그아웃
                     </button>
                   </div>
@@ -165,7 +189,10 @@ export const Header = () => {
               </div>
             </div>
           ) : (
-            <Button color="primary" size="medium" onClick={() => router.push('/signin')}>
+            <Button
+              color="primary"
+              size="medium"
+              onClick={() => router.push('/signin')}>
               로그인
             </Button>
           )}

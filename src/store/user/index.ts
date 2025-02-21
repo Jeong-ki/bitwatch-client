@@ -12,16 +12,16 @@ interface UserState {
   clearUser: () => void;
 }
 
-const store: StateCreator<UserState> = (set) => ({
+const store: StateCreator<UserState> = set => ({
   user: null,
-  setUser: (user) => set({ user }),
-  clearUser: () => set({ user: null }),
+  setUser: user => set({ user }),
+  clearUser: () => set({ user: null })
 });
 
 const useUserStore = create<UserState>()(
   devtools(persist(store, { name: 'user-storage' }), {
-    enabled: process.env.NODE_ENV === 'development',
-  }),
+    enabled: process.env.NODE_ENV === 'development'
+  })
 );
 
 export default useUserStore;

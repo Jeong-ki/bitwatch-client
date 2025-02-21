@@ -15,7 +15,7 @@ dayjsLib.extend(updateLocale);
 dayjsLib.locale('ko');
 
 dayjsLib.updateLocale('ko', {
-  invalidDate: '-',
+  invalidDate: '-'
 });
 
 const dayjs = (date?: ConfigType, ...props: any): Dayjs => {

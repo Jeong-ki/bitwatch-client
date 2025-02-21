@@ -13,7 +13,9 @@ describe('MockRouterComponent', () => {
     render(<MockRouterComponent href="/new-route" />);
 
     // 버튼이 제대로 렌더링되었는지 확인
-    expect(screen.getByText('The current route is: /new-route')).toBeInTheDocument();
+    expect(
+      screen.getByText('The current route is: /new-route')
+    ).toBeInTheDocument();
   });
 
   it('navigates to the correct route when the button is clicked', () => {

@@ -11,7 +11,7 @@ export default function Home() {
 
   const { data, isFetched } = useQuery({
     queryKey: ['users'],
-    queryFn: getUsers,
+    queryFn: getUsers
   });
 
   if (!isFetched) {
@@ -27,7 +27,7 @@ export default function Home() {
         id="testInput"
         aria-label="testInput"
         type="text"
-        onChange={(e) => {
+        onChange={e => {
           setTestInput(e.target.value);
         }}
         value={testInput}

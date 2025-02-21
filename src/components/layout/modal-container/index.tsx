@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { Container } from 'react-modal-promise';
 
 export const ModalContainer = () => {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   useRouterChange({
     onRouteChangeStart: () => {
       if (!ref || !ref.current) {
@@ -13,7 +13,7 @@ export const ModalContainer = () => {
       }
 
       ref.current.rejectAll('history back then closed');
-    },
+    }
   });
 
   const onOpen = () => {
@@ -23,5 +23,11 @@ export const ModalContainer = () => {
   const onRemove = () => {
     document.body.style.overflow = '';
   };
-  return <Container ref={ref} onOpen={onOpen} onRemove={onRemove} />;
+  return (
+    <Container
+      ref={ref}
+      onOpen={onOpen}
+      onRemove={onRemove}
+    />
+  );
 };

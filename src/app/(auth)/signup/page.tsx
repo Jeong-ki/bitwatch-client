@@ -29,24 +29,24 @@ export default function Signup() {
     getValues,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<SignupData>({
     defaultValues: {
       email: '',
       authNumber: '',
       nickname: '',
       password: '',
-      confirmPassword: '',
-    },
+      confirmPassword: ''
+    }
   });
 
   const { mutate: signup } = useMutation({
     mutationFn: signupUser,
-    onSuccess: (res) => {
+    onSuccess: res => {
       if (res.status === HTTP_STATUS.CREATED) {
         Alert({
           description: res?.message || '',
-          hasCancelBtn: false,
+          hasCancelBtn: false
         }).then(({ isConfirm }) => {
           if (isConfirm) {
             router.push('/signin');
@@ -54,33 +54,33 @@ export default function Signup() {
         });
       }
     },
-    onError: (err) => {
+    onError: err => {
       console.log('onError: ', err.message);
       Alert({
         description: err?.message || '',
-        hasCancelBtn: false,
+        hasCancelBtn: false
       });
-    },
+    }
   });
 
   const { mutate: sendEmail } = useMutation({
     mutationFn: emailVerification,
-    onSuccess: (res) => {
+    onSuccess: res => {
       if (res.status === HTTP_STATUS.OK) {
         setIsSendEmail(true);
         Alert({
           description: res.message,
-          hasCancelBtn: false,
+          hasCancelBtn: false
         });
       }
     },
-    onError: (err) => {
+    onError: err => {
       console.log('onError: ', err.message);
       Alert({
         description: err?.message || '',
-        hasCancelBtn: false,
+        hasCancelBtn: false
       });
-    },
+    }
   });
 
   const handleEmailAuth = () => {
@@ -166,10 +166,17 @@ export default function Signup() {
                     title="확인 비밀번호 입력"
                     showErrorMsg
                     errorMsg={errors.confirmPassword?.message}
-                    libProps={register('confirmPassword', validateRule.confirmPassword)}
+                    libProps={register(
+                      'confirmPassword',
+                      validateRule.confirmPassword
+                    )}
                   />
                 </div>
-                <Button type="submit" className="btn_login" size="medium" color="primary">
+                <Button
+                  type="submit"
+                  className="btn_login"
+                  size="medium"
+                  color="primary">
                   회원가입
                 </Button>
               </div>

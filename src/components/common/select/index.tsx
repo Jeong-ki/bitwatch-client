@@ -15,26 +15,33 @@ export const Select = ({
   disabled,
   readOnly,
   onChange = () => {},
-  libProps = {},
+  libProps = {}
 }: SelectProps) => {
-  const { onChange: onChangeLib = () => {}, ref: libRef = () => {}, ...otherLibProps } = libProps;
+  const {
+    onChange: onChangeLib = () => {},
+    ref: libRef = () => {},
+    ...otherLibProps
+  } = libProps;
   const [isFocused, setIsFocused] = useState(false);
   const selectRef = useRef<HTMLDivElement | null>(null);
   const inputHiddenRef = useRef<HTMLInputElement | null>(null);
 
   const selectedOption = useMemo(
-    () => suggestList.find((suggest) => suggest?.value === value),
-    [value, suggestList],
+    () => suggestList.find(suggest => suggest?.value === value),
+    [value, suggestList]
   );
 
-  const compareValue = (value: OptionItem['value'] | undefined, item: OptionItem) => {
+  const compareValue = (
+    value: OptionItem['value'] | undefined,
+    item: OptionItem
+  ) => {
     return value === item.value;
   };
 
   const handleFocus = () => {
     if (disabled) return;
 
-    setIsFocused((val) => !val);
+    setIsFocused(val => !val);
   };
 
   const handleClose = () => {
@@ -55,14 +62,16 @@ export const Select = ({
   useImperativeHandle(libRef, () => inputHiddenRef.current);
 
   return (
-    <div ref={selectRef} className={cn('item_form', { [`form_${formSize}`]: formSize })}>
+    <div
+      ref={selectRef}
+      className={cn('item_form', { [`form_${formSize}`]: formSize })}>
       <div className={cn('opt_comm', { opt_on: value, opt_open: isFocused })}>
         <button
           type="button"
           className={cn('link_selected', 'opt_select', {
             disabled,
             readonly: readOnly,
-            error: errorMsg,
+            error: errorMsg
           })}
           onClick={handleFocus}>
           <span className="ico_comm ico_arr_d">선택됨</span>
@@ -77,7 +86,12 @@ export const Select = ({
           handleClose={handleClose}
           noDataText={noDataText}
         />
-        <input type="hidden" ref={inputHiddenRef} onChange={onChangeLib} {...otherLibProps} />
+        <input
+          type="hidden"
+          ref={inputHiddenRef}
+          onChange={onChangeLib}
+          {...otherLibProps}
+        />
       </div>
     </div>
   );

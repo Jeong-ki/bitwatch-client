@@ -1,5 +1,9 @@
 import { FormSize, InputValue, OptionItem } from '@/@types/element';
-import { InternalFieldName, UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form';
+import {
+  InternalFieldName,
+  UseFormRegisterReturn,
+  UseFormSetValue
+} from 'react-hook-form';
 
 export interface SelectProps {
   placeholder?: string;
@@ -11,6 +15,8 @@ export interface SelectProps {
   errorMsg?: any;
   onChange?: (value: OptionItem['value'], item?: OptionItem) => void;
   setValue?: UseFormSetValue<any>;
-  libProps?: Partial<UseFormRegisterReturn<InternalFieldName>> & { defaultValue?: InputValue };
+  libProps?: Partial<UseFormRegisterReturn<InternalFieldName>> & {
+    defaultValue?: InputValue;
+  };
   noDataText?: string;
 }

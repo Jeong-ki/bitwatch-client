@@ -3,7 +3,10 @@ import { TextareaHTMLAttributes } from 'react';
 import { UseFormRegisterReturn, InternalFieldName } from 'react-hook-form';
 
 export interface TextAreaElemProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'> {
+  extends Omit<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    'value' | 'onChange'
+  > {
   value?: string;
   libProps?: Partial<UseFormRegisterReturn<InternalFieldName>>;
   onChange?: (value: InputValue) => void;

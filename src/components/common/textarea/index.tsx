@@ -19,13 +19,18 @@ export const Textarea = ({
   ...otherProps
 }: PropsWithChildren<TextareaProps>) => {
   return (
-    <div className={classNames('item_form', { [`form_${sizeType}`]: sizeType }, itemClassName)}>
+    <div
+      className={classNames(
+        'item_form',
+        { [`form_${sizeType}`]: sizeType },
+        itemClassName
+      )}>
       <div
         className={classNames('box_tf', 'box_textarea', {
           readonly: readOnly,
           disabled,
           type_resize: isAbleResize,
-          error: errorMsg,
+          error: errorMsg
         })}>
         <TextareaElem
           value={value}

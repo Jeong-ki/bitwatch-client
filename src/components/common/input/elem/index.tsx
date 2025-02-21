@@ -23,10 +23,13 @@ export const InputElem = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {
-      target: { value: targetValue },
+      target: { value: targetValue }
     } = e;
 
-    if (typeof otherProps.maxLength === 'number' && otherProps?.maxLength < targetValue.length) {
+    if (
+      typeof otherProps.maxLength === 'number' &&
+      otherProps?.maxLength < targetValue.length
+    ) {
       return;
     }
     onChange(targetValue);
@@ -42,10 +45,15 @@ export const InputElem = ({
     <input
       placeholder=""
       onBlur={handleBlur}
-      className={cn('tf_comm', className, inputSizeType && `type_${inputSizeType}`, {
-        error: errorMsg,
-        success: showSuccessMsg,
-      })}
+      className={cn(
+        'tf_comm',
+        className,
+        inputSizeType && `type_${inputSizeType}`,
+        {
+          error: errorMsg,
+          success: showSuccessMsg
+        }
+      )}
       autoComplete={autoComplete}
       {...otherProps}
       {...otherLibProps}

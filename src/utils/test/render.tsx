@@ -9,20 +9,29 @@ type CustomRenderOptions = {
   router?: Partial<NextRouter>;
 } & Omit<RenderOptions, 'queries'>;
 
-export default async (component: ReactElement, options?: CustomRenderOptions) => {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default async (
+  component: ReactElement,
+  options?: CustomRenderOptions
+) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
         retry: false, // Disable retries for tests
-        staleTime: 0, // 항상 네트워크 요청을 강제
-      },
-    },
+        staleTime: 0 // 항상 네트워크 요청을 강제
+      }
+    }
   });
 
   const user = userEvent.setup();
 
   return {
     user,
-    ...render(<QueryClientProvider client={queryClient}>{component}</QueryClientProvider>, options),
+    ...render(
+      <QueryClientProvider client={queryClient}>
+        {component}
+      </QueryClientProvider>,
+      options
+    )
   };
 };

@@ -15,41 +15,41 @@ const SidebarMenu = [
     name: '내 알람',
     subName: '내 알람',
     icoNm: 'bell',
-    isChecked: false,
+    isChecked: false
   },
   {
     name: '관심',
     subName: '관심 코인',
     icoNm: 'star',
-    isChecked: false,
+    isChecked: false
   },
   {
     name: '최근 본',
     subName: '최근 본 코인',
     icoNm: 'clock',
-    isChecked: false,
+    isChecked: false
   },
   {
     name: '랭킹',
     subName: '코인 랭킹 (알람/관심)',
     icoNm: 'trophy',
-    isChecked: false,
-  },
+    isChecked: false
+  }
 ];
 
 export const Sidebar = () => {
   const [menuList, setMenuList] = useState<MenuList[]>(SidebarMenu);
 
   const handleMenuList = (index: number) => () => {
-    setMenuList((prevMenuList) =>
+    setMenuList(prevMenuList =>
       prevMenuList.map((item, idx) => ({
         ...item,
-        isChecked: idx === index ? !item.isChecked : false,
-      })),
+        isChecked: idx === index ? !item.isChecked : false
+      }))
     );
   };
 
-  const currentMenu = menuList.find((menu) => menu.isChecked);
+  const currentMenu = menuList.find(menu => menu.isChecked);
 
   return (
     <div className={cn('doc-sidebar', { open: currentMenu?.isChecked })}>
@@ -65,7 +65,7 @@ export const Sidebar = () => {
                   <span
                     className={cn('ico_comm', {
                       [`ico_${menu.icoNm}_fill`]: menu.isChecked,
-                      [`ico_${menu.icoNm}`]: !menu.isChecked,
+                      [`ico_${menu.icoNm}`]: !menu.isChecked
                     })}
                   />
                 </div>

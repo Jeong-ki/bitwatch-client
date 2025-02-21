@@ -24,13 +24,15 @@ export const metadata: Metadata = {
     siteName: TITLE,
     images: [
       {
-        url: IMAGE_URL,
-      },
-    ],
-  },
+        url: IMAGE_URL
+      }
+    ]
+  }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko">
       <body>

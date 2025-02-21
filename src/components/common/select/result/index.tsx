@@ -22,20 +22,21 @@ export const SelectResult = ({
   refetchKeys = [],
   ...otherProps
 }: SelectResultProps) => {
-  const [isFetchedAndSetChanged, setIsFetchedAndSetChanged] = useState<boolean>(false);
+  const [isFetchedAndSetChanged, setIsFetchedAndSetChanged] =
+    useState<boolean>(false);
   const DEFAULT_PARAMS = {
     test1: { id: 'test', useYn: 'Y' },
-    test2: { id: 'test', useYn: 'Y' },
+    test2: { id: 'test', useYn: 'Y' }
   };
   const FETCH_METHODS = {
     test1: getDummy, // getFetchAPI
-    test2: getDummy,
+    test2: getDummy
   };
 
   const getConvertSuggestList = (
     type: SelectResultProps['type'],
     result: unknown,
-    isAll?: boolean,
+    isAll?: boolean
   ) => {
     const convertedList = [];
     if (!result || !type) {
@@ -51,8 +52,8 @@ export const SelectResult = ({
         ...(result as any).authorityList.map((item: any) => ({
           text: item?.text,
           value: item?.value,
-          data: item,
-        })),
+          data: item
+        }))
       );
     }
 
@@ -64,15 +65,16 @@ export const SelectResult = ({
       'select',
       type,
       ...Object.values({ ...DEFAULT_PARAMS[type], ...params }),
-      ...refetchKeys,
+      ...refetchKeys
     ],
-    queryFn: async () => FETCH_METHODS[type]({ ...DEFAULT_PARAMS[type], ...params } as any),
-    staleTime: 100000,
+    queryFn: async () =>
+      FETCH_METHODS[type]({ ...DEFAULT_PARAMS[type], ...params } as any),
+    staleTime: 100000
   });
 
   const suggestList = useMemo(
     () => getConvertSuggestList(type, result, isAll),
-    [type, result, isAll],
+    [type, result, isAll]
   );
 
   const setMatchedValue = (value: OptionItem['value'], item?: OptionItem) => {
@@ -100,10 +102,10 @@ export const SelectResult = ({
       return;
     }
 
-    if (suggestList.every((item) => item?.value !== value)) {
+    if (suggestList.every(item => item?.value !== value)) {
       setMatchedValue('');
     } else if (!isFetchedAndSetChanged) {
-      const findValue = suggestList.find((suggest) => suggest?.value === value);
+      const findValue = suggestList.find(suggest => suggest?.value === value);
       if (findValue?.data?.textYn) {
         onChangeSpecialValue(findValue?.data?.textYn === 'Y');
       }

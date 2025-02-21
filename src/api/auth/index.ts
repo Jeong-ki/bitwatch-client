@@ -7,20 +7,22 @@ import {
   SigninRes,
   SignupReq,
   SignupRes,
-  UsersRes,
+  UsersRes
 } from './types';
 
 /**
  * @title 로그인
  * @api POST /user/signin
  */
-export const signinUser = (body: SigninReq) => postFetch<SigninRes>('/user/signin', body);
+export const signinUser = (body: SigninReq) =>
+  postFetch<SigninRes>('/user/signin', body);
 
 /**
  * @title 회원가입
  * @api POST /user/signup
  */
-export const signupUser = (body: SignupReq) => postFetch<SignupRes>('/user/signup', body);
+export const signupUser = (body: SignupReq) =>
+  postFetch<SignupRes>('/user/signup', body);
 
 /**
  * @title 인증번호 발송
@@ -39,7 +41,8 @@ export const signoutUser = () => postFetch('/user/signout');
  * @title 유저정보 재발급
  * @api POST /user/reissue-user
  */
-export const reissueUser = (): Promise<ReissueUserRes> => postFetch('/user/reissue-user');
+export const reissueUser = (): Promise<ReissueUserRes> =>
+  postFetch('/user/reissue-user');
 
 /**
  * @title 유저 정보 호출

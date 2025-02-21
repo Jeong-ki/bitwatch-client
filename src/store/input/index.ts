@@ -6,13 +6,13 @@ export interface TestlState {
   setTestInput: (token: string) => void;
 }
 
-const store: StateCreator<TestlState> = (set) => ({
+const store: StateCreator<TestlState> = set => ({
   testInput: '',
-  setTestInput: (state) => set({ testInput: state }),
+  setTestInput: state => set({ testInput: state })
 });
 
 const useTestStore = create<TestlState>()(
-  devtools(store, { enabled: process.env.NODE_ENV === 'development' }),
+  devtools(store, { enabled: process.env.NODE_ENV === 'development' })
 );
 
 export default useTestStore;
