@@ -2,9 +2,10 @@
 
 import { InputSearch } from '@/components/common/input/search';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { create, InstanceProps } from 'react-modal-promise';
 import FocusLock from 'react-focus-lock';
+import { useMarketListQuery } from '@/domains/crypto/queries';
 
 interface IResponse {
   isConfirm: boolean;
@@ -86,6 +87,27 @@ const dummyData = [
 ];
 
 const Modal = ({ isOpen, onResolve }: ModalProps) => {
+  const [keyword, setKeyword] = useState('');
+  const {
+    data: marketList = []
+    // isLoading: marketLoading,
+    // error: marketError
+  } = useMarketListQuery();
+
+  const handleChange = (value: string) => {
+    setKeyword(value);
+  };
+
+  const filteredMarkets = marketList.filter(m => {
+    const lowerKeyword = keyword.toLowerCase();
+    return (
+      m.korean_name.includes(keyword) ||
+      m.english_name.toLocaleLowerCase().includes(lowerKeyword)
+    );
+  });
+
+  console.log('filteredMarkets', filteredMarkets);
+
   // const onConfirm = () => onResolve({ isConfirm: true });
   const onCancel = () => onResolve({ isConfirm: false });
   const modalRef = useRef<HTMLDivElement>(null);
@@ -124,7 +146,11 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
           className="inner_layer layer_search"
           ref={modalRef}>
           <div className="layer_body">
-            <InputSearch refProp={inputRef} />
+            <InputSearch
+              refProp={inputRef}
+              value={keyword}
+              onChange={handleChange}
+            />
             <ul className="list_search">
               {dummyData.map((item, index) => {
                 const upDownClass = Number(item.change) >= 0 ? 'up' : 'down';

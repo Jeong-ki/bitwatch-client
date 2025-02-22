@@ -57,8 +57,9 @@
   }
 
   .btn_del {
+    display: flex;
     position: absolute;
-    right: 27px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     padding: 5px;
@@ -86,7 +87,6 @@
 
   &.tf_search {
     padding-left: 32px;
-    padding-right: 32px;
   }
 
   &:focus {

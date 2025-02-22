@@ -13,5 +13,7 @@ export async function GET() {
   }
 
   const data = await res.json();
-  return Response.json(data);
+  const krwData = data.filter((item: any) => item.market.includes('KRW'));
+
+  return Response.json(krwData);
 }
