@@ -1,6 +1,6 @@
 'use client';
 
-import { useMarketListQuery } from '@/domains/crypto/query';
+import { useMarketListQuery } from '@/domains/crypto/queries';
 
 export default function Home() {
   const {
