@@ -70,7 +70,6 @@ export const Header = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === '/') {
         if (!isOpenSearchModal) {
-          console.log(isOpenSearchModal);
           handleOpenSearchModal();
         }
       }

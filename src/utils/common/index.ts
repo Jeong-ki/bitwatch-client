@@ -11,3 +11,7 @@ export const isDev =
 export const isEmptyNum = (value: undefined | null | number) => {
   return value === undefined || value === null || Number.isNaN(value);
 };
+
+export const addComma = (num: number): string => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

@@ -85,7 +85,8 @@
               gap: 8px;
               span {
                 /* 로고 텍스트(이미지 대체 텍스트) 크기나 색상 조절 가능 */
-                font-weight: bold; 
+                font-weight: bold;
+                margin-right: 8px;
               }
               /* 내부에 있는 또 다른 div(테슬라, TSLA) 쪽도 따로 조절 가능 */
               div {
@@ -101,6 +102,10 @@
                     color: #777;
                   }
                 }
+                small {
+                  font-size: 12px;
+                  color: var(--Gray-40);
+                }
               }
             }
             &:last-child {
@@ -109,20 +114,30 @@
               p {
                 margin: 0;
                 &:first-child {
-                  font-weight: bold;
+                  font-weight: 500;
+                  font-size: 13px;
                 }
                 &:last-child {
                   &.up {
-                    color: #2e9e43;
+                    color: #f04452;
                   }
                   &.down {
-                    color: #ff2e2e;
+                    color: #3182f6;
                   }
                 }
               }
             }
           }
         }
+      }
+
+      .list_empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 55px;
+        font-size: 12px;
+        color: var(--Gray-40);
       }
     }
   }
@@ -202,7 +217,7 @@
 
 .comm_layer .desc_txt {
   padding-left: 8px;
-  color: #999;
+  color: var(--Gray-40);
   font-size: 13px;
   line-height: 20px;
 }

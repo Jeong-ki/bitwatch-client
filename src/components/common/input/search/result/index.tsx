@@ -138,7 +138,7 @@ export const InputSearchResult: FC<
     fetch();
   }, [value]);
 
-  const handleChange = (value: OptionItem['value']) => {
+  const handleChange = (value: string) => {
     onChange(value);
     if (isExactMatchValue) {
       onChangeLib({ type: 'input', target: inputHiddenRef.current });
