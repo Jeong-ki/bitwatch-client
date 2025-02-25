@@ -113,14 +113,14 @@ export const Header = () => {
               <Button
                 color="invisible"
                 size="medium">
-                <Link href="/">채팅</Link>
+                <Link href="/chat">채팅</Link>
               </Button>
             </li>
             <li>
               <Button
                 color="invisible"
                 size="medium">
-                <Link href="/">커뮤니티</Link>
+                <Link href="/community">커뮤니티</Link>
               </Button>
             </li>
           </ul>
@@ -136,7 +136,16 @@ export const Header = () => {
             <span>/</span> <p>를 눌러 검색해보세요.</p>
           </Button>
         </nav>
-        <div>
+        <div className="wrap_profile">
+          <button onClick={handleOpenSearchModal}>
+            <Image
+              className="m_search"
+              src={SearchIcon}
+              width={24}
+              height={24}
+              alt="조회 아이콘"
+            />
+          </button>
           {isLoggedIn ? (
             <div
               ref={profileRef}

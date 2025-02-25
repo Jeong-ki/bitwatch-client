@@ -14,3 +14,20 @@
     color: #6a6e73;
   }
 }
+
+/* ----- 반응형  ----- */
+@media screen and (max-width: 1024px) {
+  .doc-footer {
+    margin-right: 0;
+
+    .inner_foot small {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .doc-footer {
+    display: none;
+  }
+}

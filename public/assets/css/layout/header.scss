@@ -15,6 +15,15 @@
     background-color: var(--White);
   }
 
+  .wrap_profile {
+    display: flex;
+    align-items: center;
+    .m_search {
+      display: none;
+      margin-right: 12px;
+    }
+  }
+
   .link_logo {
     display: flex;
     align-items: center;
@@ -139,4 +148,36 @@
 
 .doc-header .info_profile .wrap_thumb:after {
   background-size: 52px auto;
+}
+
+/* ----- 반응형 ----- */
+@media screen and (max-width: 1024px) {
+  .doc-header nav {
+    padding: 2px 10px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .doc-header {
+    height: auto; /* 모바일에서 높이 늘어날 수 있게 */
+
+    nav {
+      flex-wrap: wrap; /* 줄바꿈이 가능하도록 */
+      gap: 10px;
+    }
+
+    .nav-header {
+      /* 예: 메뉴가 많으면 버튼이 한 줄에 안 들어갈 수 있으므로 숨기거나 hamburger 메뉴로 교체 */
+      display: none; 
+      /* 
+        또는 hamburger 버튼을 추가하고 .nav-header를 열고 닫게 만드는 로직을 별도로 구현해보세요.
+      */
+    }
+
+    .wrap_profile {
+      .m_search {
+        display: block;
+      }
+    }
+  }
 }

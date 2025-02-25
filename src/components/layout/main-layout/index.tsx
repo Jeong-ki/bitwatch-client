@@ -1,3 +1,4 @@
+import { BottomMenu } from '../bottom-menu';
 import { Footer } from '../footer';
 import { Header } from '../header';
 
@@ -15,6 +16,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
         </section>
       </main>
       <Footer />
+      <BottomMenu />
     </div>
   );
 };

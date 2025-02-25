@@ -117,3 +117,30 @@
   }
 }
 
+/* ----- 반응형 ----- */
+/* 1) 태블릿 (1024px 이하) */
+@media screen and (max-width: 1024px) {
+  .doc-sidebar {
+    &.open {
+      width: 300px; /* 조금 더 줄임 */
+    }
+
+    .sidebar_sub {
+      width: 244px;
+      min-width: 244px;
+      transform: translateX(300px);
+      /* 열리는 너비도 조정 */
+
+      hr {
+        width: 205px;
+      }
+    }
+  }
+}
+
+/* 2) 모바일(768px 이하) */
+@media screen and (max-width: 768px) {
+  .doc-sidebar {
+    display: none;
+  }
+}

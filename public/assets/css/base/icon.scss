@@ -125,3 +125,83 @@
   mask-size: cover;
   -webkit-mask-size: cover;
 }
+
+.ico_home {
+  width: 19px;
+  height: 19px;
+  background-color: var(--Gray-40);
+  mask: url('/assets/images/icon/home.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/home.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_home_fill {
+  width: 19px;
+  height: 19px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/home.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/home.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_chat {
+  width: 20px;
+  height: 20px;
+  background-color: var(--Gray-40);
+  mask: url('/assets/images/icon/chat.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/chat.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_chat_fill {
+  width: 20px;
+  height: 20px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/chat.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/chat.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_cloud {
+  width: 24px;
+  height: 20px;
+  background-color: var(--Gray-40);
+  mask: url('/assets/images/icon/cloud.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/cloud.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_cloud_fill {
+  width: 24px;
+  height: 20px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/cloud.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/cloud.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_user {
+  width: 20px;
+  height: 20px;
+  background-color: var(--Gray-40);
+  mask: url('/assets/images/icon/user.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/user.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_user_fill {
+  width: 20px;
+  height: 20px;
+  background-color: var(--Black);
+  mask: url('/assets/images/icon/user.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/user.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}

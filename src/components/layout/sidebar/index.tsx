@@ -10,7 +10,7 @@ interface MenuList {
   isChecked: boolean;
 }
 
-const SidebarMenu = [
+const SidebarMenuList = [
   {
     name: '내 알람',
     subName: '내 알람',
@@ -38,7 +38,7 @@ const SidebarMenu = [
 ];
 
 export const Sidebar = () => {
-  const [menuList, setMenuList] = useState<MenuList[]>(SidebarMenu);
+  const [menuList, setMenuList] = useState<MenuList[]>(SidebarMenuList);
 
   const handleMenuList = (index: number) => () => {
     setMenuList(prevMenuList =>
@@ -63,10 +63,12 @@ export const Sidebar = () => {
                 onClick={handleMenuList(index)}>
                 <div className="ico_wrap">
                   <span
-                    className={cn('ico_comm', {
-                      [`ico_${menu.icoNm}_fill`]: menu.isChecked,
-                      [`ico_${menu.icoNm}`]: !menu.isChecked
-                    })}
+                    className={cn(
+                      'ico_comm',
+                      menu.isChecked
+                        ? `ico_${menu.icoNm}_fill`
+                        : `ico_${menu.icoNm}`
+                    )}
                   />
                 </div>
                 {menu.name}

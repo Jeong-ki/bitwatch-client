@@ -141,3 +141,29 @@ body {
     }
   }
 }
+
+/* ----- 반응형 ----- */
+/* 1) 1024px 이하 - 예시로 레이아웃 일부 조정 */
+@media screen and (max-width: 1024px) {
+  .content-article {
+    /* 좌우 패딩을 조금 줄여봄 */
+    padding: 0 40px;
+  }
+
+  .doc-footer .inner-foot {
+    padding: 0 40px;
+  }
+}
+
+/* 2) 768px 이하 - 모바일/태블릿용 */
+@media screen and (max-width: 768px) {
+  .container-doc {
+    .main-content {
+      padding: 32px 0;  /* 세로 패딩 축소 */
+    }
+
+    .content-article {
+      padding: 0 20px; /* 모바일에서 좌우 패딩 더 축소 */
+    }
+  }
+}
