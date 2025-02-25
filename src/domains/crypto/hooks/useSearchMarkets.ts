@@ -1,8 +1,13 @@
 import { useMemo, useState } from 'react';
 import { useMarketListQuery, useTickerQuery } from '../queries';
+import { useDebounce } from '@/hooks/useDebounce';
+import { DEBOUNCE_DELAY } from '../constants';
 
 export const useSearchMarkets = () => {
   const [keyword, setKeyword] = useState('');
+
+  const debouncedKeyword = useDebounce(keyword, DEBOUNCE_DELAY);
+
   const { data: marketList = [], error: marketError } = useMarketListQuery();
 
   if (marketError) {
@@ -10,13 +15,13 @@ export const useSearchMarkets = () => {
   }
 
   const filteredMarkets = useMemo(() => {
-    const lowerKeyword = keyword.toLowerCase();
+    const lowerKeyword = debouncedKeyword.toLowerCase();
     return marketList.filter(
       m =>
-        m.korean_name.includes(keyword) ||
+        m.korean_name.includes(debouncedKeyword) ||
         m.english_name.toLowerCase().includes(lowerKeyword)
     );
-  }, [marketList, keyword]);
+  }, [marketList, debouncedKeyword]);
 
   const marketCodes = useMemo(
     () => filteredMarkets.map(m => m.market),
