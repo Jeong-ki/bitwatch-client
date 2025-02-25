@@ -2,11 +2,12 @@
 
 import { InputSearch } from '@/components/common/input/search';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { create, InstanceProps } from 'react-modal-promise';
 import FocusLock from 'react-focus-lock';
-import { useMarketListQuery, useTickerQuery } from '@/domains/crypto/queries';
 import { addComma } from '@/utils/common';
+import { useSearchMarkets } from '@/domains/crypto/hooks/useSearchMarkets';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 interface IResponse {
   isConfirm: boolean;
@@ -24,59 +25,17 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
       }
     }
   }, []);
-  const [keyword, setKeyword] = useState('');
-  // const onConfirm = () => onResolve({ isConfirm: true });
-  const onCancel = () => onResolve({ isConfirm: false });
+
+  const { keyword, setKeyword, marketsData } = useSearchMarkets();
 
   const handleSearch = (value: string) => {
     setKeyword(value);
   };
-  const {
-    data: marketList = []
-    // isLoading: marketLoading,
-    // error: marketError
-  } = useMarketListQuery();
 
-  const filteredMarkets = marketList.filter(m => {
-    const lowerKeyword = keyword.toLowerCase();
-    return (
-      m.korean_name.includes(keyword) ||
-      m.english_name.toLocaleLowerCase().includes(lowerKeyword)
-    );
-  });
-  const marketCodes = filteredMarkets.map(m => m.market);
-
-  const {
-    data: tickerData = []
-    // isLoading: tickerLoading,
-    // error: tickerError
-  } = useTickerQuery(marketCodes);
-
-  const mergedData = filteredMarkets.map(m => {
-    const ticker = tickerData.find(t => t.market === m.market);
-    return {
-      ...m,
-      trade_price: ticker?.trade_price ?? 0,
-      signed_change_rate: ticker?.signed_change_rate ?? 0
-    };
-  });
+  const onCancel = () => onResolve({ isConfirm: false });
 
   useOnClickOutside(modalRef, onCancel);
-
-  useEffect(() => {
-    if (!isOpen) return () => {};
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onCancel();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
+  useEscapeKey(onCancel, isOpen);
 
   return (
     <div className="comm_layer">
@@ -93,8 +52,8 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
               onChange={handleSearch}
             />
             <ul className="list_search">
-              {mergedData && mergedData.length > 0 ? (
-                mergedData.map((item, index) => {
+              {marketsData ? (
+                marketsData.map((item, index) => {
                   const upDownClass =
                     Number(item.signed_change_rate) >= 0 ? 'up' : 'down';
                   return (
