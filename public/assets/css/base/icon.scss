@@ -86,6 +86,26 @@
   -webkit-mask-size: cover;
 }
 
+.ico_star_favor {
+  width: 16px;
+  height: 16px;
+  background-color: var(--Gray-10);
+  mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
+.ico_star_favor_fill {
+  width: 16px;
+  height: 16px;
+  background-color: var(--star-yellow);
+  mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  -webkit-mask: url('/assets/images/icon/star_fill.svg') no-repeat center;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+}
+
 .ico_clock {
   width: 17px;
   height: 17px;

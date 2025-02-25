@@ -2,12 +2,14 @@
 
 import { InputSearch } from '@/components/common/input/search';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { create, InstanceProps } from 'react-modal-promise';
 import FocusLock from 'react-focus-lock';
 import { addComma } from '@/utils/common';
 import { useSearchMarkets } from '@/domains/crypto/hooks/useSearchMarkets';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import cn from 'classnames';
+import Link from 'next/link';
 
 interface IResponse {
   isConfirm: boolean;
@@ -15,7 +17,11 @@ interface IResponse {
 
 export type ModalProps = InstanceProps<IResponse, IResponse>;
 
+const DummyFavorites = ['KRW-BTC', 'KRW-ETH'];
+
 const Modal = ({ isOpen, onResolve }: ModalProps) => {
+  // TODO: API 개발 후 기능구현
+  const [dummyFavorites, setDummyFavorites] = useState(DummyFavorites);
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useCallback((node: HTMLDivElement | null) => {
     if (node) {
@@ -30,6 +36,15 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
 
   const handleSearch = (value: string) => {
     setKeyword(value);
+  };
+
+  const handleAddFavorites = (market: string) => {
+    setDummyFavorites(favorites => {
+      if (favorites.includes(market)) {
+        return favorites.filter(favor => favor !== market);
+      }
+      return [...favorites, market];
+    });
   };
 
   const onCancel = () => onResolve({ isConfirm: false });
@@ -58,9 +73,23 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
                     Number(item.signed_change_rate) >= 0 ? 'up' : 'down';
                   return (
                     <li key={index}>
-                      <button>
+                      {/* TODO: 상세페이지 이동 적용 필요 */}
+                      <Link
+                        href="/"
+                        className="li_item">
                         <div>
-                          <span>별</span>
+                          <button
+                            className="btn_favor"
+                            onClick={() => handleAddFavorites(item.market)}>
+                            <span
+                              className={cn(
+                                'ico_comm',
+                                dummyFavorites.includes(item.market)
+                                  ? 'ico_star_favor_fill'
+                                  : 'ico_star_favor'
+                              )}
+                            />
+                          </button>
                           <div>
                             <p>{item.korean_name}</p>
                             <p>{`${item.market.split('-')[1]}/${item.market.split('-')[0]}`}</p>
@@ -72,7 +101,7 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
                             {(item.signed_change_rate * 100).toFixed(2)}%
                           </p>
                         </div>
-                      </button>
+                      </Link>
                     </li>
                   );
                 })

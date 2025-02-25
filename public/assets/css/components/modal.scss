@@ -40,8 +40,13 @@
     
       .list_search {
         margin-top: 12px;
-        max-height: 380px;
+        max-height: 385px;
         overflow-y: auto;
+
+        .btn_favor {
+          border: 0;
+          background-color: transparent;
+        }
 
         &::-webkit-scrollbar {
           width: 6px; 
@@ -62,11 +67,11 @@
     
         li {
           padding: 1px;
-          button {
+          .li_item {
             display: flex;
+            text-decoration: none;
             justify-content: space-between; 
             align-items: center;
-            width: 100%;
             padding: 7px;
             border: none;
             border-radius: 6px;
@@ -151,7 +156,7 @@
         padding: 12px;
         margin: 12px auto;
         .list_search {
-          max-height: 300px; // 모바일 화면 높이에 맞춰 조정
+          max-height: 330px; // 모바일 화면 높이에 맞춰 조정
         }
       }
     }
