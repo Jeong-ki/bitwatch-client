@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 
 const TITLE = '비트워치(BitWatch)';
 const DESCRIPTION = '가상화폐 시세 조회/알림';
-const IMAGE_URL = '/vercel.svg';
-const FAVICON_URL = '/vercel.svg';
+const IMAGE_URL = '/assets/images/favicon.png';
+const FAVICON_URL = '/assets/images/favicon.png';
 const KEYWORDS = ['가상화폐', '시세', '알림'];
 
 const { NEXT_PUBLIC_URL = '' } = process.env;

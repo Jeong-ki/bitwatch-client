@@ -16,6 +16,7 @@ import { SearchModal } from '../search-modal';
 import { signoutUser } from '@/domains/auth/api';
 import { isTokenValid } from '@/domains/auth/utils';
 import { reissueUser } from '@/domains/user/api';
+import Logo from '@img/logo.png';
 
 export const Header = () => {
   const router = useRouter();
@@ -97,7 +98,12 @@ export const Header = () => {
           <Link
             href="/"
             className="link_logo">
-            BitWatch
+            <Image
+              src={Logo}
+              width={109}
+              height={18}
+              alt="비트워치 로고"
+            />
           </Link>
         </h1>
         <nav className="nav-header">
