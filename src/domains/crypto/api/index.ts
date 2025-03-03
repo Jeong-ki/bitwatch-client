@@ -1,15 +1,17 @@
+import { upbitBaseURL } from '../constants';
 import { MarketInfo, TickerInfo } from './types';
 
 /**
  * @title 업비트 > 종목 코드 조회
- * @api GET /crypto/market
+ * @api GET /market/all
  */
 export const getMarketAll = async (): Promise<MarketInfo[]> => {
-  const res = await fetch('/api/crypto/market');
+  const res = await fetch(`${upbitBaseURL}/market/all`);
   if (!res.ok) {
     throw new Error('Failed to fetch market list');
   }
-  return res.json();
+  const data = await res.json();
+  return data.filter((item: any) => item.market.includes('KRW'));
 };
 
 /**
@@ -19,7 +21,7 @@ export const getMarketAll = async (): Promise<MarketInfo[]> => {
  */
 export const getTicker = async (markets: string[]): Promise<TickerInfo[]> => {
   const query = markets.join(',');
-  const res = await fetch(`/api/crypto/ticker?markets=${query}`);
+  const res = await fetch(`${upbitBaseURL}/ticker?markets=${query}`);
   if (!res.ok) {
     throw new Error('Failed to fetch ticker list');
   }
