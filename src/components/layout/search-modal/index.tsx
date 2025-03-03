@@ -66,6 +66,23 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
               value={keyword}
               onChange={handleSearch}
             />
+            <div className="tab_wrap">
+              <div className="tab_underbar"></div>
+              <ul className="list_tab">
+                <li>
+                  <button>원화</button>
+                </li>
+                <li>
+                  <button>BTC</button>
+                </li>
+                <li>
+                  <button>USDT</button>
+                </li>
+                <li>
+                  <button>관심</button>
+                </li>
+              </ul>
+            </div>
             <ul className="list_search">
               {marketsData ? (
                 marketsData.map((item, index) => {

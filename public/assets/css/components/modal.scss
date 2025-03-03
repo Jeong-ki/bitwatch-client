@@ -143,7 +143,43 @@
     }
   }
 
-  /* ... 기존 기타 스타일들 ... */
+  .tab_wrap {
+    position: relative;
+    padding: 0px 8px;
+  }
+  
+  .list_tab {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 27, 55, 0.1);
+
+    li {
+      padding: 10px 0;
+      padding-right: 16px;
+    }
+  }
+  
+  .list_tab li button {
+    background: none;
+    border: none;
+    color: #000c1ecc;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* 선택된 탭 아래에 표시될 검은색 밑줄 */
+  .tab_underbar {
+    position: absolute;
+    bottom: 0;
+    left: 0; /* 초기 위치 (JS로 업데이트) */
+    height: 2px;
+    background: black;
+    transition: left 0.3s ease, width 0.3s ease;
+    width: 0; /* 초기 너비 (JS로 업데이트) */
+  }
+  
 
   /* 반응형 미디어 쿼리 */
   @media screen and (max-width: 768px) {
