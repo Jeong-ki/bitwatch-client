@@ -2,7 +2,7 @@
 
 import { InputSearch } from '@/components/common/input/search';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { create, InstanceProps } from 'react-modal-promise';
 import FocusLock from 'react-focus-lock';
 import { addComma } from '@/utils/common';
@@ -10,6 +10,7 @@ import { useSearchMarkets } from '@/domains/crypto/hooks/useSearchMarkets';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import cn from 'classnames';
 import Link from 'next/link';
+import { CurrencyTabs, DummyFavorites } from '../../constants';
 
 interface IResponse {
   isConfirm: boolean;
@@ -17,11 +18,16 @@ interface IResponse {
 
 export type ModalProps = InstanceProps<IResponse, IResponse>;
 
-const DummyFavorites = ['KRW-BTC', 'KRW-ETH'];
-
 const Modal = ({ isOpen, onResolve }: ModalProps) => {
   // TODO: API 개발 후 기능구현
   const [dummyFavorites, setDummyFavorites] = useState(DummyFavorites);
+  const [activeTab, setActiveTab] = useState<(typeof CurrencyTabs)[number]>(
+    CurrencyTabs[0]
+  );
+  const [underBarStyle, setUnderBarStyle] = useState({ left: 0, width: 0 });
+
+  const tabRefs = useRef<(HTMLLIElement | null)[]>([]);
+
   const modalRef = useRef<HTMLDivElement>(null);
   const inputRef = useCallback((node: HTMLDivElement | null) => {
     if (node) {
@@ -32,18 +38,23 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
     }
   }, []);
 
-  const { keyword, setKeyword, marketsData } = useSearchMarkets();
+  const { keyword, setKeyword, marketsData } = useSearchMarkets(
+    activeTab.currency
+  );
 
   const handleSearch = (value: string) => {
     setKeyword(value);
   };
 
-  const handleAddFavorites = (market: string) => {
+  const handleFavorites = (market: string) => {
     setDummyFavorites(favorites => {
-      if (favorites.includes(market)) {
-        return favorites.filter(favor => favor !== market);
+      if (favorites.some(fav => fav.market === market)) {
+        return favorites.filter(fav => fav.market !== market);
       }
-      return [...favorites, market];
+      return [
+        ...favorites,
+        { market, korean_name: market, english_name: market }
+      ];
     });
   };
 
@@ -51,6 +62,23 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
 
   useOnClickOutside(modalRef, onCancel);
   useEscapeKey(onCancel, isOpen);
+
+  useEffect(() => {
+    const activeIndex = CurrencyTabs.findIndex(
+      tab => tab.currency === activeTab.currency
+    );
+    const tabEl = tabRefs.current[activeIndex];
+    if (tabEl) {
+      const parentRect = tabEl.parentElement?.getBoundingClientRect();
+      const activeRect = tabEl.getBoundingClientRect();
+      if (parentRect) {
+        setUnderBarStyle({
+          left: activeRect.left - parentRect.left,
+          width: activeRect.width
+        });
+      }
+    }
+  }, [activeTab]);
 
   return (
     <div className="comm_layer">
@@ -67,20 +95,25 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
               onChange={handleSearch}
             />
             <div className="tab_wrap">
-              <div className="tab_underbar"></div>
+              <div
+                className="tab_underbar"
+                style={underBarStyle}
+              />
               <ul className="list_tab">
-                <li>
-                  <button>원화</button>
-                </li>
-                <li>
-                  <button>BTC</button>
-                </li>
-                <li>
-                  <button>USDT</button>
-                </li>
-                <li>
-                  <button>관심</button>
-                </li>
+                {CurrencyTabs.map((tab, index) => (
+                  <li
+                    key={tab.currency}
+                    ref={el => {
+                      tabRefs.current[index] = el;
+                    }}
+                    className={cn({
+                      active: activeTab.currency === tab.currency
+                    })}>
+                    <button onClick={() => setActiveTab(tab)}>
+                      {tab.text}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
             <ul className="list_search">
@@ -97,11 +130,13 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
                         <div>
                           <button
                             className="btn_favor"
-                            onClick={() => handleAddFavorites(item.market)}>
+                            onClick={() => handleFavorites(item.market)}>
                             <span
                               className={cn(
                                 'ico_comm',
-                                dummyFavorites.includes(item.market)
+                                dummyFavorites.some(
+                                  fav => fav.market === item.market
+                                )
                                   ? 'ico_star_favor_fill'
                                   : 'ico_star_favor'
                               )}

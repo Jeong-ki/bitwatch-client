@@ -12,7 +12,7 @@ import useAuthStore from '@/domains/auth/store';
 import { useMutation } from '@tanstack/react-query';
 import useUserStore from '@/domains/user/store';
 import { HTTP_STATUS } from '@/@types/enum';
-import { SearchModal } from '../search-modal';
+import { SearchModal } from '../../../domains/crypto/components/search-modal';
 import { signoutUser } from '@/domains/auth/api';
 import { isTokenValid } from '@/domains/auth/utils';
 import { reissueUser } from '@/domains/user/api';

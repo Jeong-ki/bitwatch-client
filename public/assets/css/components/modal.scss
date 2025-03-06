@@ -37,6 +37,10 @@
       margin: 12px auto;
       padding: 12px;
       width: 550px;
+
+      .item_form {
+        margin-bottom: 12px;
+      }
     
       .list_search {
         margin-top: 12px;
@@ -145,7 +149,7 @@
 
   .tab_wrap {
     position: relative;
-    padding: 0px 8px;
+    padding: 0px 10px;
   }
   
   .list_tab {
@@ -156,28 +160,34 @@
     border-bottom: 1px solid rgba(0, 27, 55, 0.1);
 
     li {
-      padding: 10px 0;
-      padding-right: 16px;
+      padding: 5px 0;
+      margin-right: 16px;
+
+      button {
+        background: none;
+        border: none;
+        color: #000c1ecc;
+        cursor: pointer;
+        font-size: 14px;
+      }
     }
   }
-  
-  .list_tab li button {
-    background: none;
-    border: none;
-    color: #000c1ecc;
-    cursor: pointer;
-    font-size: 14px;
+
+  .active {
+    button {
+      color: var(--Black);
+      font-weight: 700;
+    }
   }
   
   /* 선택된 탭 아래에 표시될 검은색 밑줄 */
   .tab_underbar {
     position: absolute;
     bottom: 0;
-    left: 0; /* 초기 위치 (JS로 업데이트) */
     height: 2px;
+    margin: 0px 10px;
     background: black;
     transition: left 0.3s ease, width 0.3s ease;
-    width: 0; /* 초기 너비 (JS로 업데이트) */
   }
   
 

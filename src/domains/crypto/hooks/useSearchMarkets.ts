@@ -1,14 +1,26 @@
 import { useMemo, useState } from 'react';
 import { useMarketListQuery, useTickerQuery } from '../queries';
 import { useDebounce } from '@/hooks/useDebounce';
-import { DEBOUNCE_DELAY } from '../constants';
+import { Currency, DEBOUNCE_DELAY, DummyFavorites } from '../constants';
 
-export const useSearchMarkets = () => {
+export const useSearchMarkets = (currency: Currency) => {
   const [keyword, setKeyword] = useState('');
 
   const debouncedKeyword = useDebounce(keyword, DEBOUNCE_DELAY);
 
+  // TODO: API 개발 후 Query로 대체
+  const dummyFavorites = DummyFavorites;
   const { data: marketList = [], error: marketError } = useMarketListQuery();
+  const convertedMarketList =
+    currency === 'FAV'
+      ? dummyFavorites
+      : marketList
+          .filter((item: any) => item.market.includes(`${currency}-`))
+          .sort((a, b) => {
+            const aFav = dummyFavorites.some(fav => fav.market === a.market);
+            const bFav = dummyFavorites.some(fav => fav.market === b.market);
+            return aFav === bFav ? 0 : aFav ? -1 : 1;
+          });
 
   if (marketError) {
     console.error('MarketList Query Error: ', marketError);
@@ -16,12 +28,12 @@ export const useSearchMarkets = () => {
 
   const filteredMarkets = useMemo(() => {
     const lowerKeyword = debouncedKeyword.toLowerCase();
-    return marketList.filter(
+    return convertedMarketList.filter(
       m =>
         m.korean_name.includes(debouncedKeyword) ||
         m.english_name.toLowerCase().includes(lowerKeyword)
     );
-  }, [marketList, debouncedKeyword]);
+  }, [convertedMarketList, debouncedKeyword]);
 
   const marketCodes = useMemo(
     () => filteredMarkets.map(m => m.market),

@@ -1,4 +1,4 @@
-import { upbitBaseURL } from '../constants';
+import { UpbitBaseURL } from '../constants';
 import { MarketInfo, TickerInfo } from './types';
 
 /**
@@ -6,12 +6,11 @@ import { MarketInfo, TickerInfo } from './types';
  * @api GET /market/all
  */
 export const getMarketAll = async (): Promise<MarketInfo[]> => {
-  const res = await fetch(`${upbitBaseURL}/market/all`);
+  const res = await fetch(`${UpbitBaseURL}/market/all`);
   if (!res.ok) {
     throw new Error('Failed to fetch market list');
   }
-  const data = await res.json();
-  return data.filter((item: any) => item.market.includes('KRW'));
+  return res.json();
 };
 
 /**
@@ -21,7 +20,7 @@ export const getMarketAll = async (): Promise<MarketInfo[]> => {
  */
 export const getTicker = async (markets: string[]): Promise<TickerInfo[]> => {
   const query = markets.join(',');
-  const res = await fetch(`${upbitBaseURL}/ticker?markets=${query}`);
+  const res = await fetch(`${UpbitBaseURL}/ticker?markets=${query}`);
   if (!res.ok) {
     throw new Error('Failed to fetch ticker list');
   }
