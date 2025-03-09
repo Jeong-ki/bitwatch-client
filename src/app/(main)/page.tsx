@@ -1,3 +1,11 @@
 export default function Home() {
-  return <div>홈</div>;
+  return (
+    <div className="content-home">
+      <section className="content-main">left area</section>
+      <div className="center_line">
+        <div className="line" />
+      </div>
+      <div className="content-aside">right area</div>
+    </div>
+  );
 }
