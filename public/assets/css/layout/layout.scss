@@ -161,11 +161,13 @@ body {
 @media screen and (max-width: 768px) {
   .container-doc {
     .main-content {
-      padding: 32px 0;  /* 세로 패딩 축소 */
-    }
-
-    .content-article {
-      padding: 0 20px; /* 모바일에서 좌우 패딩 더 축소 */
+      padding: 16px 8px;  /* 세로 패딩 축소 */
+      .content-home {
+        margin: 0;
+      }
+      .center_line {
+        display: none;
+      }
     }
   }
 }
