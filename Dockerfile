@@ -2,8 +2,8 @@
 FROM node:23.6.1-alpine AS builder
 WORKDIR /app
 
-# Node 23 이상에서는 Corepack이 기본 포함되어 있으므로, pnpm 지정 버전 활성화
-RUN corepack prepare pnpm@10.0.0 --activate
+# Corepack 활성화 후 pnpm v10.0.0 준비
+RUN corepack enable && corepack prepare pnpm@10.0.0 --activate
 
 # 의존성 설치를 위해 필요한 파일 복사 (pnpm-lock.yaml 또는 pnpm-lock.json이 있어야 함)
 COPY package.json pnpm-lock.yaml ./
