@@ -6,22 +6,23 @@ const nextConfig: NextConfig = {
   experimental: {
     turbo: {
       rules: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         '*.scss': {
           loaders: ['sass-loader'],
-          as: '*.css',
-        },
-      },
-    },
+          as: '*.css'
+        }
+      }
+    }
   },
   async redirects() {
     return [
       {
         source: '/mockServiceWorker.js',
         destination: '/',
-        permanent: false,
-      },
+        permanent: false
+      }
     ];
-  },
+  }
 };
 
 export default nextConfig;
