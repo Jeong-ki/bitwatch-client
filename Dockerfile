@@ -17,6 +17,8 @@ RUN pnpm build
 FROM node:23.6.1-alpine AS runner
 WORKDIR /app
 
+RUN corepack enable && corepack prepare pnpm@10.0.0 --activate
+
 # 빌드 결과물 복사
 COPY --from=builder /app ./
 
