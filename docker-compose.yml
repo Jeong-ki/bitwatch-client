@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  nextjs:
+    build: .
+    container_name: nextjs_app
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    # expose:
+    #   - "3000"
+    restart: always
+
+  # nginx 추후 적용 
+  # nginx:
+  #   image: nginx:stable-alpine
+  #   container_name: nginx_proxy
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./certs:/etc/nginx/certs:ro  # SSL 인증서 파일은 ./certs 디렉터리에 보관 (예: fullchain.pem, privkey.pem)
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   depends_on:
+  #     - nextjs
+  #   restart: always
