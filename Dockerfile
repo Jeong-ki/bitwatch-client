@@ -17,7 +17,8 @@ RUN pnpm build
 FROM node:23.6.1-alpine AS runner
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@10.0.0 --activate
+# 런타임 단계에서 pnpm을 전역 설치
+RUN npm install -g pnpm@10.0.0
 
 # 빌드 결과물 복사
 COPY --from=builder /app ./
