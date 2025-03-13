@@ -8,8 +8,8 @@ function usePrevious<T>(
   state: T,
   shouldUpdate: ShouldUpdateFunc<T> = defaultShouldUpdate
 ): T | undefined {
-  const prevRef = useRef<T>();
-  const curRef = useRef<T>();
+  const prevRef = useRef<T | undefined>(undefined);
+  const curRef = useRef<T | undefined>(undefined);
 
   if (shouldUpdate(curRef.current, state)) {
     prevRef.current = curRef.current;

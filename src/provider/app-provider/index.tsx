@@ -5,6 +5,7 @@ import { ModalContainer } from '@/components/layout/modal-container';
 import { getQueryClient } from '@/lib/react-query';
 import useGlobalStore from '@/store/global';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { Suspense } from 'react';
 
 export const AppProvider = ({
   children
@@ -16,7 +17,9 @@ export const AppProvider = ({
     <QueryClientProvider client={queryClient}>
       {children}
       {isLoading && <Spinner />}
-      <ModalContainer />
+      <Suspense fallback={<Spinner />}>
+        <ModalContainer />
+      </Suspense>
     </QueryClientProvider>
   );
 };
