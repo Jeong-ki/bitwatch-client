@@ -5,7 +5,7 @@ export default function Home() {
       <div className="center_line">
         <div className="line" />
       </div>
-      <div className="content-aside">right area</div>
+      <div className="content-aside">right area, test</div>
     </div>
   );
 }
