@@ -20,10 +20,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <html lang="ko">
-      <body>
-        <ErrorPage status={HTTP_STATUS.NOT_FOUND} />;
-      </body>
-    </html>
+    <div lang="ko">
+      <ErrorPage status={HTTP_STATUS.NOT_FOUND} />
+    </div>
   );
 }
