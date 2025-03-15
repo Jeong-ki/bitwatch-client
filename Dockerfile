@@ -17,7 +17,7 @@ RUN pnpm build
 FROM node:23.6.1-alpine AS runner
 WORKDIR /app
 
-# 런타임 단계에서 pnpm을 전역 설치
+# 런타임 단계에서 pnpm 전역 설치
 RUN npm install -g pnpm@10.0.0
 
 # 빌드 결과물 복사
@@ -26,8 +26,8 @@ COPY --from=builder /app ./
 # production 환경 설정
 ENV NODE_ENV=production
 
-# Next.js 기본 포트 노출 (필요에 따라 변경 가능)
+# Next.js 기본 포트 노출
 EXPOSE 3000
 
-# Next.js 애플리케이션 실행 (package.json에 정의된 start 스크립트를 사용)
-CMD ["pnpm", "start"]
+# Next.js 애플리케이션 실행 (절대 경로를 사용)
+CMD ["/usr/local/bin/pnpm", "start", "-H", "0.0.0.0", "-p", "3000"]
