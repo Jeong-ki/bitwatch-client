@@ -19,6 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 디스크 정리 단계 추가
+      - name: Clean up Docker resources
+        run: |
+          docker system prune -af --volumes
+          df -h
+
       # 2. Docker 이미지 빌드
       - name: Build Docker image
         run: |
