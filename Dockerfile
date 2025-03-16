@@ -2,6 +2,18 @@
 FROM node:23.6.1-alpine AS builder
 WORKDIR /app
 
+# 빌드 시 필요한 환경 변수 정의
+# ARG는 "docker build --build-arg" 옵션으로부터 전달받을 수 있습니다.
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_URL
+ARG NEXT_PUBLIC_UPBIT_API_URL
+
+# ARG로 받은 값을 실제 ENV로 등록
+# (Next.js 빌드 시 process.env.*에서 사용할 수 있게 됨)
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_URL=$NEXT_PUBLIC_URL
+ENV NEXT_PUBLIC_UPBIT_API_URL=$NEXT_PUBLIC_UPBIT_API_URL
+
 # Corepack 활성화 후 pnpm v10.0.0 준비
 RUN corepack enable && corepack prepare pnpm@10.0.0 --activate
 

@@ -34,6 +34,10 @@ const fetchCoreConfig = async (
     ? `?${new URLSearchParams(options.params).toString()}`
     : '';
   const baseURL = process.env.NEXT_PUBLIC_API_URL as string;
+  if (!baseURL) {
+    // 빌드 과정에서라도 빈 문자열이면 에러 throw (원인 파악 도움)
+    throw new Error('NEXT_PUBLIC_API_URL이 설정되어 있지 않습니다.');
+  }
 
   try {
     const response = await fetch(baseURL + url + queryParams, config);
