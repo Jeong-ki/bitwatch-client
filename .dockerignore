@@ -1,0 +1,14 @@
+# node_modules 폴더 제외 (로컬에서 설치된 모듈 제외)
+node_modules
+
+# 로컬 빌드 산출물 제외 (.next, dist, build 등 프로젝트에 따라 다름)
+.next
+dist
+build
+
+# 로그 파일들
+*.log
+
+# Git 관련 파일들
+.git
+.gitignore
