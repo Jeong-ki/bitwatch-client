@@ -47,6 +47,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~/project/bitwatch-client
+            git pull origin main
             docker-compose down
-            docker-compose pull || true
             docker-compose up -d --build
