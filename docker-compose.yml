@@ -1,7 +1,12 @@
 version: "3.8"
 services:
   nextjs:
-    build: .
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+        NEXT_PUBLIC_URL: ${NEXT_PUBLIC_URL}
+        NEXT_PUBLIC_UPBIT_API_URL: ${NEXT_PUBLIC_UPBIT_API_URL}
     container_name: nextjs_app
     environment:
       - NODE_ENV=production

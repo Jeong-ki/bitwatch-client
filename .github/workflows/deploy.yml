@@ -22,14 +22,10 @@ jobs:
       # 2. Docker 이미지 빌드
       - name: Build Docker image
         run: |
-          echo "Building Docker image with the following variables:"
-          echo "NEXT_PUBLIC_API_URL: $NEXT_PUBLIC_API_URL"
-          echo "NEXT_PUBLIC_URL: $NEXT_PUBLIC_URL"
-          echo "NEXT_PUBLIC_UPBIT_API_URL: $NEXT_PUBLIC_UPBIT_API_URL"
           docker build --no-cache \
-            --build-arg NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
-            --build-arg NEXT_PUBLIC_URL=$NEXT_PUBLIC_URL \
-            --build-arg NEXT_PUBLIC_UPBIT_API_URL=$NEXT_PUBLIC_UPBIT_API_URL \
+            --build-arg NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} \
+            --build-arg NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }} \
+            --build-arg NEXT_PUBLIC_UPBIT_API_URL=${{ vars.NEXT_PUBLIC_UPBIT_API_URL }} \
             -t bitwatch-client .
 
       # 3. Docker Hub에 푸시 (선택 사항)
