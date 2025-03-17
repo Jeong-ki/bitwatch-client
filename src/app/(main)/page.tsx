@@ -7,6 +7,7 @@ export default function Home() {
       </div>
       <div className="content-aside">
         right area <p>test area</p>
+        <p>test area333</p>
       </div>
     </div>
   );
