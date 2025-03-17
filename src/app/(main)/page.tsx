@@ -9,7 +9,7 @@ export default function Home() {
         right area <p>test area</p>
         <p>test area333</p>
         <p>test area333</p>
-        <p>real test</p>
+        <p>real test99119911</p>
       </div>
     </div>
   );
