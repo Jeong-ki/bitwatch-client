@@ -3,9 +3,9 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import render from '@/utils/test/render'; // 커스텀 렌더 함수 경로에 맞춰 수정
 import '@testing-library/jest-dom';
-import Home from '@/app/home/page';
 import userEvent from '@testing-library/user-event';
 import { mockUseInputStore } from '@/utils/test/mockZustandStore';
+import Home from '@/app/(main)/page';
 
 test('zustand store test', async () => {
   render(<Home />);

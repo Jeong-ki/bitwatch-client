@@ -1,6 +1,8 @@
 import '@css/style.scss';
-import { AppProvider } from '@/provider/app-provider';
+import { AppProvider } from '@/app/provider';
 import { Metadata } from 'next';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { getQueryClient } from '@/lib/react-query';
 
 const TITLE = '비트워치(BitWatch)';
 const DESCRIPTION = '가상화폐 시세 조회/알림';
@@ -33,10 +35,20 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: Readonly<{ children: React.ReactNode }>) {
+  const queryClient = getQueryClient();
+
+  // await queryClient.prefetchQuery(getUserQueryOptions());
+
+  const dehydratedState = dehydrate(queryClient);
+
   return (
     <html lang="ko">
       <body>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <HydrationBoundary state={dehydratedState}>
+            {children}
+          </HydrationBoundary>
+        </AppProvider>
       </body>
     </html>
   );
