@@ -1,4 +1,4 @@
-import { InputValue } from '@/@types/element';
+import { InputValue } from '@/types/element';
 import { InputHTMLAttributes } from 'react';
 import { UseFormRegisterReturn, InternalFieldName } from 'react-hook-form';
 

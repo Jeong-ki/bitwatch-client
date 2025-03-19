@@ -1,4 +1,4 @@
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import { InputProps } from '@/components/common/input/types';
 
 export interface InputSearchProps

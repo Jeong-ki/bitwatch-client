@@ -1,6 +1,6 @@
 'use client';
 
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import { Button } from '@/components/common/button';
 import { Checkbox } from '@/components/common/checkbox';
 import { Input } from '@/components/common/input';

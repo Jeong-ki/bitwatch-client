@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import useMemoizedFn from '@/hooks/useMemoizedFn';
 import cn from 'classnames';
 import { OptionListProps } from './types';

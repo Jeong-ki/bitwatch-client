@@ -1,4 +1,4 @@
-import { HTTP_STATUS } from '@/@types/enum';
+import { HTTP_STATUS } from '@/types/enum';
 import useAuthStore from '@/domains/auth/store';
 
 type METHOD = 'GET' | 'POST' | 'DELETE' | 'PATCH' | 'PUT';

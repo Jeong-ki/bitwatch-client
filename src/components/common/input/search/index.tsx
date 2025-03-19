@@ -11,7 +11,7 @@ import {
 import { Input } from '@/components/common/input';
 import { InputSearchProps } from '@/components/common/input/search/types';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
-import { InputValue } from '@/@types/element';
+import { InputValue } from '@/types/element';
 
 export const InputSearch: FC<PropsWithChildren<InputSearchProps>> = ({
   children,

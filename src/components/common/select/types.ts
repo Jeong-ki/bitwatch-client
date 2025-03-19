@@ -1,4 +1,4 @@
-import { FormSize, InputValue, OptionItem } from '@/@types/element';
+import { FormSize, InputValue, OptionItem } from '@/types/element';
 import {
   InternalFieldName,
   UseFormRegisterReturn,

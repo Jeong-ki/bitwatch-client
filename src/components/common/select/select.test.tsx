@@ -1,4 +1,4 @@
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import render from '@/utils/test/render';
 import { screen, within } from '@testing-library/react';
 import { Select } from '.';

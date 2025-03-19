@@ -1,4 +1,4 @@
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import { InputSearchProps } from '../types';
 
 type SuggestType = 'test1' | 'test2';

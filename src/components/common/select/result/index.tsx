@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { SelectResultProps } from '@/components/common/select/result/types';
 import isEmpty from 'lodash.isempty';
 import { getDummy } from '@/api/dummy';
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import { isEmptyNum } from '@/utils/common';
 
 export const SelectResult = ({

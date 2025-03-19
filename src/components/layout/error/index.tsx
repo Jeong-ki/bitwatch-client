@@ -1,6 +1,6 @@
 import { isEmptyNum } from '@/utils/common';
 import Link from 'next/link';
-import { HTTP_STATUS } from '@/@types/enum';
+import { HTTP_STATUS } from '@/types/enum';
 import { Footer } from '../footer';
 
 export const ErrorPage = ({ status }: { status?: number }) => {

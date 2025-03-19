@@ -1,6 +1,5 @@
 'use client';
 
-import { HTTP_STATUS } from '@/@types/enum';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
@@ -13,6 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
+import { HTTP_STATUS } from '@/types/enum';
 
 interface SigninData {
   email: string;

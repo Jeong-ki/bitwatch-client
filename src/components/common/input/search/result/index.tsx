@@ -13,7 +13,7 @@ import {
 import { InputSearch } from '@/components/common/input/search';
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames';
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 import { getDummy } from '@/api/dummy';
 import { OptionList } from '@/components/common/option-list';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';

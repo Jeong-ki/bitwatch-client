@@ -1,7 +1,7 @@
 import { ReactNode, Ref } from 'react';
 import { InputElemProps } from '@/components/common/input/elem/types';
 import { UseFormSetValue } from 'react-hook-form';
-import { FormSize } from '@/@types/element';
+import { FormSize } from '@/types/element';
 
 export interface InputProps extends InputElemProps {
   refProp?: Ref<HTMLDivElement>;

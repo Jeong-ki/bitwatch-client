@@ -1,4 +1,4 @@
-import { OptionItem } from '@/@types/element';
+import { OptionItem } from '@/types/element';
 
 export interface OptionListProps {
   value: OptionItem['value'] | undefined;

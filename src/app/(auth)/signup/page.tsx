@@ -1,6 +1,6 @@
 'use client';
 
-import { HTTP_STATUS } from '@/@types/enum';
+import { HTTP_STATUS } from '@/types/enum';
 import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
