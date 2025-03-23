@@ -9,28 +9,24 @@ import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import SearchIcon from '@img/icon/search.svg';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '@/domains/auth/store';
-import { useMutation } from '@tanstack/react-query';
 import useUserStore from '@/domains/user/store';
-import { HTTP_STATUS } from '@/types/enum';
 import { SearchModal } from '../../../domains/crypto/components/search-modal';
-import { signoutUser } from '@/domains/auth/api';
 import { isTokenValid } from '@/domains/auth/utils';
-import { reissueUser } from '@/domains/user/api';
 import Logo from '@img/logo.png';
+import { useSignOut } from '@/domains/auth/api/post-signout';
+import { useReissue } from '@/domains/auth/api/post-reissue';
 
 export const Header = () => {
   const router = useRouter();
   const { accessToken, clearAuth } = useAuthStore();
-  const { user, setUser, clearUser } = useUserStore();
+  const { user, clearUser } = useUserStore();
 
   const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false);
   const [isOpenSearchModal, setIsOpenSearchModal] = useState<boolean>(false);
   const isLoggedIn = !!accessToken && isTokenValid(accessToken);
   const profileRef = useRef(null);
 
-  const { mutate: signout } = useMutation({
-    mutationFn: signoutUser
-  });
+  const { mutate: signout } = useSignOut();
 
   const clearInfo = () => {
     signout();
@@ -38,15 +34,11 @@ export const Header = () => {
     clearUser();
   };
 
-  const { mutate: reissue } = useMutation({
-    mutationFn: reissueUser,
-    onSuccess: res => {
-      if (res.status === HTTP_STATUS.OK && res.data) {
-        setUser(res.data);
+  const { mutate: reissue } = useReissue({
+    mutationConfig: {
+      onError: () => {
+        clearInfo();
       }
-    },
-    onError: () => {
-      clearInfo();
     }
   });
 

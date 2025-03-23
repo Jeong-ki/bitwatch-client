@@ -1,16 +1,14 @@
 'use client';
 
 import { HTTP_STATUS } from '@/types/enum';
-import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
-import { emailVerification, signupUser } from '@/domains/auth/api';
 import validateRule from '@/lib/react-hook-form';
-import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { SyntheticEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSignUp } from '@/domains/auth/api/create-signup';
+import { useEmailVerification } from '@/domains/auth/api/post-email-verification';
 
 interface SignupData {
   email: string;
@@ -21,7 +19,6 @@ interface SignupData {
 }
 
 export default function Signup() {
-  const router = useRouter();
   const [isSendEmail, setIsSendEmail] = useState(false);
 
   const {
@@ -40,46 +37,15 @@ export default function Signup() {
     }
   });
 
-  const { mutate: signup } = useMutation({
-    mutationFn: signupUser,
-    onSuccess: res => {
-      if (res.status === HTTP_STATUS.CREATED) {
-        Alert({
-          description: res?.message || '',
-          hasCancelBtn: false
-        }).then(({ isConfirm }) => {
-          if (isConfirm) {
-            router.push('/signin');
-          }
-        });
-      }
-    },
-    onError: err => {
-      console.log('onError: ', err.message);
-      Alert({
-        description: err?.message || '',
-        hasCancelBtn: false
-      });
-    }
-  });
+  const { mutate: signup } = useSignUp();
 
-  const { mutate: sendEmail } = useMutation({
-    mutationFn: emailVerification,
-    onSuccess: res => {
-      if (res.status === HTTP_STATUS.OK) {
-        setIsSendEmail(true);
-        Alert({
-          description: res.message,
-          hasCancelBtn: false
-        });
+  const { mutate: sendEmail } = useEmailVerification({
+    mutationConfig: {
+      onSuccess: res => {
+        if (res.status === HTTP_STATUS.OK) {
+          setIsSendEmail(true);
+        }
       }
-    },
-    onError: err => {
-      console.log('onError: ', err.message);
-      Alert({
-        description: err?.message || '',
-        hasCancelBtn: false
-      });
     }
   });
 

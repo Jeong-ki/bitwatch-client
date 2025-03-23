@@ -1,13 +1,5 @@
-import { getFetch, postFetch } from '@/api/fetchCore';
-import { ReissueUserRes } from './types';
+import { getFetch } from '@/api/fetchCore';
 import { UsersRes } from '@/domains/auth/api/types';
-
-/**
- * @title 유저정보 재발급
- * @api POST /user/reissue-user
- */
-export const reissueUser = (): Promise<ReissueUserRes> =>
-  postFetch('/user/reissue-user');
 
 /**
  * @title 유저 정보 호출

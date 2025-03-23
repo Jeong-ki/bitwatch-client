@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
-import { useMarketListQuery, useTickerQuery } from '../queries';
 import { useDebounce } from '@/hooks/useDebounce';
 import { Currency, DEBOUNCE_DELAY, DummyFavorites } from '../constants';
+import { useMarketList } from '../api/get-markets';
+import { useTicker } from '../api/get-ticker';
 
 export const useSearchMarkets = (currency: Currency) => {
   const [keyword, setKeyword] = useState('');
@@ -10,7 +11,7 @@ export const useSearchMarkets = (currency: Currency) => {
 
   // TODO: API 개발 후 Query로 대체
   const dummyFavorites = DummyFavorites;
-  const { data: marketList = [], error: marketError } = useMarketListQuery();
+  const { data: marketList = [], error: marketError } = useMarketList();
   const convertedMarketList =
     currency === 'FAV'
       ? dummyFavorites
@@ -40,8 +41,7 @@ export const useSearchMarkets = (currency: Currency) => {
     [filteredMarkets]
   );
 
-  const { data: tickerData = [], error: tickerError } =
-    useTickerQuery(marketCodes);
+  const { data: tickerData = [], error: tickerError } = useTicker(marketCodes);
 
   if (tickerError) {
     console.error('Ticker Query Error: ', tickerError);

@@ -1,18 +1,12 @@
 'use client';
 
-import { Alert } from '@/components/common/alert';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
-import { signinUser } from '@/domains/auth/api';
 import validateRule from '@/lib/react-hook-form';
-import useAuthStore from '@/domains/auth/store';
-import useUserStore from '@/domains/user/store';
-import { useMutation } from '@tanstack/react-query';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
-import { HTTP_STATUS } from '@/types/enum';
+import { useSignIn } from '@/domains/auth/api/post-signin';
 
 interface SigninData {
   email: string;
@@ -20,10 +14,6 @@ interface SigninData {
 }
 
 export default function Signin() {
-  const router = useRouter();
-  const { setUser } = useUserStore();
-  const { setAccessToken } = useAuthStore();
-
   const {
     watch,
     register,
@@ -36,23 +26,7 @@ export default function Signin() {
     }
   });
 
-  const { mutate: signin } = useMutation({
-    mutationFn: signinUser,
-    onSuccess: res => {
-      if (res.status === HTTP_STATUS.OK) {
-        const { email, nickname, accessToken } = res.data!;
-        setUser({ email, nickname });
-        setAccessToken(accessToken);
-        router.push('/');
-      }
-    },
-    onError: err => {
-      Alert({
-        description: err?.message || '',
-        hasCancelBtn: false
-      });
-    }
-  });
+  const { mutate: signin, isPending } = useSignIn();
 
   const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -98,7 +72,8 @@ export default function Signin() {
                   type="submit"
                   className="btn_login"
                   size="medium"
-                  color="primary">
+                  color="primary"
+                  disabled={isPending}>
                   로그인
                 </Button>
               </div>

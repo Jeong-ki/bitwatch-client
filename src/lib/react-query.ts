@@ -23,13 +23,16 @@ export type QueryConfig<T extends (...args: any) => any> = Omit<
   'queryKey' | 'queryFn'
 >;
 
+type FirstArgument<T extends (...args: any) => any> =
+  Parameters<T> extends [infer U, ...any[]] ? U : void;
+
 // useMutation에 사용할 타입 정의
 export type MutationConfig<
   MutationFnType extends (...args: any) => Promise<any>
 > = UseMutationOptions<
   ApiFnReturnType<MutationFnType>, // 성공 시 반환 타입
   Error, // 에러 타입
-  Parameters<MutationFnType>[0] // mutation 함수의 첫 번째 인자 타입
+  FirstArgument<MutationFnType> // 첫 번째 인자 타입 (없으면 void)
 >;
 
 // QueryClient 생성 함수 (새 QueryClient 객체 생성)
