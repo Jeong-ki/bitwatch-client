@@ -8,7 +8,6 @@ import { InputSearch } from '@/components/common/input/search';
 import { Radio } from '@/components/common/radio';
 import { Select } from '@/components/common/select';
 import { Textarea } from '@/components/common/textarea';
-import validateRule from '@/lib/react-hook-form';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -170,7 +169,7 @@ export default function Comp() {
       <br />
       <Input
         placeholder="register input"
-        libProps={register('inp01', validateRule.required)}
+        libProps={register('inp01')}
         errorMsg={errors.inp01?.message}
         showErrorMsg
         successMsg="인증되었습니다."

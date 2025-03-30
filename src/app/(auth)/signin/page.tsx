@@ -2,11 +2,11 @@
 
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
-import validateRule from '@/lib/react-hook-form';
 import Link from 'next/link';
 import { SyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSignIn } from '@/domains/auth/api/post-signin';
+import { signinSchema, useSignIn } from '@/domains/auth/api/post-signin';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 interface SigninData {
   email: string;
@@ -23,7 +23,8 @@ export default function Signin() {
     defaultValues: {
       email: '',
       password: ''
-    }
+    },
+    resolver: zodResolver(signinSchema)
   });
 
   const { mutate: signin, isPending } = useSignIn();
@@ -54,7 +55,7 @@ export default function Signin() {
                     title="이메일 입력"
                     showErrorMsg
                     errorMsg={errors.email?.message}
-                    libProps={register('email', validateRule.email)}
+                    libProps={register('email')}
                   />
                 </div>
                 <div className="group_form">
@@ -65,7 +66,7 @@ export default function Signin() {
                     title="비밀번호 입력"
                     showErrorMsg
                     errorMsg={errors.password?.message}
-                    libProps={register('password', validateRule.password)}
+                    libProps={register('password')}
                   />
                 </div>
                 <Button

@@ -3,12 +3,12 @@
 import { HTTP_STATUS } from '@/types/enum';
 import { Button } from '@/components/common/button';
 import { Input } from '@/components/common/input';
-import validateRule from '@/lib/react-hook-form';
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSignUp } from '@/domains/auth/api/create-signup';
+import { signupSchema, useSignUp } from '@/domains/auth/api/create-signup';
 import { useEmailVerification } from '@/domains/auth/api/post-email-verification';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 interface SignupData {
   email: string;
@@ -34,7 +34,8 @@ export default function Signup() {
       nickname: '',
       password: '',
       confirmPassword: ''
-    }
+    },
+    resolver: zodResolver(signupSchema)
   });
 
   const { mutate: signup } = useSignUp();
@@ -80,7 +81,7 @@ export default function Signup() {
                       title="이메일 입력"
                       showErrorMsg
                       errorMsg={errors.email?.message}
-                      libProps={register('email', validateRule.email)}
+                      libProps={register('email')}
                     />
                     <Button
                       type="button"
@@ -98,7 +99,7 @@ export default function Signup() {
                       placeholder="인증번호를 입력해주세요."
                       showErrorMsg
                       errorMsg={errors.authNumber?.message}
-                      libProps={register('authNumber', validateRule.required)}
+                      libProps={register('authNumber')}
                     />
                   )}
                 </div>
@@ -110,7 +111,7 @@ export default function Signup() {
                     title="닉네임 입력"
                     showErrorMsg
                     errorMsg={errors.nickname?.message}
-                    libProps={register('nickname', validateRule.nickname)}
+                    libProps={register('nickname')}
                   />
                 </div>
                 <div className="group_form">
@@ -121,7 +122,7 @@ export default function Signup() {
                     title="비밀번호 입력"
                     showErrorMsg
                     errorMsg={errors.password?.message}
-                    libProps={register('password', validateRule.password)}
+                    libProps={register('password')}
                   />
                 </div>
                 <div className="group_form">
@@ -132,10 +133,7 @@ export default function Signup() {
                     title="확인 비밀번호 입력"
                     showErrorMsg
                     errorMsg={errors.confirmPassword?.message}
-                    libProps={register(
-                      'confirmPassword',
-                      validateRule.confirmPassword
-                    )}
+                    libProps={register('confirmPassword')}
                   />
                 </div>
                 <Button
