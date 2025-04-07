@@ -10,11 +10,11 @@ import SearchIcon from '@img/icon/search.svg';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '@/domains/auth/store';
 import useUserStore from '@/domains/user/store';
-import { SearchModal } from '../../../domains/crypto/components/search-modal';
 import { isTokenValid } from '@/domains/auth/utils';
 import Logo from '@img/logo.png';
 import { useSignOut } from '@/domains/auth/api/post-signout';
 import { useReissue } from '@/domains/auth/api/post-reissue';
+import { SearchModal } from '@/domains/crypto/components/search-modal';
 
 export const Header = () => {
   const router = useRouter();

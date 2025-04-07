@@ -41,6 +41,7 @@ const Modal = ({ isOpen, onResolve }: ModalProps) => {
   const { keyword, setKeyword, marketsData } = useSearchMarkets(
     activeTab.currency
   );
+  console.log(marketsData);
 
   const handleSearch = (value: string) => {
     setKeyword(value);

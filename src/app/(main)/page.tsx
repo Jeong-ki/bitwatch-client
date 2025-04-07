@@ -1,7 +1,11 @@
+import { TickerList } from '@/domains/crypto/components/ticker-list';
+
 export default function Home() {
   return (
     <div className="content-home">
-      <section className="content-main">left area</section>
+      <section className="content-main">
+        <TickerList />
+      </section>
       <div className="center_line">
         <div className="line" />
       </div>

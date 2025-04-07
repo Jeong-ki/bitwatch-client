@@ -1,0 +1,35 @@
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.heading {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.error {
+  padding: 1rem;
+  color: #dc2626; // text-red-600
+}
+
+.loading {
+  font-size: 1rem;
+}

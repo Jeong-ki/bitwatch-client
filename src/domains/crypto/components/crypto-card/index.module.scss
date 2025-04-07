@@ -1,0 +1,64 @@
+.loadingCard {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: #f9fafb;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.price {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.changeRate {
+  font-weight: 500;
+}
+
+.priceRise {
+  color: #ef4444; // text-red-500
+}
+
+.priceFall {
+  color: #3b82f6; // text-blue-500
+}
+
+.priceEven {
+  color: #6b7280; // text-gray-500
+}
+
+.details {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.25rem;
+  color: #6b7280;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.timestamp {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #9ca3af; // text-gray-400
+}
