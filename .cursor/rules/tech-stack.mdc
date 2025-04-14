@@ -1,0 +1,83 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Tech Stack - Tools & Technologies
+
+### Core Technologies
+- TypeScript, Node.js, Next.js 15 App Router
+- React 19 with React Server Components (RSC)
+- Zod for schema validation and type safety
+- React Hook Form for form management
+- SCSS
+
+### Architecture - Domain-Based Structure
+- Top-level structure:
+  - src/api/ - API communication and services
+  - src/app/ - Application configuration and setup
+  - src/components/ - Shared UI components
+  - src/constants/ - Global constants and configuration values
+  - src/domains/ - Domain-specific modules (auth, user, etc.)
+  - src/hooks/ - Shared React hooks
+  - src/lib/ - Utility libraries and third-party integrations
+  - src/store/ - Global state management
+  - src/testing/ - Testing utilities and mocks
+  - src/types/ - Global type definitions
+  - src/utils/ - Utility functions
+- Rules:
+  - Each domain module exposes public API via index.ts
+  - Domain modules can use shared resources from top-level folders
+  - Avoid direct cross-domain dependencies where possible
+  - Organize domain internals consistently (components, hooks, utils, etc.)
+  - Business logic belongs in the respective domain module
+  - Keep components presentation-focused when possible
+
+### Data Validation & Forms
+- Zod:
+  - Create schemas in separate files with 'Schema' suffix
+  - Generate types with z.infer<typeof schema>
+  - Use refinement for complex validation
+  - Compose schemas for reusability
+- React Hook Form:
+  - Integrate with Zod via @hookform/resolvers/zod
+  - Use FormProvider for nested forms
+  - Prefer register over uncontrolled components
+  - Minimize watch() usage for performance
+  - Split complex forms into smaller components
+  - Reset after successful submission
+
+### Server Actions
+- Use next-safe-action for type-safety
+- Define schemas with Zod
+- Return consistent ActionResponse types
+- Use useActionState for client-side error handling
+
+### UI & Styling
+- Use existing SCSS definitions as primary styling method
+- If styling doesn't exist, create new SCSS files following project conventions
+- Maintain consistent naming conventions for SCSS classes
+- Leverage common variables and mixins from shared SCSS files
+- Optimize images, lazy loading
+- Ensure accessibility with proper ARIA attributes
+
+### Development Workflow
+- Follow Next.js App Router patterns and best practices
+- Prioritize Server Components over Client Components
+- Minimize 'use client' usage:
+  - Prefer server components and Next.js SSR features
+  - Use 'use client' only for Web API access in small components
+  - Avoid using 'use client' for data fetching or state management
+- Rely on Next.js App Router for state changes
+- Wrap client components in Suspense with fallback
+- Use dynamic loading for non-critical components
+- Create error boundaries using error.tsx and global-error.tsx files
+- Prioritize Web Vitals (LCP, CLS, FID) for performance
+- Follow FSD architecture principles
+- Use utility functions from shared/ layer
+- Create thorough documentation for complex features 
