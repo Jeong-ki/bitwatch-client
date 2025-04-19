@@ -21,6 +21,7 @@
     "@tanstack/react-query-devtools": "^5.59.20",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
+    "lightweight-charts": "^4.2.3",
     "lodash.isempty": "^4.4.0",
     "next": "15.1.7",
     "react": "19.0.0-rc-66855b96-20241106",
@@ -68,5 +69,10 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "overrides": {
+    "lightweight-charts": {
+      "version": "4.2.3"
+    }
   }
 }

@@ -1,9 +1,11 @@
 import { TickerList } from '@/domains/crypto/components/ticker-list';
+import CryptoChart from '@/domains/crypto/components/crypto-chart';
 
 export default function Home() {
   return (
     <div className="content-home">
       <section className="content-main">
+        <CryptoChart marketCode="KRW-ETH" />
         <TickerList />
       </section>
       <div className="center_line">

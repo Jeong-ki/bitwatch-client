@@ -39,9 +39,9 @@ const CryptoCard = ({ marketCode }: { marketCode: string }) => {
         <p>거래량: {data.acc_trade_volume_24h.toFixed(2)}</p>
         <p>거래대금: {(data.acc_trade_price_24h / 1000000).toFixed(0)}백만</p>
       </div>
-      <p className={styles.timestamp}>
+      {/* <p className={styles.timestamp}>
         최종 업데이트: {new Date(data.timestamp).toLocaleTimeString()}
-      </p>
+      </p> */}
     </div>
   );
 };
