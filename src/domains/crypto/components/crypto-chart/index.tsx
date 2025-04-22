@@ -11,6 +11,7 @@ import {
 import { useUpbitTickerByMarket } from '../../hooks/useUpbitTickerByMarket';
 import { useUpbitCandles, UpbitCandle } from '../../hooks/useUpbitCandles';
 import styles from './index.module.scss';
+import { calculatePriceChange } from '../../utils';
 
 interface CryptoChartProps {
   marketCode: string;
@@ -35,6 +36,14 @@ export default function CryptoChart({ marketCode }: CryptoChartProps) {
     unit: 60, // 60분 단위
     count: 168 // 24시간 * 7일
   });
+
+  const calChangedPrice =
+    tickerData && historicalData
+      ? calculatePriceChange(
+          historicalData[historicalData.length - 1],
+          tickerData
+        )
+      : null;
 
   useEffect(() => {
     if (!chartContainerRef.current) return;
@@ -262,7 +271,16 @@ export default function CryptoChart({ marketCode }: CryptoChartProps) {
 
   return (
     <div className={styles.chartContainer}>
-      {/* <div className={styles.chartTitle}>{marketCode}</div> */}
+      {calChangedPrice && (
+        <div>
+          <div>비트코인 {marketCode}</div>
+          <div>{calChangedPrice.currentPrice.toLocaleString()}원</div>
+          <div>${(calChangedPrice.currentPrice / 1420).toFixed(2)}</div>
+          <div>{calChangedPrice.priceDifference.toLocaleString()}원</div>
+          <div>{calChangedPrice.percentageChange}</div>
+          <div>{calChangedPrice.increased ? '상승' : '하락'}</div>
+        </div>
+      )}
       <div
         ref={chartContainerRef}
         className={styles.chart}

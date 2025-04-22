@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="content-home">
       <section className="content-main">
-        <CryptoChart marketCode="KRW-ETH" />
+        <CryptoChart marketCode="KRW-BTC" />
         <TickerList />
       </section>
       <div className="center_line">
